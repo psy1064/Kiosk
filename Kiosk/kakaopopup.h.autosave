@@ -15,7 +15,7 @@ public:
     explicit kakaopopup(QWidget *parent = nullptr);
     ~kakaopopup();
 signals:
-    void kakaoNumber(QString value);
+    void kakaoNumber(QString value);    // 메
 private slots:
     void inputNumber(QChar num);
 

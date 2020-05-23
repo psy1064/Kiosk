@@ -432,8 +432,20 @@
         </item>
         <item row="1" column="0">
          <layout class="QVBoxLayout" name="verticalLayout_4">
+          <property name="leftMargin">
+           <number>20</number>
+          </property>
+          <property name="topMargin">
+           <number>20</number>
+          </property>
+          <property name="rightMargin">
+           <number>20</number>
+          </property>
+          <property name="bottomMargin">
+           <number>20</number>
+          </property>
           <item>
-           <widget class="QLabel" name="label_6">
+           <widget class="QLabel" name="check">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -446,7 +458,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_7">
+           <widget class="QLabel" name="check_2">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -494,6 +506,43 @@
             </property>
             <property name="text">
              <string>TextLabel</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QLabel" name="pricelabel">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>총 금액 : </string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="showkakaobutton">
+            <property name="text">
+             <string>맞습니다</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="returnbutton">
+            <property name="text">
+             <string>다시고를래</string>
             </property>
            </widget>
           </item>

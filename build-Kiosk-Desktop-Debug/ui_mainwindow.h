@@ -65,11 +65,15 @@ public:
     QLabel *label_3;
     QPushButton *pushButton;
     QVBoxLayout *verticalLayout_4;
-    QLabel *label_6;
-    QLabel *label_7;
+    QLabel *check;
+    QLabel *check_2;
     QLabel *label_9;
     QLabel *label_8;
     QLabel *label_10;
+    QHBoxLayout *horizontalLayout_5;
+    QLabel *pricelabel;
+    QPushButton *showkakaobutton;
+    QPushButton *returnbutton;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -354,19 +358,20 @@ public:
         verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setSpacing(6);
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
-        label_6 = new QLabel(checkpage);
-        label_6->setObjectName(QStringLiteral("label_6"));
-        sizePolicy1.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
-        label_6->setSizePolicy(sizePolicy1);
+        verticalLayout_4->setContentsMargins(20, 20, 20, 20);
+        check = new QLabel(checkpage);
+        check->setObjectName(QStringLiteral("check"));
+        sizePolicy1.setHeightForWidth(check->sizePolicy().hasHeightForWidth());
+        check->setSizePolicy(sizePolicy1);
 
-        verticalLayout_4->addWidget(label_6);
+        verticalLayout_4->addWidget(check);
 
-        label_7 = new QLabel(checkpage);
-        label_7->setObjectName(QStringLiteral("label_7"));
-        sizePolicy1.setHeightForWidth(label_7->sizePolicy().hasHeightForWidth());
-        label_7->setSizePolicy(sizePolicy1);
+        check_2 = new QLabel(checkpage);
+        check_2->setObjectName(QStringLiteral("check_2"));
+        sizePolicy1.setHeightForWidth(check_2->sizePolicy().hasHeightForWidth());
+        check_2->setSizePolicy(sizePolicy1);
 
-        verticalLayout_4->addWidget(label_7);
+        verticalLayout_4->addWidget(check_2);
 
         label_9 = new QLabel(checkpage);
         label_9->setObjectName(QStringLiteral("label_9"));
@@ -391,6 +396,30 @@ public:
 
 
         gridLayout_4->addLayout(verticalLayout_4, 1, 0, 1, 1);
+
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setSpacing(6);
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        pricelabel = new QLabel(checkpage);
+        pricelabel->setObjectName(QStringLiteral("pricelabel"));
+        sizePolicy4.setHeightForWidth(pricelabel->sizePolicy().hasHeightForWidth());
+        pricelabel->setSizePolicy(sizePolicy4);
+        pricelabel->setMinimumSize(QSize(0, 100));
+
+        horizontalLayout_5->addWidget(pricelabel);
+
+        showkakaobutton = new QPushButton(checkpage);
+        showkakaobutton->setObjectName(QStringLiteral("showkakaobutton"));
+
+        horizontalLayout_5->addWidget(showkakaobutton);
+
+        returnbutton = new QPushButton(checkpage);
+        returnbutton->setObjectName(QStringLiteral("returnbutton"));
+
+        horizontalLayout_5->addWidget(returnbutton);
+
+
+        gridLayout_4->addLayout(horizontalLayout_5, 2, 0, 1, 1);
 
         stackedWidget->addWidget(checkpage);
 
@@ -420,11 +449,14 @@ public:
         label_4->setText(QApplication::translate("MainWindow", "\354\243\274\353\254\270\353\202\264\354\227\255", nullptr));
         label_3->setText(QApplication::translate("MainWindow", "\354\243\274\353\254\270\355\225\230\354\213\240 \354\235\214\354\213\235\354\235\264 \353\247\236\353\202\230\354\232\224?", nullptr));
         pushButton->setText(QApplication::translate("MainWindow", "\353\213\253\352\270\260", nullptr));
-        label_6->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
-        label_7->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
+        check->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
+        check_2->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
         label_9->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
         label_8->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
         label_10->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
+        pricelabel->setText(QApplication::translate("MainWindow", "\354\264\235 \352\270\210\354\225\241 : ", nullptr));
+        showkakaobutton->setText(QApplication::translate("MainWindow", "\353\247\236\354\212\265\353\213\210\353\213\244", nullptr));
+        returnbutton->setText(QApplication::translate("MainWindow", "\353\213\244\354\213\234\352\263\240\353\245\274\353\236\230", nullptr));
     } // retranslateUi
 
 };

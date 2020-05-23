@@ -60,7 +60,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
         showPopup(ui->menu_6);
     }
     return QWidget::eventFilter(watched, event);
-} // 이미지 클릭 시 이벤트
+} // 메뉴 이미지 클릭 시 이벤트
 
 void MainWindow::displayHambugerMenu()
 {
@@ -154,10 +154,10 @@ void MainWindow::setBasketMargin()
 void MainWindow::setValue(QMap<QString, QString> value)
 {
     QString menuname;
-    basketlist basklist{"","","",0,1};
+    basketlist basklist{"","","",0,1};      // 주문 내역 저장 구조체
     QMap<QString,QString>::iterator iter;
     iter = value.find("mainmenu");
-    menuname = iter.value();
+    menuname = iter.value();                // 메뉴 이름 저장
     basklist.burgername=menuname;
     iter = value.find("sidemenu");
     if(!(iter.value() == ""))
@@ -168,22 +168,21 @@ void MainWindow::setValue(QMap<QString, QString> value)
         menuname.append(", " + iter.value() + " )");
         basklist.beverage=iter.value();
     }
-    basketvector.append(basklist);
+    basketvector.append(basklist);          // 주문 내역 벡터에 추가
 
-    bask = new basket(this, menuname);
-    connect(bask, SIGNAL(deleteBasket()), this, SLOT(deleteBasket()));
-    bask->setMinimumSize(QApplication::desktop()->width()-80,80);
-    ui->basketlayout->addWidget(bask,0,Qt::AlignTop|Qt::AlignLeft);
-
-    baskcount++;
-    setBasketMargin();
+    bask = new basket(this, menuname);      // 주문내역 위젯 생성
+    connect(bask, SIGNAL(deleteBasket()), this, SLOT(deleteBasket()));  // 주문내역에서 삭제버튼이나 갯수가 0이 됐을때 deleteBasket실행
+    bask->setMinimumSize(QApplication::desktop()->width()-80,80);       // 위젯 크기 설정
+    ui->basketlayout->addWidget(bask,0,Qt::AlignTop|Qt::AlignLeft);     // 주문내역 위젯 추가
+    baskcount++;        // 주문 개수 증가
+    setBasketMargin();  // 주문 내역 공간 조정
 }
 
 void MainWindow::setPhoneNumber(QString number)
 {
     phonenumber = number;
     qDebug() << phonenumber;
-} // popup에서 주문한 내역을 받아옴
+} // kakaopopup에서 입력한 전화번호 입력
 
 void MainWindow::deleteBasket()
 {
@@ -224,9 +223,9 @@ void MainWindow::on_showkakaobutton_clicked()
     // 팝업 윈도우를 화면의 가운데로 위치시킴
     kakaopopupwindows->show();
     connect(kakaopopupwindows, SIGNAL(kakaoNumber(QString)), this, SLOT(setPhoneNumber(QString)));
-}
+} // 카카오톡 챗봇 이용을 위한 핸드폰 번호 입력 팝업 추가
 
 void MainWindow::on_returnbutton_clicked()
 {
-
+    
 }

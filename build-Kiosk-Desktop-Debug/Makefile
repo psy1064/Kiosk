@@ -54,19 +54,23 @@ SOURCES       = ../Kiosk/main.cpp \
 		../Kiosk/mainwindow.cpp \
 		../Kiosk/mymenu.cpp \
 		../Kiosk/basket.cpp \
-		../Kiosk/popup.cpp moc_mainwindow.cpp \
+		../Kiosk/popup.cpp \
+		../Kiosk/kakaopopup.cpp moc_mainwindow.cpp \
 		moc_mymenu.cpp \
 		moc_basket.cpp \
-		moc_popup.cpp
+		moc_popup.cpp \
+		moc_kakaopopup.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		mymenu.o \
 		basket.o \
 		popup.o \
+		kakaopopup.o \
 		moc_mainwindow.o \
 		moc_mymenu.o \
 		moc_basket.o \
-		moc_popup.o
+		moc_popup.o \
+		moc_kakaopopup.o
 DIST          = /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/common/unix.conf \
 		/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/common/linux.conf \
@@ -149,11 +153,13 @@ DIST          = /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/spec_pre.prf \
 		../Kiosk/Kiosk.pro ../Kiosk/mainwindow.h \
 		../Kiosk/mymenu.h \
 		../Kiosk/basket.h \
-		../Kiosk/popup.h ../Kiosk/main.cpp \
+		../Kiosk/popup.h \
+		../Kiosk/kakaopopup.h ../Kiosk/main.cpp \
 		../Kiosk/mainwindow.cpp \
 		../Kiosk/mymenu.cpp \
 		../Kiosk/basket.cpp \
-		../Kiosk/popup.cpp
+		../Kiosk/popup.cpp \
+		../Kiosk/kakaopopup.cpp
 QMAKE_TARGET  = Kiosk
 DESTDIR       = 
 TARGET        = Kiosk
@@ -162,7 +168,7 @@ TARGET        = Kiosk
 first: all
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h ui_mymenu.h ui_basket.h ui_popup.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_mymenu.h ui_basket.h ui_popup.h ui_kakaopopup.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../Kiosk/Kiosk.pro /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/spec_pre.prf \
@@ -347,9 +353,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Kiosk/mainwindow.h ../Kiosk/mymenu.h ../Kiosk/basket.h ../Kiosk/popup.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Kiosk/main.cpp ../Kiosk/mainwindow.cpp ../Kiosk/mymenu.cpp ../Kiosk/basket.cpp ../Kiosk/popup.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Kiosk/mainwindow.ui ../Kiosk/mymenu.ui ../Kiosk/basket.ui ../Kiosk/popup.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../Kiosk/mainwindow.h ../Kiosk/mymenu.h ../Kiosk/basket.h ../Kiosk/popup.h ../Kiosk/kakaopopup.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Kiosk/main.cpp ../Kiosk/mainwindow.cpp ../Kiosk/mymenu.cpp ../Kiosk/basket.cpp ../Kiosk/popup.cpp ../Kiosk/kakaopopup.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Kiosk/mainwindow.ui ../Kiosk/mymenu.ui ../Kiosk/basket.ui ../Kiosk/popup.ui ../Kiosk/kakaopopup.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -381,12 +387,13 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/data/dummy.cpp
 	arm-linux-gnueabihf-g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_mymenu.cpp moc_basket.cpp moc_popup.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_mymenu.cpp moc_basket.cpp moc_popup.cpp moc_kakaopopup.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_mymenu.cpp moc_basket.cpp moc_popup.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_mymenu.cpp moc_basket.cpp moc_popup.cpp moc_kakaopopup.cpp
 moc_mainwindow.cpp: ../Kiosk/popup.h \
 		../Kiosk/mymenu.h \
 		../Kiosk/basket.h \
+		../Kiosk/kakaopopup.h \
 		../Kiosk/mainwindow.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -408,13 +415,18 @@ moc_popup.cpp: ../Kiosk/mymenu.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/pi/kiosk/build-Kiosk-Desktop-Debug/moc_predefs.h -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/kiosk/Kiosk -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I/usr/include/c++/8 -I/usr/include/arm-linux-gnueabihf/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/arm-linux-gnueabihf/8/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/8/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include ../Kiosk/popup.h -o moc_popup.cpp
 
+moc_kakaopopup.cpp: ../Kiosk/kakaopopup.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/pi/kiosk/build-Kiosk-Desktop-Debug/moc_predefs.h -I/usr/lib/arm-linux-gnueabihf/qt5/mkspecs/linux-g++ -I/home/pi/kiosk/Kiosk -I/usr/include/arm-linux-gnueabihf/qt5 -I/usr/include/arm-linux-gnueabihf/qt5/QtWidgets -I/usr/include/arm-linux-gnueabihf/qt5/QtGui -I/usr/include/arm-linux-gnueabihf/qt5/QtCore -I. -I/usr/include/c++/8 -I/usr/include/arm-linux-gnueabihf/c++/8 -I/usr/include/c++/8/backward -I/usr/lib/gcc/arm-linux-gnueabihf/8/include -I/usr/local/include -I/usr/lib/gcc/arm-linux-gnueabihf/8/include-fixed -I/usr/include/arm-linux-gnueabihf -I/usr/include ../Kiosk/kakaopopup.h -o moc_kakaopopup.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_mymenu.h ui_basket.h ui_popup.h
+compiler_uic_make_all: ui_mainwindow.h ui_mymenu.h ui_basket.h ui_popup.h ui_kakaopopup.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_mymenu.h ui_basket.h ui_popup.h
+	-$(DEL_FILE) ui_mainwindow.h ui_mymenu.h ui_basket.h ui_popup.h ui_kakaopopup.h
 ui_mainwindow.h: ../Kiosk/mainwindow.ui \
 		/usr/lib/qt5/bin/uic \
 		../Kiosk/mymenu.h
@@ -433,6 +445,10 @@ ui_popup.h: ../Kiosk/popup.ui \
 		../Kiosk/mymenu.h
 	/usr/lib/qt5/bin/uic ../Kiosk/popup.ui -o ui_popup.h
 
+ui_kakaopopup.h: ../Kiosk/kakaopopup.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic ../Kiosk/kakaopopup.ui -o ui_kakaopopup.h
+
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
@@ -446,13 +462,15 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 main.o: ../Kiosk/main.cpp ../Kiosk/mainwindow.h \
 		../Kiosk/popup.h \
 		../Kiosk/mymenu.h \
-		../Kiosk/basket.h
+		../Kiosk/basket.h \
+		../Kiosk/kakaopopup.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Kiosk/main.cpp
 
 mainwindow.o: ../Kiosk/mainwindow.cpp ../Kiosk/mainwindow.h \
 		../Kiosk/popup.h \
 		../Kiosk/mymenu.h \
 		../Kiosk/basket.h \
+		../Kiosk/kakaopopup.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Kiosk/mainwindow.cpp
 
@@ -469,6 +487,10 @@ popup.o: ../Kiosk/popup.cpp ../Kiosk/popup.h \
 		ui_popup.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o popup.o ../Kiosk/popup.cpp
 
+kakaopopup.o: ../Kiosk/kakaopopup.cpp ../Kiosk/kakaopopup.h \
+		ui_kakaopopup.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o kakaopopup.o ../Kiosk/kakaopopup.cpp
+
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
@@ -480,6 +502,9 @@ moc_basket.o: moc_basket.cpp
 
 moc_popup.o: moc_popup.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_popup.o moc_popup.cpp
+
+moc_kakaopopup.o: moc_kakaopopup.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_kakaopopup.o moc_kakaopopup.cpp
 
 ####### Install
 
