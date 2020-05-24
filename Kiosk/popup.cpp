@@ -181,7 +181,6 @@ bool popup::eventFilter(QObject *watched, QEvent *event)
 void popup::on_rightbutton_clicked()
 {
     info.insert("price",QString::number(finalprice));
-    qDebug() << finalprice;
     emit sendValue(info);
     popup::close();
 } // 주문 메뉴 화면에서 맞아요 클릭 시
@@ -209,9 +208,11 @@ void popup::on_setbutton_clicked()
 
 void popup::on_singlebutton_clicked()
 {
+    finalprice = menuprice;
     info.insert("sidemenu","");
     info.insert("beverage","");
     info.insert("price",QString::number(finalprice));
+    qDebug() << finalprice;
     emit sendValue(info);
     popup::close();
 } // 싱글 버튼 클릭 시

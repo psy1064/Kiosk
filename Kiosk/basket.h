@@ -12,7 +12,6 @@ class basket : public QWidget
     Q_OBJECT
 
 public:
-    static int baskcount;
     explicit basket(QWidget *parent = nullptr, QString name = "");
     ~basket();
 private slots:

@@ -1,7 +1,6 @@
 #include "basket.h"
 #include "ui_basket.h"
 
-int basket::baskcount = 0;
 
 basket::basket(QWidget *parent, QString name) :
     QWidget(parent),
@@ -11,7 +10,7 @@ basket::basket(QWidget *parent, QString name) :
     count = 1;
     ui->burgername->setText(name);
     ui->burgercount->setText(QString::number(count));
-    baskcount++;
+
 }
 
 basket::~basket()
@@ -37,7 +36,6 @@ void basket::on_minuspushbutton_clicked()
 
 void basket::on_deletebutton_clicked()
 {
-    baskcount--;
-    emit deleteBasket();        // 주문 삭제 시그널 전송
     basket::close();
+    emit deleteBasket();        // 주문 삭제 시그널 전송
 } // 삭제 버튼 클릭 시

@@ -88,11 +88,11 @@ void MainWindow::detectFace()
 void MainWindow::displayHambugerMenu()
 {
     menutype = HAMBURGER;
-    menu.load("/home/pi/kiosk/image/burger/1955 버거.png");
-    ui->menu_1->setInfo(menu,400,"1955 버거","5000");
+    menu.load("/home/pi/kiosk/image/burger/1955.png");
+    ui->menu_1->setInfo(menu,400,"1955","5000");
 
-    menu.load("/home/pi/kiosk/image/burger/더블1955 버거.png");
-    ui->menu_2->setInfo(menu,400,"더블1955 버거","5500");
+    menu.load("/home/pi/kiosk/image/burger/더블1955.png");
+    ui->menu_2->setInfo(menu,400,"더블1955","5500");
 
     menu.load("/home/pi/kiosk/image/burger/맥치킨.png");
     ui->menu_3->setInfo(menu,400,"맥치킨","5500");
@@ -220,7 +220,6 @@ void MainWindow::setValue(QMap<QString, QString> value)
     bask->setMinimumSize(QApplication::desktop()->width()-80,80);       // 위젯 크기 설정
     ui->basketlayout->addWidget(bask,0,Qt::AlignTop|Qt::AlignLeft);     // 주문내역 위젯 추가
     baskcount++;        // 주문 개수 증가
-    qDebug() << bask->baskcount;
     setBasketMargin();  // 주문 내역 공간 조정
 }
 
@@ -231,8 +230,6 @@ void MainWindow::setPhoneNumber(QString number)
 
 void MainWindow::deleteBasket()
 {
-    qDebug() << bask->baskcount;
-    basketvector.remove(bask->baskcount-1);
     baskcount --;
     setBasketMargin();
 } // 주문 내역 삭제
