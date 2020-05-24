@@ -17,6 +17,7 @@ popup::popup(QWidget *parent, QString mainmenu, QString menuprice, int menutype)
     info.insert("mainmenu",mainmenu);
     this->menuprice = menuprice.toInt();
     this->menutype = menutype;
+    count = 1;
 }
 
 popup::~popup()
@@ -102,23 +103,32 @@ void popup::checkMenu()
 
     if(menutype == HAMBURGER)
     {
-        menu.load("/home/pi/kiosk/image/burger/" + name + ".png");
-        ui->checkmenu_1->setInfo(menu, 300, name, "");
-        menu.load("/home/pi/kiosk/image/sidemenu/" + side + ".png");
-        ui->checkmenu_2->setInfo(menu, 300, side, "");
-        menu.load("/home/pi/kiosk/image/beverage/" + bev + ".png");
-        ui->checkmenu_3->setInfo(menu, 300, bev, "");
+        if(side == "")
+        {
+            menu.load("/home/pi/kiosk/image/burger/" + name + ".png");
+            ui->checkmenu_2->setInfo(menu, 300, name, "");
+            finalprice = menuprice;
+        }
+        else
+        {
+            menu.load("/home/pi/kiosk/image/burger/" + name + ".png");
+            ui->checkmenu_2->setInfo(menu, 300, name, "");
+            menu.load("/home/pi/kiosk/image/sidemenu/" + side + ".png");
+            ui->checkmenu_1->setInfo(menu, 300, side, "");
+            menu.load("/home/pi/kiosk/image/beverage/" + bev + ".png");
+            ui->checkmenu_3->setInfo(menu, 300, bev, "");
+        }
     } // 메뉴 종류가 햄버거인 경우
     else if(menutype == SIDE)
     {
         menu.load("/home/pi/kiosk/image/sidemenu/" + name + ".png");
-        ui->checkmenu_1->setInfo(menu, 500, name, "");
+        ui->checkmenu_2->setInfo(menu, 500, name, "");
         finalprice = menuprice;
     } // 사이드 메뉴인 경우
     else if(menutype == BEVERAGE)
     {
         menu.load("/home/pi/kiosk/image/beverage/" + name + ".png");
-        ui->checkmenu_1->setInfo(menu, 500, name, "");
+        ui->checkmenu_2->setInfo(menu, 500, name, "");
         finalprice = menuprice;
     } // 음료인 경우
 } // 최종 확인 화면 출력
@@ -180,6 +190,8 @@ bool popup::eventFilter(QObject *watched, QEvent *event)
 
 void popup::on_rightbutton_clicked()
 {
+    info.insert("count",QString::number(count));
+    finalprice *= count;
     info.insert("price",QString::number(finalprice));
     emit sendValue(info);
     popup::close();
@@ -187,16 +199,7 @@ void popup::on_rightbutton_clicked()
 
 void popup::on_rollbackbutton_clicked()
 {
-    if(menutype == HAMBURGER)
-    {
-        state = 1;
-        ui->stackedWidget->setCurrentIndex(state);
-        displaySideMenu();
-    }
-    else
-    {
-        this->close();
-    }
+    this->close();
 } // 주문 메뉴 화면에서 다시 고를래 클릭 시
 
 void popup::on_setbutton_clicked()
@@ -208,16 +211,27 @@ void popup::on_setbutton_clicked()
 
 void popup::on_singlebutton_clicked()
 {
-    finalprice = menuprice;
+    state = 2;
     info.insert("sidemenu","");
     info.insert("beverage","");
-    info.insert("price",QString::number(finalprice));
-    qDebug() << finalprice;
-    emit sendValue(info);
-    popup::close();
+    ui->stackedWidget->setCurrentIndex(state);
+    checkMenu();
 } // 싱글 버튼 클릭 시
 
 void popup::on_okbutton_clicked()
 {
     this->close();
 } // 주문 내역 5개 넘겼을 때 알겠습니다 클릭 시
+
+void popup::on_minusButton_clicked()
+{
+    if(count > 1)
+        count --;
+    ui->countLabel->setText(QString::number(count));
+}
+
+void popup::on_plusButton_clicked()
+{
+    count++;
+    ui->countLabel->setText(QString::number(count));
+}

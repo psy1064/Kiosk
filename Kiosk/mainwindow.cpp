@@ -196,7 +196,7 @@ void MainWindow::setBasketMargin()
 
 void MainWindow::setValue(QMap<QString, QString> value)
 {
-    QString menuname;
+    QString menuname, count;
     basketlist basklist{"","","",0,1};      // 주문 내역 저장 구조체
     QMap<QString,QString>::iterator iter;
     iter = value.find("mainmenu");
@@ -213,9 +213,11 @@ void MainWindow::setValue(QMap<QString, QString> value)
     }
     iter = value.find("price");
     finalprice += iter.value().toInt();
+    iter = value.find("count");
+    count = iter.value();
     basketvector.append(basklist);          // 주문 내역 벡터에 추가
 
-    bask = new basket(this, menuname);      // 주문내역 위젯 생성
+    bask = new basket(this, menuname,count);      // 주문내역 위젯 생성
     connect(bask, SIGNAL(deleteBasket()), this, SLOT(deleteBasket()));  // 주문내역에서 삭제버튼이나 갯수가 0이 됐을때 deleteBasket실행
     bask->setMinimumSize(QApplication::desktop()->width()-80,80);       // 위젯 크기 설정
     ui->basketlayout->addWidget(bask,0,Qt::AlignTop|Qt::AlignLeft);     // 주문내역 위젯 추가

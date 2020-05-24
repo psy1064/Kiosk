@@ -10,7 +10,6 @@
 #define UI_BASKET_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
@@ -25,9 +24,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QPushButton *deletebutton;
     QLabel *burgername;
-    QPushButton *pluspushbutton;
     QLabel *burgercount;
-    QPushButton *minuspushbutton;
 
     void setupUi(QWidget *basket)
     {
@@ -66,16 +63,6 @@ public:
 
         horizontalLayout->addWidget(burgername);
 
-        pluspushbutton = new QPushButton(basket);
-        pluspushbutton->setObjectName(QStringLiteral("pluspushbutton"));
-        pluspushbutton->setStyleSheet(QStringLiteral("border:0px;"));
-        QIcon icon;
-        icon.addFile(QStringLiteral("../image/plusicon.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pluspushbutton->setIcon(icon);
-        pluspushbutton->setIconSize(QSize(50, 50));
-
-        horizontalLayout->addWidget(pluspushbutton);
-
         burgercount = new QLabel(basket);
         burgercount->setObjectName(QStringLiteral("burgercount"));
         burgercount->setMinimumSize(QSize(50, 0));
@@ -84,16 +71,6 @@ public:
         burgercount->setAlignment(Qt::AlignCenter);
 
         horizontalLayout->addWidget(burgercount);
-
-        minuspushbutton = new QPushButton(basket);
-        minuspushbutton->setObjectName(QStringLiteral("minuspushbutton"));
-        minuspushbutton->setStyleSheet(QStringLiteral("border:0px;"));
-        QIcon icon1;
-        icon1.addFile(QStringLiteral("../image/minusicon.png"), QSize(), QIcon::Normal, QIcon::Off);
-        minuspushbutton->setIcon(icon1);
-        minuspushbutton->setIconSize(QSize(50, 50));
-
-        horizontalLayout->addWidget(minuspushbutton);
 
 
         retranslateUi(basket);
@@ -106,9 +83,7 @@ public:
         basket->setWindowTitle(QApplication::translate("basket", "Form", nullptr));
         deletebutton->setText(QApplication::translate("basket", "\354\202\255\354\240\234", nullptr));
         burgername->setText(QApplication::translate("basket", "\353\262\204\352\261\260\354\235\264\353\246\204", nullptr));
-        pluspushbutton->setText(QString());
         burgercount->setText(QApplication::translate("basket", "1", nullptr));
-        minuspushbutton->setText(QString());
     } // retranslateUi
 
 };

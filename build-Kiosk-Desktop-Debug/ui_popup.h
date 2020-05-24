@@ -12,9 +12,11 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStackedWidget>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 #include "mymenu.h"
 
@@ -38,12 +40,19 @@ public:
     MyMenu *pmenu_2;
     MyMenu *pmenu_3;
     QWidget *page_3;
-    QGridLayout *gridLayout_4;
-    MyMenu *checkmenu_3;
+    QVBoxLayout *verticalLayout_2;
+    QHBoxLayout *horizontalLayout;
+    MyMenu *checkmenu_1;
     MyMenu *checkmenu_2;
+    MyMenu *checkmenu_3;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_2;
+    QPushButton *minusButton;
+    QLabel *countLabel;
+    QPushButton *plusButton;
+    QHBoxLayout *horizontalLayout_3;
     QPushButton *rightbutton;
     QPushButton *rollbackbutton;
-    MyMenu *checkmenu_1;
     QWidget *page_4;
     QGridLayout *gridLayout_5;
     QLabel *label_3;
@@ -126,32 +135,97 @@ public:
         stackedWidget->addWidget(page_2);
         page_3 = new QWidget();
         page_3->setObjectName(QStringLiteral("page_3"));
-        gridLayout_4 = new QGridLayout(page_3);
-        gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
-        checkmenu_3 = new MyMenu(page_3);
-        checkmenu_3->setObjectName(QStringLiteral("checkmenu_3"));
+        verticalLayout_2 = new QVBoxLayout(page_3);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        checkmenu_1 = new MyMenu(page_3);
+        checkmenu_1->setObjectName(QStringLiteral("checkmenu_1"));
 
-        gridLayout_4->addWidget(checkmenu_3, 0, 3, 1, 1);
+        horizontalLayout->addWidget(checkmenu_1);
 
         checkmenu_2 = new MyMenu(page_3);
         checkmenu_2->setObjectName(QStringLiteral("checkmenu_2"));
 
-        gridLayout_4->addWidget(checkmenu_2, 0, 0, 1, 1);
+        horizontalLayout->addWidget(checkmenu_2);
 
+        checkmenu_3 = new MyMenu(page_3);
+        checkmenu_3->setObjectName(QStringLiteral("checkmenu_3"));
+
+        horizontalLayout->addWidget(checkmenu_3);
+
+
+        verticalLayout_2->addLayout(horizontalLayout);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        label_2 = new QLabel(page_3);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Minimum);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
+        label_2->setSizePolicy(sizePolicy2);
+        QFont font;
+        font.setPointSize(20);
+        label_2->setFont(font);
+        label_2->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_2->addWidget(label_2);
+
+        minusButton = new QPushButton(page_3);
+        minusButton->setObjectName(QStringLiteral("minusButton"));
+        QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(minusButton->sizePolicy().hasHeightForWidth());
+        minusButton->setSizePolicy(sizePolicy3);
+        minusButton->setMinimumSize(QSize(50, 50));
+        minusButton->setStyleSheet(QLatin1String("border-image:url(\"/home/pi/kiosk/image/minusicon.png\")\n"
+""));
+
+        horizontalLayout_2->addWidget(minusButton);
+
+        countLabel = new QLabel(page_3);
+        countLabel->setObjectName(QStringLiteral("countLabel"));
+        QSizePolicy sizePolicy4(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(countLabel->sizePolicy().hasHeightForWidth());
+        countLabel->setSizePolicy(sizePolicy4);
+        countLabel->setMinimumSize(QSize(30, 0));
+        countLabel->setFont(font);
+        countLabel->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_2->addWidget(countLabel);
+
+        plusButton = new QPushButton(page_3);
+        plusButton->setObjectName(QStringLiteral("plusButton"));
+        sizePolicy3.setHeightForWidth(plusButton->sizePolicy().hasHeightForWidth());
+        plusButton->setSizePolicy(sizePolicy3);
+        plusButton->setMinimumSize(QSize(50, 50));
+        plusButton->setStyleSheet(QLatin1String("border-image:url(\"/home/pi/kiosk/image/plusicon.png\")\n"
+""));
+
+        horizontalLayout_2->addWidget(plusButton);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_2);
+
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         rightbutton = new QPushButton(page_3);
         rightbutton->setObjectName(QStringLiteral("rightbutton"));
 
-        gridLayout_4->addWidget(rightbutton, 1, 0, 1, 2);
+        horizontalLayout_3->addWidget(rightbutton);
 
         rollbackbutton = new QPushButton(page_3);
         rollbackbutton->setObjectName(QStringLiteral("rollbackbutton"));
 
-        gridLayout_4->addWidget(rollbackbutton, 1, 2, 1, 2);
+        horizontalLayout_3->addWidget(rollbackbutton);
 
-        checkmenu_1 = new MyMenu(page_3);
-        checkmenu_1->setObjectName(QStringLiteral("checkmenu_1"));
 
-        gridLayout_4->addWidget(checkmenu_1, 0, 1, 1, 2);
+        verticalLayout_2->addLayout(horizontalLayout_3);
 
         stackedWidget->addWidget(page_3);
         page_4 = new QWidget();
@@ -161,8 +235,6 @@ public:
         gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
         label_3 = new QLabel(page_4);
         label_3->setObjectName(QStringLiteral("label_3"));
-        QFont font;
-        font.setPointSize(20);
         label_3->setFont(font);
         label_3->setAlignment(Qt::AlignCenter);
 
@@ -190,7 +262,7 @@ public:
 
         retranslateUi(popup);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(popup);
@@ -201,6 +273,10 @@ public:
         popup->setWindowTitle(QApplication::translate("popup", "Form", nullptr));
         setbutton->setText(QApplication::translate("popup", "\354\204\270\355\212\270", nullptr));
         singlebutton->setText(QApplication::translate("popup", "\353\213\250\355\222\210", nullptr));
+        label_2->setText(QApplication::translate("popup", "\354\210\230\353\237\211 \354\204\240\355\203\235", nullptr));
+        minusButton->setText(QString());
+        countLabel->setText(QApplication::translate("popup", "1", nullptr));
+        plusButton->setText(QString());
         rightbutton->setText(QApplication::translate("popup", "\353\247\236\354\225\204\354\232\224", nullptr));
         rollbackbutton->setText(QApplication::translate("popup", "\353\213\244\354\213\234 \352\263\240\353\245\274\353\236\230", nullptr));
         label_3->setText(QApplication::translate("popup", "\354\243\274\353\254\270 \353\202\264\354\227\255\354\235\200 5\352\260\234\353\245\274 \353\204\230\352\270\270 \354\210\230 \354\227\206\354\212\265\353\213\210\353\213\244.", nullptr));
