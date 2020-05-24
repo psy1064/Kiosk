@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_basket_t {
-    QByteArrayData data[4];
-    char stringdata0[45];
+    QByteArrayData data[6];
+    char stringdata0[57];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,10 +34,13 @@ static const qt_meta_stringdata_basket_t qt_meta_stringdata_basket = {
 QT_MOC_LITERAL(0, 0, 6), // "basket"
 QT_MOC_LITERAL(1, 7, 12), // "deleteBasket"
 QT_MOC_LITERAL(2, 20, 0), // ""
-QT_MOC_LITERAL(3, 21, 23) // "on_deletebutton_clicked"
+QT_MOC_LITERAL(3, 21, 7), // "basket*"
+QT_MOC_LITERAL(4, 29, 3), // "tmp"
+QT_MOC_LITERAL(5, 33, 23) // "on_deletebutton_clicked"
 
     },
-    "basket\0deleteBasket\0\0on_deletebutton_clicked"
+    "basket\0deleteBasket\0\0basket*\0tmp\0"
+    "on_deletebutton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -55,13 +58,13 @@ static const uint qt_meta_data_basket[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   24,    2, 0x06 /* Public */,
+       1,    1,   24,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       3,    0,   25,    2, 0x08 /* Private */,
+       5,    0,   27,    2, 0x08 /* Private */,
 
  // signals: parameters
-    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 3,    4,
 
  // slots: parameters
     QMetaType::Void,
@@ -75,21 +78,31 @@ void basket::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         basket *_t = static_cast<basket *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->deleteBasket(); break;
+        case 0: _t->deleteBasket((*reinterpret_cast< basket*(*)>(_a[1]))); break;
         case 1: _t->on_deletebutton_clicked(); break;
         default: ;
+        }
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        switch (_id) {
+        default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+        case 0:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+            case 0:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< basket* >(); break;
+            }
+            break;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (basket::*)();
+            using _t = void (basket::*)(basket * );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&basket::deleteBasket)) {
                 *result = 0;
                 return;
             }
         }
     }
-    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject basket::staticMetaObject = {
@@ -122,16 +135,17 @@ int basket::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         _id -= 2;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         if (_id < 2)
-            *reinterpret_cast<int*>(_a[0]) = -1;
+            qt_static_metacall(this, _c, _id, _a);
         _id -= 2;
     }
     return _id;
 }
 
 // SIGNAL 0
-void basket::deleteBasket()
+void basket::deleteBasket(basket * _t1)
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

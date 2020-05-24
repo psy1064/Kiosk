@@ -30,21 +30,24 @@ SOURCES += \
     mymenu.cpp \
     basket.cpp \
     popup.cpp \
-    kakaopopup.cpp
+    kakaopopup.cpp \
+    checklist.cpp
 
 HEADERS += \
         mainwindow.h \
     mymenu.h \
     basket.h \
     popup.h \
-    kakaopopup.h
+    kakaopopup.h \
+    checklist.h
 
 FORMS += \
         mainwindow.ui \
     mymenu.ui \
     basket.ui \
     popup.ui \
-    kakaopopup.ui
+    kakaopopup.ui \
+    checklist.ui
 
 
 # Default rules for deployment.

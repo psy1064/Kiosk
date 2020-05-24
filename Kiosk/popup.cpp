@@ -193,6 +193,7 @@ void popup::on_rightbutton_clicked()
     info.insert("count",QString::number(count));
     finalprice *= count;
     info.insert("price",QString::number(finalprice));
+    info.insert("menutype",QString::number(menutype));
     emit sendValue(info);
     popup::close();
 } // 주문 메뉴 화면에서 맞아요 클릭 시

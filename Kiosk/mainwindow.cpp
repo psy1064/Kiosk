@@ -172,18 +172,12 @@ void MainWindow::showPopup(MyMenu* menu)
 void MainWindow::showCheck()
 {
     int size = (QApplication::desktop()->height()-200) / 5;
-    QString title;
     for(int i = 0 ; i < basketvector.size(); i++)
     {
-        QLabel* label = new QLabel();
-        label->setMinimumHeight(size);
-        title = basketvector[i].menuname;
-        if(basketvector[i].sidemenu != "")
-        {
-            title.append("( " + basketvector[i].sidemenu + ", " + basketvector[i].beverage + " )");
-        }
-        label->setText(title);
-        ui->checklayout->addWidget(label);
+        check = new checklist(this,basketvector[i].menuname,basketvector[i].sidemenu,basketvector[i].beverage,
+                              basketvector[i].count, basketvector[i].price, basketvector[i].menutype);
+        check->setMinimumSize(QApplication::desktop()->width()-80,size);
+        ui->checklayout->addWidget(check,0,Qt::AlignTop|Qt::AlignLeft);
     }
     ui->pricelabel->setText("총 가격 : " + QString::number(finalprice));
     ui->checklayout->setContentsMargins(0,0,0,size*(5-baskcount));
@@ -196,8 +190,8 @@ void MainWindow::setBasketMargin()
 
 void MainWindow::setValue(QMap<QString, QString> value)
 {
-    QString menuname, count;
-    basketlist basklist{"","","",0,1};      // 주문 내역 저장 구조체
+    QString menuname;
+    struct basketlist basklist{"","","",0,1};      // 주문 내역 저장 구조체
     QMap<QString,QString>::iterator iter;
     iter = value.find("mainmenu");
     menuname = iter.value();                // 메뉴 이름 저장
@@ -212,13 +206,16 @@ void MainWindow::setValue(QMap<QString, QString> value)
         basklist.beverage=iter.value();
     }
     iter = value.find("price");
+    basklist.price = iter.value().toInt();
     finalprice += iter.value().toInt();
     iter = value.find("count");
-    count = iter.value();
+    basklist.count = iter.value().toInt();
+    iter = value.find("menutype");
+    basklist.menutype = iter.value().toInt();
     basketvector.append(basklist);          // 주문 내역 벡터에 추가
 
-    bask = new basket(this, menuname,count);      // 주문내역 위젯 생성
-    connect(bask, SIGNAL(deleteBasket()), this, SLOT(deleteBasket()));  // 주문내역에서 삭제버튼이나 갯수가 0이 됐을때 deleteBasket실행
+    bask = new basket(this, menuname,basklist.sidemenu,basklist.beverage,QString::number(basklist.count));      // 주문내역 위젯 생성
+    connect(bask, SIGNAL(deleteBasket(basket*)), this, SLOT(deleteBasket(basket*)));  // 주문내역에서 삭제버튼이나 갯수가 0이 됐을때 deleteBasket실행
     bask->setMinimumSize(QApplication::desktop()->width()-80,80);       // 위젯 크기 설정
     ui->basketlayout->addWidget(bask,0,Qt::AlignTop|Qt::AlignLeft);     // 주문내역 위젯 추가
     baskcount++;        // 주문 개수 증가
@@ -230,8 +227,23 @@ void MainWindow::setPhoneNumber(QString number)
     phonenumber = number;
 } // kakaopopup에서 입력한 전화번호 입력
 
-void MainWindow::deleteBasket()
+void MainWindow::deleteBasket(basket* tmp)
 {
+    QString menuname = tmp->getName();
+    QString side = tmp->getSide();
+    QString beverage = tmp->getBeverage();
+    for(int i = 0;i < baskcount ;i++)
+    {
+        if(menuname == basketvector[i].menuname &&
+                side == basketvector[i].sidemenu &&
+                beverage == basketvector[i].beverage)
+        {
+            finalprice -= basketvector[i].price;
+            basketvector.remove(i);
+
+            break;
+        }
+    } // 메뉴 이름을 가진 정보 제거
     baskcount --;
     setBasketMargin();
 } // 주문 내역 삭제

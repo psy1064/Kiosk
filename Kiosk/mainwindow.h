@@ -12,6 +12,7 @@
 #include "basket.h"
 #include "mymenu.h"
 #include "kakaopopup.h"
+#include "checklist.h"
 
 namespace Ui {
 class MainWindow;
@@ -39,11 +40,11 @@ private slots:
     void on_sidepushbutton_clicked();       // 사이드 메뉴 버튼 클릭 시
     void on_beveragepushbutton_clicked();   // 음료 메뉴 버튼 클릭 시
     void on_pushButton_clicked();           // 닫기 버튼 클릭 시    
-    void deleteBasket();                    // 주문 내역 삭제
     void on_finishButton_clicked();         // 주문완료 버튼 클릭
     void on_showkakaobutton_clicked();      // 카카오톡 챗봇 이용을 위한 핸드폰 번호 입력 팝업 띄움
     void on_returnbutton_clicked();
 
+    void deleteBasket(basket* tmp);                    // 주문 내역 삭제
     void setValue(QMap<QString, QString>);  // popup에서 주문한 내역을 받아옴
     void setPhoneNumber(QString number);    // kakaopopup에서 입력한 전화번호 입력
 
@@ -53,6 +54,7 @@ private:
     kakaopopup* kakaopopupwindows;  // 카톡 번호 입력 용 팝업 창
     QPixmap menu;               // 메뉴 사진 설정 용
     basket* bask;               // 주문 내역
+    checklist* check;           // 주문 확인 용 체크 리스트
     int baskcount;              // 주문 내역 수
     int menutype;               // 메뉴 종류
     int finalprice;             // 주문 최종 가격
@@ -61,9 +63,10 @@ private:
     enum {AGE_YOUNG=1, AGE_MIDDLE, AGE_OLD, CHECK};     // 화면
     enum {HAMBURGER=1, SIDE, BEVERAGE};                 // 메뉴 타입
 
-    struct basketlist{
+    struct basketlist
+    {
         QString menuname, sidemenu, beverage;
-        int price, count;   // 갯수, 가격
+        int price, count, menutype;   // 갯수, 가격
     }; // 주문내역 정보 저장용 구조체
 
     QVector<basketlist> basketvector;   // 주문 내역 저장 구조체 벡터

@@ -33,7 +33,7 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="loading">
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -377,7 +377,7 @@
               <property name="sizeHint" stdset="0">
                <size>
                 <width>1</width>
-                <height>400</height>
+                <height>410</height>
                </size>
               </property>
              </spacer>

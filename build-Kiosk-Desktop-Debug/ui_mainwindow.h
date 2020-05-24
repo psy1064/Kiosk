@@ -307,7 +307,7 @@ public:
 
         horizontalLayout_3->addLayout(basketlayout);
 
-        verticalSpacer = new QSpacerItem(1, 400, QSizePolicy::Minimum, QSizePolicy::Fixed);
+        verticalSpacer = new QSpacerItem(1, 410, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         horizontalLayout_3->addItem(verticalSpacer);
 
@@ -399,7 +399,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(3);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
