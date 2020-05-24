@@ -40,11 +40,11 @@ QT_MOC_LITERAL(5, 98, 21), // "on_pushButton_clicked"
 QT_MOC_LITERAL(6, 120, 12), // "deleteBasket"
 QT_MOC_LITERAL(7, 133, 23), // "on_finishButton_clicked"
 QT_MOC_LITERAL(8, 157, 26), // "on_showkakaobutton_clicked"
-QT_MOC_LITERAL(9, 184, 8), // "setValue"
-QT_MOC_LITERAL(10, 193, 21), // "QMap<QString,QString>"
-QT_MOC_LITERAL(11, 215, 14), // "setPhoneNumber"
-QT_MOC_LITERAL(12, 230, 6), // "number"
-QT_MOC_LITERAL(13, 237, 23) // "on_returnbutton_clicked"
+QT_MOC_LITERAL(9, 184, 23), // "on_returnbutton_clicked"
+QT_MOC_LITERAL(10, 208, 8), // "setValue"
+QT_MOC_LITERAL(11, 217, 21), // "QMap<QString,QString>"
+QT_MOC_LITERAL(12, 239, 14), // "setPhoneNumber"
+QT_MOC_LITERAL(13, 254, 6) // "number"
 
     },
     "MainWindow\0on_hambugerpushbutton_clicked\0"
@@ -52,9 +52,10 @@ QT_MOC_LITERAL(13, 237, 23) // "on_returnbutton_clicked"
     "on_beveragepushbutton_clicked\0"
     "on_pushButton_clicked\0deleteBasket\0"
     "on_finishButton_clicked\0"
-    "on_showkakaobutton_clicked\0setValue\0"
+    "on_showkakaobutton_clicked\0"
+    "on_returnbutton_clicked\0setValue\0"
     "QMap<QString,QString>\0setPhoneNumber\0"
-    "number\0on_returnbutton_clicked"
+    "number"
 };
 #undef QT_MOC_LITERAL
 
@@ -79,9 +80,9 @@ static const uint qt_meta_data_MainWindow[] = {
        6,    0,   68,    2, 0x08 /* Private */,
        7,    0,   69,    2, 0x08 /* Private */,
        8,    0,   70,    2, 0x08 /* Private */,
-       9,    1,   71,    2, 0x08 /* Private */,
-      11,    1,   74,    2, 0x08 /* Private */,
-      13,    0,   77,    2, 0x08 /* Private */,
+       9,    0,   71,    2, 0x08 /* Private */,
+      10,    1,   72,    2, 0x08 /* Private */,
+      12,    1,   75,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -91,9 +92,9 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 10,    2,
-    QMetaType::Void, QMetaType::QString,   12,
     QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 11,    2,
+    QMetaType::Void, QMetaType::QString,   13,
 
        0        // eod
 };
@@ -111,9 +112,9 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 4: _t->deleteBasket(); break;
         case 5: _t->on_finishButton_clicked(); break;
         case 6: _t->on_showkakaobutton_clicked(); break;
-        case 7: _t->setValue((*reinterpret_cast< QMap<QString,QString>(*)>(_a[1]))); break;
-        case 8: _t->setPhoneNumber((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 9: _t->on_returnbutton_clicked(); break;
+        case 7: _t->on_returnbutton_clicked(); break;
+        case 8: _t->setValue((*reinterpret_cast< QMap<QString,QString>(*)>(_a[1]))); break;
+        case 9: _t->setPhoneNumber((*reinterpret_cast< QString(*)>(_a[1]))); break;
         default: ;
         }
     }

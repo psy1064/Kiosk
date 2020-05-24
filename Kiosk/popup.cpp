@@ -15,7 +15,7 @@ popup::popup(QWidget *parent, QString mainmenu, QString menuprice, int menutype)
     ui->pmenu_6->installEventFilter(this);
 
     info.insert("mainmenu",mainmenu);
-    finalprice = menuprice.toInt();
+    this->menuprice = menuprice.toInt();
     this->menutype = menutype;
 }
 
@@ -26,7 +26,6 @@ popup::~popup()
 
 void popup::initstackwideget()
 {
-    state = 0;
     if(menutype == HAMBURGER)
     {
         state = 0;
@@ -114,11 +113,13 @@ void popup::checkMenu()
     {
         menu.load("/home/pi/kiosk/image/sidemenu/" + name + ".png");
         ui->checkmenu_1->setInfo(menu, 500, name, "");
+        finalprice = menuprice;
     } // 사이드 메뉴인 경우
     else if(menutype == BEVERAGE)
     {
         menu.load("/home/pi/kiosk/image/beverage/" + name + ".png");
         ui->checkmenu_1->setInfo(menu, 500, name, "");
+        finalprice = menuprice;
     } // 음료인 경우
 } // 최종 확인 화면 출력
 
@@ -130,6 +131,7 @@ void popup::setpopup(MyMenu *menu)
         state++;
         info.insert("sidemenu", menu->getName());
         finalprice += menu->getPrice().toInt();
+
         displayBeverageMenu();
     }
     else if(state == 2)
@@ -138,6 +140,7 @@ void popup::setpopup(MyMenu *menu)
         finalprice += menu->getPrice().toInt();
         checkMenu();
     }
+
 } // 팝업 화면 매커니즘
 
 void popup::displayWarning()
@@ -177,6 +180,8 @@ bool popup::eventFilter(QObject *watched, QEvent *event)
 
 void popup::on_rightbutton_clicked()
 {
+    info.insert("price",QString::number(finalprice));
+    qDebug() << finalprice;
     emit sendValue(info);
     popup::close();
 } // 주문 메뉴 화면에서 맞아요 클릭 시
@@ -197,8 +202,6 @@ void popup::on_rollbackbutton_clicked()
 
 void popup::on_setbutton_clicked()
 {
-    QMap<QString, QString>::iterator iter;
-    iter = info.find("mainmenu");
     state++;
     ui->stackedWidget->setCurrentIndex(state);
     displaySideMenu();
@@ -208,6 +211,7 @@ void popup::on_singlebutton_clicked()
 {
     info.insert("sidemenu","");
     info.insert("beverage","");
+    info.insert("price",QString::number(finalprice));
     emit sendValue(info);
     popup::close();
 } // 싱글 버튼 클릭 시
