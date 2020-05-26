@@ -17,6 +17,7 @@ public:
     QString getName();
     QString getSide();
     QString getBeverage();
+    int getCount();
 private slots:
     void on_deletebutton_clicked();       // 삭제 버튼 클릭 시
 signals:
@@ -24,6 +25,7 @@ signals:
 private:
     Ui::basket *ui;
     QString name, side, beverage;
+    int count;
 };
 
 #endif // BASKET_H

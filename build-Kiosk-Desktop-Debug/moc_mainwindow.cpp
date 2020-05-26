@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[16];
-    char stringdata0[273];
+    QByteArrayData data[17];
+    char stringdata0[285];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,31 +32,33 @@ struct qt_meta_stringdata_MainWindow_t {
 static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
 QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
-QT_MOC_LITERAL(1, 11, 29), // "on_hambugerpushbutton_clicked"
-QT_MOC_LITERAL(2, 41, 0), // ""
-QT_MOC_LITERAL(3, 42, 25), // "on_sidepushbutton_clicked"
-QT_MOC_LITERAL(4, 68, 29), // "on_beveragepushbutton_clicked"
-QT_MOC_LITERAL(5, 98, 21), // "on_pushButton_clicked"
-QT_MOC_LITERAL(6, 120, 23), // "on_finishButton_clicked"
-QT_MOC_LITERAL(7, 144, 26), // "on_showkakaobutton_clicked"
-QT_MOC_LITERAL(8, 171, 23), // "on_returnbutton_clicked"
-QT_MOC_LITERAL(9, 195, 12), // "deleteBasket"
-QT_MOC_LITERAL(10, 208, 7), // "basket*"
-QT_MOC_LITERAL(11, 216, 3), // "tmp"
-QT_MOC_LITERAL(12, 220, 8), // "setValue"
-QT_MOC_LITERAL(13, 229, 21), // "QMap<QString,QString>"
-QT_MOC_LITERAL(14, 251, 14), // "setPhoneNumber"
-QT_MOC_LITERAL(15, 266, 6) // "number"
+QT_MOC_LITERAL(1, 11, 8), // "setValue"
+QT_MOC_LITERAL(2, 20, 0), // ""
+QT_MOC_LITERAL(3, 21, 21), // "QMap<QString,QString>"
+QT_MOC_LITERAL(4, 43, 14), // "setPhoneNumber"
+QT_MOC_LITERAL(5, 58, 6), // "number"
+QT_MOC_LITERAL(6, 65, 11), // "countupdate"
+QT_MOC_LITERAL(7, 77, 29), // "on_hambugerpushbutton_clicked"
+QT_MOC_LITERAL(8, 107, 25), // "on_sidepushbutton_clicked"
+QT_MOC_LITERAL(9, 133, 29), // "on_beveragepushbutton_clicked"
+QT_MOC_LITERAL(10, 163, 21), // "on_pushButton_clicked"
+QT_MOC_LITERAL(11, 185, 23), // "on_finishButton_clicked"
+QT_MOC_LITERAL(12, 209, 26), // "on_showkakaobutton_clicked"
+QT_MOC_LITERAL(13, 236, 23), // "on_returnbutton_clicked"
+QT_MOC_LITERAL(14, 260, 12), // "deleteBasket"
+QT_MOC_LITERAL(15, 273, 7), // "basket*"
+QT_MOC_LITERAL(16, 281, 3) // "tmp"
 
     },
-    "MainWindow\0on_hambugerpushbutton_clicked\0"
-    "\0on_sidepushbutton_clicked\0"
+    "MainWindow\0setValue\0\0QMap<QString,QString>\0"
+    "setPhoneNumber\0number\0countupdate\0"
+    "on_hambugerpushbutton_clicked\0"
+    "on_sidepushbutton_clicked\0"
     "on_beveragepushbutton_clicked\0"
     "on_pushButton_clicked\0on_finishButton_clicked\0"
     "on_showkakaobutton_clicked\0"
     "on_returnbutton_clicked\0deleteBasket\0"
-    "basket*\0tmp\0setValue\0QMap<QString,QString>\0"
-    "setPhoneNumber\0number"
+    "basket*\0tmp"
 };
 #undef QT_MOC_LITERAL
 
@@ -66,7 +68,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -74,18 +76,21 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   64,    2, 0x08 /* Private */,
-       3,    0,   65,    2, 0x08 /* Private */,
-       4,    0,   66,    2, 0x08 /* Private */,
-       5,    0,   67,    2, 0x08 /* Private */,
-       6,    0,   68,    2, 0x08 /* Private */,
-       7,    0,   69,    2, 0x08 /* Private */,
-       8,    0,   70,    2, 0x08 /* Private */,
-       9,    1,   71,    2, 0x08 /* Private */,
-      12,    1,   74,    2, 0x08 /* Private */,
-      14,    1,   77,    2, 0x08 /* Private */,
+       1,    1,   69,    2, 0x08 /* Private */,
+       4,    1,   72,    2, 0x08 /* Private */,
+       6,    0,   75,    2, 0x08 /* Private */,
+       7,    0,   76,    2, 0x08 /* Private */,
+       8,    0,   77,    2, 0x08 /* Private */,
+       9,    0,   78,    2, 0x08 /* Private */,
+      10,    0,   79,    2, 0x08 /* Private */,
+      11,    0,   80,    2, 0x08 /* Private */,
+      12,    0,   81,    2, 0x08 /* Private */,
+      13,    0,   82,    2, 0x08 /* Private */,
+      14,    1,   83,    2, 0x08 /* Private */,
 
  // slots: parameters
+    QMetaType::Void, 0x80000000 | 3,    2,
+    QMetaType::Void, QMetaType::QString,    5,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -93,9 +98,8 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 10,   11,
-    QMetaType::Void, 0x80000000 | 13,    2,
-    QMetaType::Void, QMetaType::QString,   15,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 15,   16,
 
        0        // eod
 };
@@ -106,22 +110,23 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         MainWindow *_t = static_cast<MainWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->on_hambugerpushbutton_clicked(); break;
-        case 1: _t->on_sidepushbutton_clicked(); break;
-        case 2: _t->on_beveragepushbutton_clicked(); break;
-        case 3: _t->on_pushButton_clicked(); break;
-        case 4: _t->on_finishButton_clicked(); break;
-        case 5: _t->on_showkakaobutton_clicked(); break;
-        case 6: _t->on_returnbutton_clicked(); break;
-        case 7: _t->deleteBasket((*reinterpret_cast< basket*(*)>(_a[1]))); break;
-        case 8: _t->setValue((*reinterpret_cast< QMap<QString,QString>(*)>(_a[1]))); break;
-        case 9: _t->setPhoneNumber((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 0: _t->setValue((*reinterpret_cast< QMap<QString,QString>(*)>(_a[1]))); break;
+        case 1: _t->setPhoneNumber((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 2: _t->countupdate(); break;
+        case 3: _t->on_hambugerpushbutton_clicked(); break;
+        case 4: _t->on_sidepushbutton_clicked(); break;
+        case 5: _t->on_beveragepushbutton_clicked(); break;
+        case 6: _t->on_pushButton_clicked(); break;
+        case 7: _t->on_finishButton_clicked(); break;
+        case 8: _t->on_showkakaobutton_clicked(); break;
+        case 9: _t->on_returnbutton_clicked(); break;
+        case 10: _t->deleteBasket((*reinterpret_cast< basket*(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<int*>(_a[0]) = -1; break;
-        case 7:
+        case 10:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
@@ -157,13 +162,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 11;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 11;
     }
     return _id;
 }

@@ -88,6 +88,15 @@
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QPushButton" name="yesbutton">
+           <property name="styleSheet">
+            <string notr="true">background-color: green;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+
+padding: 6px;
+color:white;</string>
+           </property>
            <property name="text">
             <string>네</string>
            </property>
@@ -95,6 +104,15 @@
          </item>
          <item>
           <widget class="QPushButton" name="nobutton">
+           <property name="styleSheet">
+            <string notr="true">background-color: red;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+
+padding: 6px;
+color:white;</string>
+           </property>
            <property name="text">
             <string>아니오</string>
            </property>
@@ -165,6 +183,13 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: white;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+color:black;</string>
+           </property>
            <property name="text">
             <string>7</string>
            </property>
@@ -177,6 +202,13 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: white;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+color:black;</string>
            </property>
            <property name="text">
             <string>3</string>
@@ -191,6 +223,13 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: white;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+color:black;</string>
+           </property>
            <property name="text">
             <string>5</string>
            </property>
@@ -203,6 +242,13 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: white;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+color:black;</string>
            </property>
            <property name="text">
             <string>9</string>
@@ -217,6 +263,13 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: white;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+color:black;</string>
+           </property>
            <property name="text">
             <string>8</string>
            </property>
@@ -229,6 +282,13 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: white;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+color:black;</string>
            </property>
            <property name="text">
             <string>2</string>
@@ -243,6 +303,13 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: white;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+color:black;</string>
+           </property>
            <property name="text">
             <string>4</string>
            </property>
@@ -255,6 +322,13 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: white;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+color:black;</string>
            </property>
            <property name="text">
             <string>6</string>
@@ -269,6 +343,13 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: white;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+color:black;</string>
+           </property>
            <property name="text">
             <string>1</string>
            </property>
@@ -281,6 +362,13 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: white;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+color:black;</string>
            </property>
            <property name="text">
             <string>0</string>
@@ -295,6 +383,13 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: white;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+color:black;</string>
+           </property>
            <property name="text">
             <string>모두 지우기</string>
            </property>
@@ -308,6 +403,13 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: white;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+color:black;</string>
+           </property>
            <property name="text">
             <string>지우기</string>
            </property>
@@ -319,6 +421,14 @@
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
           <widget class="QPushButton" name="finishbutton">
+           <property name="styleSheet">
+            <string notr="true">background-color: green;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+padding: 6px;
+color:white;</string>
+           </property>
            <property name="text">
             <string>완료</string>
            </property>
@@ -326,6 +436,14 @@
          </item>
          <item>
           <widget class="QPushButton" name="nobutton_2">
+           <property name="styleSheet">
+            <string notr="true">background-color: red;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+padding: 6px;
+color:white;</string>
+           </property>
            <property name="text">
             <string>안할래요</string>
            </property>

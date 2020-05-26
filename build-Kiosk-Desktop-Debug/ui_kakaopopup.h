@@ -100,11 +100,25 @@ public:
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         yesbutton = new QPushButton(page);
         yesbutton->setObjectName(QStringLiteral("yesbutton"));
+        yesbutton->setStyleSheet(QLatin1String("background-color: green;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"\n"
+"padding: 6px;\n"
+"color:white;"));
 
         horizontalLayout->addWidget(yesbutton);
 
         nobutton = new QPushButton(page);
         nobutton->setObjectName(QStringLiteral("nobutton"));
+        nobutton->setStyleSheet(QLatin1String("background-color: red;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"\n"
+"padding: 6px;\n"
+"color:white;"));
 
         horizontalLayout->addWidget(nobutton);
 
@@ -151,6 +165,11 @@ public:
         sizePolicy2.setVerticalStretch(0);
         sizePolicy2.setHeightForWidth(sevenbutton->sizePolicy().hasHeightForWidth());
         sevenbutton->setSizePolicy(sizePolicy2);
+        sevenbutton->setStyleSheet(QLatin1String("background-color: white;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"color:black;"));
 
         gridLayout_3->addWidget(sevenbutton, 2, 0, 1, 1);
 
@@ -158,6 +177,11 @@ public:
         threebutton->setObjectName(QStringLiteral("threebutton"));
         sizePolicy2.setHeightForWidth(threebutton->sizePolicy().hasHeightForWidth());
         threebutton->setSizePolicy(sizePolicy2);
+        threebutton->setStyleSheet(QLatin1String("background-color: white;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"color:black;"));
 
         gridLayout_3->addWidget(threebutton, 0, 2, 1, 1);
 
@@ -165,6 +189,11 @@ public:
         fivebutton->setObjectName(QStringLiteral("fivebutton"));
         sizePolicy2.setHeightForWidth(fivebutton->sizePolicy().hasHeightForWidth());
         fivebutton->setSizePolicy(sizePolicy2);
+        fivebutton->setStyleSheet(QLatin1String("background-color: white;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"color:black;"));
 
         gridLayout_3->addWidget(fivebutton, 1, 1, 1, 1);
 
@@ -172,6 +201,11 @@ public:
         ninebutton->setObjectName(QStringLiteral("ninebutton"));
         sizePolicy2.setHeightForWidth(ninebutton->sizePolicy().hasHeightForWidth());
         ninebutton->setSizePolicy(sizePolicy2);
+        ninebutton->setStyleSheet(QLatin1String("background-color: white;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"color:black;"));
 
         gridLayout_3->addWidget(ninebutton, 2, 2, 1, 1);
 
@@ -179,6 +213,11 @@ public:
         eightbutton->setObjectName(QStringLiteral("eightbutton"));
         sizePolicy2.setHeightForWidth(eightbutton->sizePolicy().hasHeightForWidth());
         eightbutton->setSizePolicy(sizePolicy2);
+        eightbutton->setStyleSheet(QLatin1String("background-color: white;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"color:black;"));
 
         gridLayout_3->addWidget(eightbutton, 2, 1, 1, 1);
 
@@ -186,6 +225,11 @@ public:
         twobutton->setObjectName(QStringLiteral("twobutton"));
         sizePolicy2.setHeightForWidth(twobutton->sizePolicy().hasHeightForWidth());
         twobutton->setSizePolicy(sizePolicy2);
+        twobutton->setStyleSheet(QLatin1String("background-color: white;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"color:black;"));
 
         gridLayout_3->addWidget(twobutton, 0, 1, 1, 1);
 
@@ -193,6 +237,11 @@ public:
         fourbutton->setObjectName(QStringLiteral("fourbutton"));
         sizePolicy2.setHeightForWidth(fourbutton->sizePolicy().hasHeightForWidth());
         fourbutton->setSizePolicy(sizePolicy2);
+        fourbutton->setStyleSheet(QLatin1String("background-color: white;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"color:black;"));
 
         gridLayout_3->addWidget(fourbutton, 1, 0, 1, 1);
 
@@ -200,6 +249,11 @@ public:
         sixbutton->setObjectName(QStringLiteral("sixbutton"));
         sizePolicy2.setHeightForWidth(sixbutton->sizePolicy().hasHeightForWidth());
         sixbutton->setSizePolicy(sizePolicy2);
+        sixbutton->setStyleSheet(QLatin1String("background-color: white;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"color:black;"));
 
         gridLayout_3->addWidget(sixbutton, 1, 2, 1, 1);
 
@@ -207,6 +261,11 @@ public:
         onebutton->setObjectName(QStringLiteral("onebutton"));
         sizePolicy2.setHeightForWidth(onebutton->sizePolicy().hasHeightForWidth());
         onebutton->setSizePolicy(sizePolicy2);
+        onebutton->setStyleSheet(QLatin1String("background-color: white;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"color:black;"));
 
         gridLayout_3->addWidget(onebutton, 0, 0, 1, 1);
 
@@ -214,6 +273,11 @@ public:
         zerobutton->setObjectName(QStringLiteral("zerobutton"));
         sizePolicy2.setHeightForWidth(zerobutton->sizePolicy().hasHeightForWidth());
         zerobutton->setSizePolicy(sizePolicy2);
+        zerobutton->setStyleSheet(QLatin1String("background-color: white;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"color:black;"));
 
         gridLayout_3->addWidget(zerobutton, 3, 1, 1, 1);
 
@@ -221,6 +285,11 @@ public:
         alldelbutton->setObjectName(QStringLiteral("alldelbutton"));
         sizePolicy2.setHeightForWidth(alldelbutton->sizePolicy().hasHeightForWidth());
         alldelbutton->setSizePolicy(sizePolicy2);
+        alldelbutton->setStyleSheet(QLatin1String("background-color: white;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"color:black;"));
 
         gridLayout_3->addWidget(alldelbutton, 3, 0, 1, 1);
 
@@ -228,6 +297,11 @@ public:
         delbutton->setObjectName(QStringLiteral("delbutton"));
         sizePolicy2.setHeightForWidth(delbutton->sizePolicy().hasHeightForWidth());
         delbutton->setSizePolicy(sizePolicy2);
+        delbutton->setStyleSheet(QLatin1String("background-color: white;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"color:black;"));
 
         gridLayout_3->addWidget(delbutton, 3, 2, 1, 1);
 
@@ -238,11 +312,23 @@ public:
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         finishbutton = new QPushButton(page_2);
         finishbutton->setObjectName(QStringLiteral("finishbutton"));
+        finishbutton->setStyleSheet(QLatin1String("background-color: green;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"padding: 6px;\n"
+"color:white;"));
 
         horizontalLayout_2->addWidget(finishbutton);
 
         nobutton_2 = new QPushButton(page_2);
         nobutton_2->setObjectName(QStringLiteral("nobutton_2"));
+        nobutton_2->setStyleSheet(QLatin1String("background-color: red;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"padding: 6px;\n"
+"color:white;"));
 
         horizontalLayout_2->addWidget(nobutton_2);
 

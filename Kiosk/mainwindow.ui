@@ -33,7 +33,7 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="loading">
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -141,10 +141,19 @@
             <item>
              <widget class="QPushButton" name="finishButton">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: green;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+min-width: 3em;
+padding: 6px;
+color:white;</string>
               </property>
               <property name="text">
                <string>주문 완료</string>
@@ -390,22 +399,7 @@
       </widget>
       <widget class="QWidget" name="old"/>
       <widget class="QWidget" name="checkpage">
-       <layout class="QVBoxLayout" name="verticalLayout_5">
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
@@ -504,8 +498,29 @@
             </property>
            </widget>
           </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
           <item>
            <widget class="QPushButton" name="showkakaobutton">
+            <property name="font">
+             <font>
+              <pointsize>-1</pointsize>
+              <weight>75</weight>
+              <italic>false</italic>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: green;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+min-width: 10em;
+padding: 6px;
+color:white;</string>
+            </property>
             <property name="text">
              <string>맞습니다</string>
             </property>
@@ -513,12 +528,116 @@
           </item>
           <item>
            <widget class="QPushButton" name="returnbutton">
+            <property name="font">
+             <font>
+              <pointsize>-1</pointsize>
+              <weight>75</weight>
+              <italic>false</italic>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: red;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+min-width: 10em;
+padding: 6px;
+color:white;</string>
+            </property>
             <property name="text">
-             <string>다시고를래</string>
+             <string>다시 선택</string>
             </property>
            </widget>
           </item>
          </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="finish">
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_6">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>20</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>주문이 완료되었습니다!
+
+
+주문번호는</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="ordernumber">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>30</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="callannounce">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>20</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>번입니다.
+
+음식이 완료되면 주문번호를 불러드리겠습니다!</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="countlabel">
+          <property name="font">
+           <font>
+            <pointsize>20</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>3 초뒤에 자동으로 종료됩니다!</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>

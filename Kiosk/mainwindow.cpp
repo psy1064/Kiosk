@@ -18,9 +18,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->menu_5->installEventFilter(this);
     ui->menu_6->installEventFilter(this);       // 메뉴에 이벤트 추가
 
+    ordernumber = 1;
     init();     // 화면 초기화
     /* -- 키오스크에 사람이 왔는지 확인하는 함수 추가 --*/
-    detectFace();
 }
 
 MainWindow::~MainWindow()
@@ -66,8 +66,11 @@ void MainWindow::init()
     ui->stackedWidget->setCurrentIndex(0);
     baskcount = 0;          // 주문 내역 수 초기화
     finalprice = 0;         // 최종 주문 가격 초기화
-    basketvector.empty();   // 주문 내역 저장 구조체 벡터 초기화
+    timecount = 3;          // 타이머 초기화
+    ui->countlabel->setText(QString::number(timecount) + " 초뒤에 자동으로 종료됩니다!");
+    basketvector.clear();   // 주문 내역 저장 구조체 벡터 초기화
     phonenumber = "";       // 핸드폰 번호 정보 초기화
+    detectFace();           // 얼굴 인식
 } // 초기화
 
 void MainWindow::detectFace()
@@ -84,6 +87,24 @@ void MainWindow::detectFace()
         break;
     }
 }
+
+void MainWindow::showPopup(MyMenu* menu)
+{
+    popupwindows = new popup(this, menu->getName(), menu->getPrice(), menutype);
+    connect(popupwindows, SIGNAL(sendValue(QMap<QString, QString>)), this, SLOT(setValue(QMap<QString, QString>)));
+    // popup에서 보내주는 sendValue signal을 받아 setValue로 연결
+    if (baskcount < 5)
+        popupwindows->initstackwideget();
+    else
+    {
+        popupwindows->displayWarning();
+        popupwindows->adjustSize();
+    } // 주문 내역 수가 5이상이면 경고 창을 띄움
+    popupwindows->move(QApplication::desktop()->rect().center()
+                       - popupwindows->rect().center());
+    // 팝업 윈도우를 화면의 가운데로 위치시킴
+    popupwindows->show();
+} // 팝업 윈도우 띄움
 
 void MainWindow::displayHambugerMenu()
 {
@@ -151,27 +172,9 @@ void MainWindow::displayBeverageMenu()
     ui->menu_6->setInfo(menu,400,"배칠러","3000");
 } // 음료 메뉴 출력
 
-void MainWindow::showPopup(MyMenu* menu)
-{
-    popupwindows = new popup(this, menu->getName(), menu->getPrice(), menutype);
-    connect(popupwindows, SIGNAL(sendValue(QMap<QString, QString>)), this, SLOT(setValue(QMap<QString, QString>)));
-    // popup에서 보내주는 sendValue signal을 받아 setValue로 연결
-    if (baskcount < 5)
-        popupwindows->initstackwideget();
-    else
-    {
-        popupwindows->displayWarning();
-        popupwindows->adjustSize();
-    } // 주문 내역 수가 5이상이면 경고 창을 띄움
-    popupwindows->move(QApplication::desktop()->screen()->rect().center()
-                       - popupwindows->rect().center());
-    // 팝업 윈도우를 화면의 가운데로 위치시킴
-    popupwindows->show();
-} // 팝업 윈도우 띄움
-
 void MainWindow::showCheck()
 {
-    int size = (QApplication::desktop()->height()-200) / 5;
+    int size = (QApplication::desktop()->height()-300) / 5;
     for(int i = 0 ; i < basketvector.size(); i++)
     {
         check = new checklist(this,basketvector[i].menuname,basketvector[i].sidemenu,basketvector[i].beverage,
@@ -183,6 +186,18 @@ void MainWindow::showCheck()
     ui->checklayout->setContentsMargins(0,0,0,size*(5-baskcount));
 } // 주문 확인 화면
 
+void MainWindow::showFinish()
+{
+    ui->stackedWidget->setCurrentIndex(FINISH);     // 마지막 화면으로 이동
+    ui->ordernumber->setText(QString::number(ordernumber));
+    ordernumber++;
+
+    timer = new QTimer(this);
+    connect(timer,SIGNAL(timeout()),this,SLOT(countupdate()));
+    timer->start(1000);
+
+} // 마지막 화면(주문 번호 확인)
+
 void MainWindow::setBasketMargin()
 {
     ui->basketlayout->setContentsMargins(0,0,0,bask->height()*(5-baskcount));
@@ -190,31 +205,24 @@ void MainWindow::setBasketMargin()
 
 void MainWindow::setValue(QMap<QString, QString> value)
 {
-    QString menuname;
-    struct basketlist basklist{"","","",0,1};      // 주문 내역 저장 구조체
+    struct basketlist basklist{"","","",0,1,0};      // 주문 내역 저장 구조체
     QMap<QString,QString>::iterator iter;
     iter = value.find("mainmenu");
-    menuname = iter.value();                // 메뉴 이름 저장
-    basklist.menuname=menuname;
+    basklist.menuname = iter.value();
     iter = value.find("sidemenu");
-    if(!(iter.value() == ""))
-    {
-        menuname.append("( " + iter.value());
-        basklist.sidemenu=iter.value();
-        iter = value.find("beverage");
-        menuname.append(", " + iter.value() + " )");
-        basklist.beverage=iter.value();
-    }
+    basklist.sidemenu=iter.value();
+    iter = value.find("beverage");
+    basklist.beverage=iter.value();
     iter = value.find("price");
     basklist.price = iter.value().toInt();
     finalprice += iter.value().toInt();
     iter = value.find("count");
     basklist.count = iter.value().toInt();
     iter = value.find("menutype");
-    basklist.menutype = iter.value().toInt();
+    basklist.menutype = iter.value().toInt();   // 주문내역 정보 저장
     basketvector.append(basklist);          // 주문 내역 벡터에 추가
 
-    bask = new basket(this, menuname,basklist.sidemenu,basklist.beverage,QString::number(basklist.count));      // 주문내역 위젯 생성
+    bask = new basket(this, basklist.menuname,basklist.sidemenu,basklist.beverage,QString::number(basklist.count));      // 주문내역 위젯 생성
     connect(bask, SIGNAL(deleteBasket(basket*)), this, SLOT(deleteBasket(basket*)));  // 주문내역에서 삭제버튼이나 갯수가 0이 됐을때 deleteBasket실행
     bask->setMinimumSize(QApplication::desktop()->width()-80,80);       // 위젯 크기 설정
     ui->basketlayout->addWidget(bask,0,Qt::AlignTop|Qt::AlignLeft);     // 주문내역 위젯 추가
@@ -225,22 +233,45 @@ void MainWindow::setValue(QMap<QString, QString> value)
 void MainWindow::setPhoneNumber(QString number)
 {
     phonenumber = number;
+    showFinish();
 } // kakaopopup에서 입력한 전화번호 입력
+
+void MainWindow::countupdate()
+{
+    timecount--;
+    ui->countlabel->setText(QString::number(timecount) + " 초뒤에 자동으로 종료됩니다!");
+    if(timecount ==0)
+    {
+        timer->stop();
+        delete timer;
+        QLayoutItem* item;
+        while((item = ui->checklayout->takeAt(0)))
+        {
+            delete item->widget();
+        } // layout 안의 위젯 삭제
+        while((item = ui->basketlayout->takeAt(0)))
+        {
+            delete item->widget();
+        } // layout 안의 위젯 삭제
+        init();
+    }
+} // 마지막 화면 자동 종료용
 
 void MainWindow::deleteBasket(basket* tmp)
 {
     QString menuname = tmp->getName();
     QString side = tmp->getSide();
     QString beverage = tmp->getBeverage();
+    int count = tmp->getCount();
     for(int i = 0;i < baskcount ;i++)
     {
         if(menuname == basketvector[i].menuname &&
                 side == basketvector[i].sidemenu &&
-                beverage == basketvector[i].beverage)
+                beverage == basketvector[i].beverage &&
+                count == basketvector[i].count)
         {
             finalprice -= basketvector[i].price;
             basketvector.remove(i);
-
             break;
         }
     } // 메뉴 이름을 가진 정보 제거
@@ -277,7 +308,7 @@ void MainWindow::on_finishButton_clicked()
 void MainWindow::on_showkakaobutton_clicked()
 {
     kakaopopupwindows = new kakaopopup(this);
-    kakaopopupwindows->move(QApplication::desktop()->screen()->rect().center()
+    kakaopopupwindows->move(QApplication::desktop()->rect().center()
                        - kakaopopupwindows->rect().center());
     // 팝업 윈도우를 화면의 가운데로 위치시킴
     kakaopopupwindows->show();

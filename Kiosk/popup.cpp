@@ -14,6 +14,9 @@ popup::popup(QWidget *parent, QString mainmenu, QString menuprice, int menutype)
     ui->pmenu_5->installEventFilter(this);
     ui->pmenu_6->installEventFilter(this);
 
+    ui->singlebutton->setStyleSheet("border-image:url(\"/home/pi/kiosk/image/burger/" + mainmenu + ".png\")");
+    ui->setbutton->setStyleSheet("border-image:url(\"/home/pi/kiosk/image/set/" + mainmenu + "세트.png\")");
+
     info.insert("mainmenu",mainmenu);
     this->menuprice = menuprice.toInt();
     this->menutype = menutype;
@@ -93,7 +96,6 @@ void popup::checkMenu()
 {
     ui->stackedWidget->setCurrentIndex(state);
     ui->label->setText("주문한 음식이 맞습니까?");
-    QMap<QString, QString>::iterator iter;
     iter = info.find("mainmenu");
     QString name = iter.value();
     iter = info.find("sidemenu");

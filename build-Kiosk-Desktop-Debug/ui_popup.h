@@ -31,6 +31,8 @@ public:
     QGridLayout *gridLayout_2;
     QPushButton *setbutton;
     QPushButton *singlebutton;
+    QLabel *label_4;
+    QLabel *label_5;
     QWidget *page_2;
     QGridLayout *gridLayout_3;
     MyMenu *pmenu_4;
@@ -69,7 +71,7 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(popup->sizePolicy().hasHeightForWidth());
         popup->setSizePolicy(sizePolicy);
-        popup->setStyleSheet(QStringLiteral("background-color: rgb(255, 247, 0);"));
+        popup->setStyleSheet(QStringLiteral("background-color:beige;"));
         gridLayout = new QGridLayout(popup);
         gridLayout->setSpacing(0);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
@@ -81,11 +83,12 @@ public:
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
         setbutton = new QPushButton(page);
         setbutton->setObjectName(QStringLiteral("setbutton"));
-        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::MinimumExpanding);
+        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(setbutton->sizePolicy().hasHeightForWidth());
         setbutton->setSizePolicy(sizePolicy1);
+        setbutton->setMinimumSize(QSize(0, 500));
 
         gridLayout_2->addWidget(setbutton, 1, 1, 1, 1);
 
@@ -93,8 +96,25 @@ public:
         singlebutton->setObjectName(QStringLiteral("singlebutton"));
         sizePolicy1.setHeightForWidth(singlebutton->sizePolicy().hasHeightForWidth());
         singlebutton->setSizePolicy(sizePolicy1);
+        singlebutton->setMinimumSize(QSize(0, 500));
 
         gridLayout_2->addWidget(singlebutton, 1, 0, 1, 1);
+
+        label_4 = new QLabel(page);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        QFont font;
+        font.setPointSize(20);
+        label_4->setFont(font);
+        label_4->setAlignment(Qt::AlignCenter);
+
+        gridLayout_2->addWidget(label_4, 0, 0, 1, 1);
+
+        label_5 = new QLabel(page);
+        label_5->setObjectName(QStringLiteral("label_5"));
+        label_5->setFont(font);
+        label_5->setAlignment(Qt::AlignCenter);
+
+        gridLayout_2->addWidget(label_5, 0, 1, 1, 1);
 
         stackedWidget->addWidget(page);
         page_2 = new QWidget();
@@ -166,8 +186,6 @@ public:
         sizePolicy2.setVerticalStretch(0);
         sizePolicy2.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
         label_2->setSizePolicy(sizePolicy2);
-        QFont font;
-        font.setPointSize(20);
         label_2->setFont(font);
         label_2->setAlignment(Qt::AlignCenter);
 
@@ -216,11 +234,34 @@ public:
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         rightbutton = new QPushButton(page_3);
         rightbutton->setObjectName(QStringLiteral("rightbutton"));
+        QSizePolicy sizePolicy5(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(rightbutton->sizePolicy().hasHeightForWidth());
+        rightbutton->setSizePolicy(sizePolicy5);
+        rightbutton->setMinimumSize(QSize(282, 20));
+        rightbutton->setStyleSheet(QLatin1String("background-color: green;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"min-width: 10em;\n"
+"padding: 6px;\n"
+"color:white;"));
 
         horizontalLayout_3->addWidget(rightbutton);
 
         rollbackbutton = new QPushButton(page_3);
         rollbackbutton->setObjectName(QStringLiteral("rollbackbutton"));
+        sizePolicy5.setHeightForWidth(rollbackbutton->sizePolicy().hasHeightForWidth());
+        rollbackbutton->setSizePolicy(sizePolicy5);
+        rollbackbutton->setMinimumSize(QSize(282, 20));
+        rollbackbutton->setStyleSheet(QLatin1String("background-color: red;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"min-width: 10em;\n"
+"padding: 6px;\n"
+"color:white;"));
 
         horizontalLayout_3->addWidget(rollbackbutton);
 
@@ -243,8 +284,17 @@ public:
         okbutton = new QPushButton(page_4);
         okbutton->setObjectName(QStringLiteral("okbutton"));
         QFont font1;
-        font1.setPointSize(15);
+        font1.setBold(true);
+        font1.setItalic(false);
+        font1.setWeight(75);
         okbutton->setFont(font1);
+        okbutton->setStyleSheet(QLatin1String("background-color: green;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"min-width: 10em;\n"
+"padding: 6px;\n"
+"color:white;"));
 
         gridLayout_5->addWidget(okbutton, 1, 0, 1, 2);
 
@@ -262,7 +312,7 @@ public:
 
         retranslateUi(popup);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(popup);
@@ -271,8 +321,10 @@ public:
     void retranslateUi(QWidget *popup)
     {
         popup->setWindowTitle(QApplication::translate("popup", "Form", nullptr));
-        setbutton->setText(QApplication::translate("popup", "\354\204\270\355\212\270", nullptr));
-        singlebutton->setText(QApplication::translate("popup", "\353\213\250\355\222\210", nullptr));
+        setbutton->setText(QString());
+        singlebutton->setText(QString());
+        label_4->setText(QApplication::translate("popup", "\353\213\250\355\222\210", nullptr));
+        label_5->setText(QApplication::translate("popup", "\354\204\270\355\212\270", nullptr));
         label_2->setText(QApplication::translate("popup", "\354\210\230\353\237\211 \354\204\240\355\203\235", nullptr));
         minusButton->setText(QString());
         countLabel->setText(QApplication::translate("popup", "1", nullptr));

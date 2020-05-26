@@ -10,7 +10,13 @@ basket::basket(QWidget *parent, QString name, QString side, QString beverage, QS
     this->name=name;
     this->side=side;
     this->beverage=beverage;
-    ui->burgername->setText(name);
+    this->count=count.toInt();
+    QString title = name;
+    if(side != "")
+    {
+        title.append(" ( " + side + " + " + beverage + " )");
+    }
+    ui->burgername->setText(title);
     ui->burgercount->setText(count);
 }
 
@@ -32,6 +38,11 @@ QString basket::getSide()
 QString basket::getBeverage()
 {
     return beverage;
+}
+
+int basket::getCount()
+{
+    return count;
 }
 
 void basket::on_deletebutton_clicked()

@@ -45,6 +45,7 @@ private:
     int state;  // 현재 팝업 윈도우의 위치
     int menuprice, finalprice;  // 세트 가격 저장용
     QMap<QString, QString> info;  // 주문 정보
+    QMap<QString, QString>::iterator iter;
     int menutype;                   // 메뉴 종류
     int count;                      // 메뉴 갯수
     enum {HAMBURGER=1, SIDE, BEVERAGE};

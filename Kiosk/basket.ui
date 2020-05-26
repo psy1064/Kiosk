@@ -30,8 +30,20 @@
     <widget class="QPushButton" name="deletebutton">
      <property name="font">
       <font>
-       <pointsize>15</pointsize>
+       <pointsize>-1</pointsize>
+       <weight>75</weight>
+       <italic>false</italic>
+       <bold>true</bold>
       </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: red;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+min-width: 3em;
+padding: 6px;
+color:white;</string>
      </property>
      <property name="text">
       <string>삭제</string>

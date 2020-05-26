@@ -43,8 +43,17 @@ public:
         deletebutton = new QPushButton(basket);
         deletebutton->setObjectName(QStringLiteral("deletebutton"));
         QFont font;
-        font.setPointSize(15);
+        font.setBold(true);
+        font.setItalic(false);
+        font.setWeight(75);
         deletebutton->setFont(font);
+        deletebutton->setStyleSheet(QLatin1String("background-color: red;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"min-width: 3em;\n"
+"padding: 6px;\n"
+"color:white;"));
 
         horizontalLayout->addWidget(deletebutton);
 
