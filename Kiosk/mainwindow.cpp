@@ -19,7 +19,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ordernumber = 1;
     init();     // 화면 초기화
-    /* -- 키오스크에 사람이 왔는지 확인하는 함수 추가 --*/
+
+    /*
+    detecthumantimer = new QTimer(this);
+    connect(detecthumantimer,SIGNAL(timeout()),this,SLOT(detecthuman()));
+    timer->start(1000);
+    키오스크에 사람이 왔는지 확인하는 타이머
+    */
 }
 
 MainWindow::~MainWindow()
@@ -258,6 +264,11 @@ void MainWindow::countupdate()
         init();
     }
 } // 마지막 화면 자동 종료용
+
+void MainWindow::detecthuman()
+{
+
+} // 키오스크 앞에 사람이 있는지 확인
 
 void MainWindow::deleteBasket(basket* tmp)
 {
