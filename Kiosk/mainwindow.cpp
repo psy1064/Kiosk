@@ -31,7 +31,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 {
     if(watched == ui->label && event->type() == QMouseEvent::MouseButtonPress)
     {
-        ui->stackedWidget->setCurrentIndex(age);   // 얼굴인식 나이 결과에 따라 화면 다르게
+        detectFace();           // 얼굴 인식
     }
     else if(watched == ui->mid_menu_1 && event->type() == QMouseEvent::MouseButtonPress)
     {
@@ -69,17 +69,20 @@ void MainWindow::init()
     ui->countlabel->setText(QString::number(timecount) + " 초뒤에 자동으로 종료됩니다!");
     basketvector.clear();   // 주문 내역 저장 구조체 벡터 초기화
     phonenumber = "";       // 핸드폰 번호 정보 초기화
-    detectFace();           // 얼굴 인식
 } // 초기화
 
 void MainWindow::detectFace()
 {
-    age = AGE_MIDDLE;
+    age = AGE_YOUNG;
     switch(age)
     {
     case AGE_YOUNG:
+        ui->stackedWidget->setCurrentIndex(1);
+        ui->menudisplaywidget->setCurrentIndex(0);
         break;
     case AGE_MIDDLE:
+        ui->stackedWidget->setCurrentIndex(1);
+        ui->menudisplaywidget->setCurrentIndex(1);
         displayHambugerMenu();
         break;
     case AGE_OLD:
@@ -278,17 +281,17 @@ void MainWindow::deleteBasket(basket* tmp)
     setBasketMargin();
 } // 주문 내역 삭제
 
-void MainWindow::on_hambugerpushbutton_clicked()
+void MainWindow::on_mid_hambugerpushbutton_clicked()
 {
     displayHambugerMenu();
 } // 햄버거 메뉴 버튼 클릭 시
 
-void MainWindow::on_sidepushbutton_clicked()
+void MainWindow::on_mid_sidepushbutton_clicked()
 {
     displaySideMenu();
 } // 사이드 메뉴 버튼 클릭 시
 
-void MainWindow::on_beveragepushbutton_clicked()
+void MainWindow::on_mid_beveragepushbutton_clicked()
 {
     displayBeverageMenu();
 } // 음료 메뉴 버튼 클릭 시

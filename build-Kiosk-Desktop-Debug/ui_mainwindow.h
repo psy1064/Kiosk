@@ -16,7 +16,6 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -34,19 +33,22 @@ public:
     QVBoxLayout *verticalLayout;
     QLabel *label;
     QLabel *label_2;
-    QWidget *young;
-    QWidget *middle;
+    QWidget *display;
     QGridLayout *gridLayout_2;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout_2;
     QLabel *main_logo;
     QLabel *label_5;
     QPushButton *finishButton;
+    QStackedWidget *menudisplaywidget;
+    QWidget *young;
+    QWidget *middle;
+    QGridLayout *gridLayout_5;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_3;
-    QPushButton *hambugerpushbutton;
-    QPushButton *sidepushbutton;
-    QPushButton *beveragepushbutton;
+    QPushButton *mid_hambugerpushbutton;
+    QPushButton *mid_sidepushbutton;
+    QPushButton *mid_beveragepushbutton;
     QGridLayout *gridLayout_3;
     MyMenu *mid_menu_4;
     MyMenu *mid_menu_2;
@@ -57,7 +59,6 @@ public:
     QLabel *label_4;
     QHBoxLayout *horizontalLayout_3;
     QVBoxLayout *basketlayout;
-    QSpacerItem *verticalSpacer;
     QWidget *old;
     QWidget *checkpage;
     QVBoxLayout *verticalLayout_4;
@@ -138,12 +139,9 @@ public:
         verticalLayout->addWidget(label_2);
 
         stackedWidget->addWidget(loading);
-        young = new QWidget();
-        young->setObjectName(QStringLiteral("young"));
-        stackedWidget->addWidget(young);
-        middle = new QWidget();
-        middle->setObjectName(QStringLiteral("middle"));
-        gridLayout_2 = new QGridLayout(middle);
+        display = new QWidget();
+        display->setObjectName(QStringLiteral("display"));
+        gridLayout_2 = new QGridLayout(display);
         gridLayout_2->setSpacing(6);
         gridLayout_2->setContentsMargins(11, 11, 11, 11);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
@@ -153,7 +151,7 @@ public:
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        main_logo = new QLabel(middle);
+        main_logo = new QLabel(display);
         main_logo->setObjectName(QStringLiteral("main_logo"));
         QSizePolicy sizePolicy3(QSizePolicy::Minimum, QSizePolicy::Minimum);
         sizePolicy3.setHorizontalStretch(0);
@@ -164,7 +162,7 @@ public:
 
         horizontalLayout_2->addWidget(main_logo);
 
-        label_5 = new QLabel(middle);
+        label_5 = new QLabel(display);
         label_5->setObjectName(QStringLiteral("label_5"));
         QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Preferred);
         sizePolicy4.setHorizontalStretch(0);
@@ -178,7 +176,7 @@ public:
 
         horizontalLayout_2->addWidget(label_5);
 
-        finishButton = new QPushButton(middle);
+        finishButton = new QPushButton(display);
         finishButton->setObjectName(QStringLiteral("finishButton"));
         QSizePolicy sizePolicy5(QSizePolicy::Minimum, QSizePolicy::Preferred);
         sizePolicy5.setHorizontalStretch(0);
@@ -198,6 +196,18 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout_2);
 
+        menudisplaywidget = new QStackedWidget(display);
+        menudisplaywidget->setObjectName(QStringLiteral("menudisplaywidget"));
+        young = new QWidget();
+        young->setObjectName(QStringLiteral("young"));
+        menudisplaywidget->addWidget(young);
+        middle = new QWidget();
+        middle->setObjectName(QStringLiteral("middle"));
+        gridLayout_5 = new QGridLayout(middle);
+        gridLayout_5->setSpacing(0);
+        gridLayout_5->setContentsMargins(11, 11, 11, 11);
+        gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
+        gridLayout_5->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
@@ -207,38 +217,38 @@ public:
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         verticalLayout_3->setSizeConstraint(QLayout::SetDefaultConstraint);
         verticalLayout_3->setContentsMargins(-1, 70, -1, 70);
-        hambugerpushbutton = new QPushButton(middle);
-        hambugerpushbutton->setObjectName(QStringLiteral("hambugerpushbutton"));
+        mid_hambugerpushbutton = new QPushButton(middle);
+        mid_hambugerpushbutton->setObjectName(QStringLiteral("mid_hambugerpushbutton"));
         QSizePolicy sizePolicy6(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy6.setHorizontalStretch(0);
         sizePolicy6.setVerticalStretch(0);
-        sizePolicy6.setHeightForWidth(hambugerpushbutton->sizePolicy().hasHeightForWidth());
-        hambugerpushbutton->setSizePolicy(sizePolicy6);
-        hambugerpushbutton->setMinimumSize(QSize(200, 0));
-        hambugerpushbutton->setStyleSheet(QLatin1String("border-image:url(\"/home/pi/kiosk/image/hambugerButton.png\"); \n"
+        sizePolicy6.setHeightForWidth(mid_hambugerpushbutton->sizePolicy().hasHeightForWidth());
+        mid_hambugerpushbutton->setSizePolicy(sizePolicy6);
+        mid_hambugerpushbutton->setMinimumSize(QSize(200, 0));
+        mid_hambugerpushbutton->setStyleSheet(QLatin1String("border-image:url(\"/home/pi/kiosk/image/hambugerButton.png\"); \n"
 ""));
 
-        verticalLayout_3->addWidget(hambugerpushbutton);
+        verticalLayout_3->addWidget(mid_hambugerpushbutton);
 
-        sidepushbutton = new QPushButton(middle);
-        sidepushbutton->setObjectName(QStringLiteral("sidepushbutton"));
-        sizePolicy6.setHeightForWidth(sidepushbutton->sizePolicy().hasHeightForWidth());
-        sidepushbutton->setSizePolicy(sizePolicy6);
-        sidepushbutton->setMinimumSize(QSize(0, 0));
-        sidepushbutton->setStyleSheet(QLatin1String("border-image:url(\"/home/pi/kiosk/image/sideMenuButton.png\"); \n"
+        mid_sidepushbutton = new QPushButton(middle);
+        mid_sidepushbutton->setObjectName(QStringLiteral("mid_sidepushbutton"));
+        sizePolicy6.setHeightForWidth(mid_sidepushbutton->sizePolicy().hasHeightForWidth());
+        mid_sidepushbutton->setSizePolicy(sizePolicy6);
+        mid_sidepushbutton->setMinimumSize(QSize(0, 0));
+        mid_sidepushbutton->setStyleSheet(QLatin1String("border-image:url(\"/home/pi/kiosk/image/sideMenuButton.png\"); \n"
 ""));
 
-        verticalLayout_3->addWidget(sidepushbutton);
+        verticalLayout_3->addWidget(mid_sidepushbutton);
 
-        beveragepushbutton = new QPushButton(middle);
-        beveragepushbutton->setObjectName(QStringLiteral("beveragepushbutton"));
-        sizePolicy6.setHeightForWidth(beveragepushbutton->sizePolicy().hasHeightForWidth());
-        beveragepushbutton->setSizePolicy(sizePolicy6);
-        beveragepushbutton->setMinimumSize(QSize(0, 0));
-        beveragepushbutton->setStyleSheet(QLatin1String("border-image:url(\"/home/pi/kiosk/image/beverageButton.png\"); \n"
+        mid_beveragepushbutton = new QPushButton(middle);
+        mid_beveragepushbutton->setObjectName(QStringLiteral("mid_beveragepushbutton"));
+        sizePolicy6.setHeightForWidth(mid_beveragepushbutton->sizePolicy().hasHeightForWidth());
+        mid_beveragepushbutton->setSizePolicy(sizePolicy6);
+        mid_beveragepushbutton->setMinimumSize(QSize(0, 0));
+        mid_beveragepushbutton->setStyleSheet(QLatin1String("border-image:url(\"/home/pi/kiosk/image/beverageButton.png\"); \n"
 ""));
 
-        verticalLayout_3->addWidget(beveragepushbutton);
+        verticalLayout_3->addWidget(mid_beveragepushbutton);
 
 
         horizontalLayout->addLayout(verticalLayout_3);
@@ -298,9 +308,13 @@ public:
         horizontalLayout->addLayout(gridLayout_3);
 
 
-        verticalLayout_2->addLayout(horizontalLayout);
+        gridLayout_5->addLayout(horizontalLayout, 0, 0, 1, 1);
 
-        label_4 = new QLabel(middle);
+        menudisplaywidget->addWidget(middle);
+
+        verticalLayout_2->addWidget(menudisplaywidget);
+
+        label_4 = new QLabel(display);
         label_4->setObjectName(QStringLiteral("label_4"));
         QSizePolicy sizePolicy7(QSizePolicy::Preferred, QSizePolicy::Maximum);
         sizePolicy7.setHorizontalStretch(0);
@@ -320,13 +334,9 @@ public:
         basketlayout = new QVBoxLayout();
         basketlayout->setSpacing(0);
         basketlayout->setObjectName(QStringLiteral("basketlayout"));
-        basketlayout->setContentsMargins(-1, -1, -1, 380);
+        basketlayout->setContentsMargins(-1, -1, -1, 400);
 
         horizontalLayout_3->addLayout(basketlayout);
-
-        verticalSpacer = new QSpacerItem(1, 410, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        horizontalLayout_3->addItem(verticalSpacer);
 
         horizontalLayout_3->setStretch(0, 1);
 
@@ -335,7 +345,7 @@ public:
 
         gridLayout_2->addLayout(verticalLayout_2, 1, 0, 1, 1);
 
-        stackedWidget->addWidget(middle);
+        stackedWidget->addWidget(display);
         old = new QWidget();
         old->setObjectName(QStringLiteral("old"));
         stackedWidget->addWidget(old);
@@ -494,7 +504,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -508,9 +518,9 @@ public:
         main_logo->setText(QString());
         label_5->setText(QApplication::translate("MainWindow", "\354\233\220\355\225\230\353\212\224 \354\235\214\354\213\235\354\235\204 \353\210\214\353\237\254\354\243\274\354\204\270\354\232\224", nullptr));
         finishButton->setText(QApplication::translate("MainWindow", "\354\243\274\353\254\270 \354\231\204\353\243\214", nullptr));
-        hambugerpushbutton->setText(QString());
-        sidepushbutton->setText(QString());
-        beveragepushbutton->setText(QString());
+        mid_hambugerpushbutton->setText(QString());
+        mid_sidepushbutton->setText(QString());
+        mid_beveragepushbutton->setText(QString());
         label_4->setText(QApplication::translate("MainWindow", "\354\243\274\353\254\270\353\202\264\354\227\255", nullptr));
         label_3->setText(QApplication::translate("MainWindow", "\354\243\274\353\254\270\355\225\230\354\213\240 \354\235\214\354\213\235\354\235\264 \353\247\236\353\202\230\354\232\224?", nullptr));
         pushButton->setText(QApplication::translate("MainWindow", "\353\213\253\352\270\260", nullptr));

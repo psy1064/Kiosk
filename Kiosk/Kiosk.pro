@@ -31,8 +31,7 @@ SOURCES += \
     basket.cpp \
     popup.cpp \
     kakaopopup.cpp \
-    checklist.cpp \
-    middle.cpp
+    checklist.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -40,8 +39,7 @@ HEADERS += \
     basket.h \
     popup.h \
     kakaopopup.h \
-    checklist.h \
-    middle.h
+    checklist.h
 
 FORMS += \
         mainwindow.ui \

@@ -56,8 +56,7 @@ SOURCES       = ../Kiosk/main.cpp \
 		../Kiosk/basket.cpp \
 		../Kiosk/popup.cpp \
 		../Kiosk/kakaopopup.cpp \
-		../Kiosk/checklist.cpp \
-		../Kiosk/middle.cpp moc_mainwindow.cpp \
+		../Kiosk/checklist.cpp moc_mainwindow.cpp \
 		moc_mymenu.cpp \
 		moc_basket.cpp \
 		moc_popup.cpp \
@@ -70,7 +69,6 @@ OBJECTS       = main.o \
 		popup.o \
 		kakaopopup.o \
 		checklist.o \
-		middle.o \
 		moc_mainwindow.o \
 		moc_mymenu.o \
 		moc_basket.o \
@@ -161,15 +159,13 @@ DIST          = /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/spec_pre.prf \
 		../Kiosk/basket.h \
 		../Kiosk/popup.h \
 		../Kiosk/kakaopopup.h \
-		../Kiosk/checklist.h \
-		../Kiosk/middle.h ../Kiosk/main.cpp \
+		../Kiosk/checklist.h ../Kiosk/main.cpp \
 		../Kiosk/mainwindow.cpp \
 		../Kiosk/mymenu.cpp \
 		../Kiosk/basket.cpp \
 		../Kiosk/popup.cpp \
 		../Kiosk/kakaopopup.cpp \
-		../Kiosk/checklist.cpp \
-		../Kiosk/middle.cpp
+		../Kiosk/checklist.cpp
 QMAKE_TARGET  = Kiosk
 DESTDIR       = 
 TARGET        = Kiosk
@@ -363,8 +359,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/arm-linux-gnueabihf/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Kiosk/mainwindow.h ../Kiosk/mymenu.h ../Kiosk/basket.h ../Kiosk/popup.h ../Kiosk/kakaopopup.h ../Kiosk/checklist.h ../Kiosk/middle.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Kiosk/main.cpp ../Kiosk/mainwindow.cpp ../Kiosk/mymenu.cpp ../Kiosk/basket.cpp ../Kiosk/popup.cpp ../Kiosk/kakaopopup.cpp ../Kiosk/checklist.cpp ../Kiosk/middle.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Kiosk/mainwindow.h ../Kiosk/mymenu.h ../Kiosk/basket.h ../Kiosk/popup.h ../Kiosk/kakaopopup.h ../Kiosk/checklist.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Kiosk/main.cpp ../Kiosk/mainwindow.cpp ../Kiosk/mymenu.cpp ../Kiosk/basket.cpp ../Kiosk/popup.cpp ../Kiosk/kakaopopup.cpp ../Kiosk/checklist.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Kiosk/mainwindow.ui ../Kiosk/mymenu.ui ../Kiosk/basket.ui ../Kiosk/popup.ui ../Kiosk/kakaopopup.ui ../Kiosk/checklist.ui $(DISTDIR)/
 
 
@@ -516,9 +512,6 @@ kakaopopup.o: ../Kiosk/kakaopopup.cpp ../Kiosk/kakaopopup.h \
 checklist.o: ../Kiosk/checklist.cpp ../Kiosk/checklist.h \
 		ui_checklist.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o checklist.o ../Kiosk/checklist.cpp
-
-middle.o: ../Kiosk/middle.cpp ../Kiosk/middle.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o middle.o ../Kiosk/middle.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

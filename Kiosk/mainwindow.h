@@ -15,6 +15,9 @@
 #include "kakaopopup.h"
 #include "checklist.h"
 
+#define CHECK 3
+#define FINISH 4
+
 namespace Ui {
 class MainWindow;
 }
@@ -32,32 +35,28 @@ public:
     void showPopup(MyMenu* menu);       // 팝업 윈도우 띄움
     void showCheck();                   // 주문 확인 화면
     void showFinish();                  // 마지막 화면(주문 번호 확인)
+    void setBasketMargin();             // 주문 내역 리스트를 상단 고정하기 위해 margin 설정
 
     /****************************** 중년층 키오스크 화면 ******************************/
-
     void displayHambugerMenu();         // 햄버거 메뉴 출력
     void displaySideMenu();             // 사이드 메뉴 출력
     void displayBeverageMenu();         // 음료 메뉴 출력
-    void setBasketMargin();             // 주문 내역 리스트를 상단 고정하기 위해 margin 설정
-
     /****************************** 중년층 키오스크 화면 ******************************/
 
 private slots:
     void setValue(QMap<QString, QString>);  // popup에서 주문한 내역을 받아옴
     void setPhoneNumber(QString number);    // kakaopopup에서 입력한 전화번호 입력
     void countupdate();                     // 마지막 화면 자동 종료용
-
-    /****************************** 중년층 키오스크 화면 ******************************/
-
-    void on_hambugerpushbutton_clicked();   // 햄버거 메뉴 버튼 클릭 시
-    void on_sidepushbutton_clicked();       // 사이드 메뉴 버튼 클릭 시
-    void on_beveragepushbutton_clicked();   // 음료 메뉴 버튼 클릭 시
-    void on_pushButton_clicked();           // 닫기 버튼 클릭 시    
-    void on_finishButton_clicked();         // 주문완료 버튼 클릭
+    void on_pushButton_clicked();           // 닫기 버튼 클릭 시
     void on_showkakaobutton_clicked();      // 카카오톡 챗봇 이용을 위한 핸드폰 번호 입력 팝업 띄움
     void on_returnbutton_clicked();         // 다시 고를래 버튼 클릭 시
     void deleteBasket(basket* tmp);         // 주문 내역 삭제
 
+    /****************************** 중년층 키오스크 화면 ******************************/
+    void on_mid_hambugerpushbutton_clicked();   // 햄버거 메뉴 버튼 클릭 시
+    void on_mid_sidepushbutton_clicked();       // 사이드 메뉴 버튼 클릭 시
+    void on_mid_beveragepushbutton_clicked();   // 음료 메뉴 버튼 클릭 시
+    void on_finishButton_clicked();         // 주문완료 버튼 클릭
     /****************************** 중년층 키오스크 화면 ******************************/
 
 
@@ -76,7 +75,7 @@ private:
     QString phonenumber;        // 카카오톡 챗봇에 사용할 전화번호
     int age;                    // 나이저장
     int ordernumber;            // 주문 번호
-    enum {AGE_YOUNG=1, AGE_MIDDLE, AGE_OLD, CHECK, FINISH};     // 화면
+    enum {AGE_YOUNG=1, AGE_MIDDLE, AGE_OLD};     // 나이
     enum {HAMBURGER=1, SIDE, BEVERAGE};                         // 메뉴 타입
 
     struct basketlist
