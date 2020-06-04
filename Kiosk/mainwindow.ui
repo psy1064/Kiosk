@@ -33,7 +33,7 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="loading">
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -258,7 +258,7 @@ color:white;</string>
                <number>0</number>
               </property>
               <item row="1" column="0">
-               <widget class="MyMenu" name="menu_4" native="true">
+               <widget class="MyMenu" name="mid_menu_4" native="true">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                   <horstretch>0</horstretch>
@@ -271,7 +271,7 @@ color:white;</string>
                </widget>
               </item>
               <item row="0" column="2">
-               <widget class="MyMenu" name="menu_2" native="true">
+               <widget class="MyMenu" name="mid_menu_2" native="true">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                   <horstretch>0</horstretch>
@@ -284,7 +284,7 @@ color:white;</string>
                </widget>
               </item>
               <item row="1" column="2">
-               <widget class="MyMenu" name="menu_3" native="true">
+               <widget class="MyMenu" name="mid_menu_3" native="true">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                   <horstretch>0</horstretch>
@@ -297,7 +297,7 @@ color:white;</string>
                </widget>
               </item>
               <item row="0" column="0">
-               <widget class="MyMenu" name="menu_1" native="true">
+               <widget class="MyMenu" name="mid_menu_1" native="true">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                   <horstretch>0</horstretch>
@@ -310,7 +310,7 @@ color:white;</string>
                </widget>
               </item>
               <item row="2" column="0">
-               <widget class="MyMenu" name="menu_5" native="true">
+               <widget class="MyMenu" name="mid_menu_5" native="true">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                   <horstretch>0</horstretch>
@@ -323,7 +323,7 @@ color:white;</string>
                </widget>
               </item>
               <item row="2" column="2">
-               <widget class="MyMenu" name="menu_6" native="true">
+               <widget class="MyMenu" name="mid_menu_6" native="true">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                   <horstretch>0</horstretch>
@@ -439,9 +439,18 @@ color:white;</string>
             </property>
             <property name="minimumSize">
              <size>
-              <width>0</width>
+              <width>93</width>
               <height>100</height>
              </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: red;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+min-width: 3em;
+padding: 6px;
+color:white;</string>
             </property>
             <property name="text">
              <string>닫기</string>

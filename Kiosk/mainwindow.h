@@ -30,14 +30,14 @@ public:
     void init();                        // 초기화
     void detectFace();                  // 얼굴 인식 실행
     void showPopup(MyMenu* menu);       // 팝업 윈도우 띄움
+    void showCheck();                   // 주문 확인 화면
+    void showFinish();                  // 마지막 화면(주문 번호 확인)
 
     /****************************** 중년층 키오스크 화면 ******************************/
 
     void displayHambugerMenu();         // 햄버거 메뉴 출력
     void displaySideMenu();             // 사이드 메뉴 출력
     void displayBeverageMenu();         // 음료 메뉴 출력
-    void showCheck();                   // 주문 확인 화면
-    void showFinish();                  // 마지막 화면(주문 번호 확인)
     void setBasketMargin();             // 주문 내역 리스트를 상단 고정하기 위해 margin 설정
 
     /****************************** 중년층 키오스크 화면 ******************************/

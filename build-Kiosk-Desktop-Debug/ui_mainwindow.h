@@ -48,12 +48,12 @@ public:
     QPushButton *sidepushbutton;
     QPushButton *beveragepushbutton;
     QGridLayout *gridLayout_3;
-    MyMenu *menu_4;
-    MyMenu *menu_2;
-    MyMenu *menu_3;
-    MyMenu *menu_1;
-    MyMenu *menu_5;
-    MyMenu *menu_6;
+    MyMenu *mid_menu_4;
+    MyMenu *mid_menu_2;
+    MyMenu *mid_menu_3;
+    MyMenu *mid_menu_1;
+    MyMenu *mid_menu_5;
+    MyMenu *mid_menu_6;
     QLabel *label_4;
     QHBoxLayout *horizontalLayout_3;
     QVBoxLayout *basketlayout;
@@ -246,53 +246,53 @@ public:
         gridLayout_3 = new QGridLayout();
         gridLayout_3->setSpacing(0);
         gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
-        menu_4 = new MyMenu(middle);
-        menu_4->setObjectName(QStringLiteral("menu_4"));
-        sizePolicy6.setHeightForWidth(menu_4->sizePolicy().hasHeightForWidth());
-        menu_4->setSizePolicy(sizePolicy6);
-        menu_4->setStyleSheet(QStringLiteral(""));
+        mid_menu_4 = new MyMenu(middle);
+        mid_menu_4->setObjectName(QStringLiteral("mid_menu_4"));
+        sizePolicy6.setHeightForWidth(mid_menu_4->sizePolicy().hasHeightForWidth());
+        mid_menu_4->setSizePolicy(sizePolicy6);
+        mid_menu_4->setStyleSheet(QStringLiteral(""));
 
-        gridLayout_3->addWidget(menu_4, 1, 0, 1, 1);
+        gridLayout_3->addWidget(mid_menu_4, 1, 0, 1, 1);
 
-        menu_2 = new MyMenu(middle);
-        menu_2->setObjectName(QStringLiteral("menu_2"));
-        sizePolicy6.setHeightForWidth(menu_2->sizePolicy().hasHeightForWidth());
-        menu_2->setSizePolicy(sizePolicy6);
-        menu_2->setStyleSheet(QStringLiteral(""));
+        mid_menu_2 = new MyMenu(middle);
+        mid_menu_2->setObjectName(QStringLiteral("mid_menu_2"));
+        sizePolicy6.setHeightForWidth(mid_menu_2->sizePolicy().hasHeightForWidth());
+        mid_menu_2->setSizePolicy(sizePolicy6);
+        mid_menu_2->setStyleSheet(QStringLiteral(""));
 
-        gridLayout_3->addWidget(menu_2, 0, 2, 1, 1);
+        gridLayout_3->addWidget(mid_menu_2, 0, 2, 1, 1);
 
-        menu_3 = new MyMenu(middle);
-        menu_3->setObjectName(QStringLiteral("menu_3"));
-        sizePolicy6.setHeightForWidth(menu_3->sizePolicy().hasHeightForWidth());
-        menu_3->setSizePolicy(sizePolicy6);
-        menu_3->setStyleSheet(QStringLiteral(""));
+        mid_menu_3 = new MyMenu(middle);
+        mid_menu_3->setObjectName(QStringLiteral("mid_menu_3"));
+        sizePolicy6.setHeightForWidth(mid_menu_3->sizePolicy().hasHeightForWidth());
+        mid_menu_3->setSizePolicy(sizePolicy6);
+        mid_menu_3->setStyleSheet(QStringLiteral(""));
 
-        gridLayout_3->addWidget(menu_3, 1, 2, 1, 1);
+        gridLayout_3->addWidget(mid_menu_3, 1, 2, 1, 1);
 
-        menu_1 = new MyMenu(middle);
-        menu_1->setObjectName(QStringLiteral("menu_1"));
-        sizePolicy6.setHeightForWidth(menu_1->sizePolicy().hasHeightForWidth());
-        menu_1->setSizePolicy(sizePolicy6);
-        menu_1->setStyleSheet(QStringLiteral(""));
+        mid_menu_1 = new MyMenu(middle);
+        mid_menu_1->setObjectName(QStringLiteral("mid_menu_1"));
+        sizePolicy6.setHeightForWidth(mid_menu_1->sizePolicy().hasHeightForWidth());
+        mid_menu_1->setSizePolicy(sizePolicy6);
+        mid_menu_1->setStyleSheet(QStringLiteral(""));
 
-        gridLayout_3->addWidget(menu_1, 0, 0, 1, 1);
+        gridLayout_3->addWidget(mid_menu_1, 0, 0, 1, 1);
 
-        menu_5 = new MyMenu(middle);
-        menu_5->setObjectName(QStringLiteral("menu_5"));
-        sizePolicy6.setHeightForWidth(menu_5->sizePolicy().hasHeightForWidth());
-        menu_5->setSizePolicy(sizePolicy6);
-        menu_5->setStyleSheet(QStringLiteral(""));
+        mid_menu_5 = new MyMenu(middle);
+        mid_menu_5->setObjectName(QStringLiteral("mid_menu_5"));
+        sizePolicy6.setHeightForWidth(mid_menu_5->sizePolicy().hasHeightForWidth());
+        mid_menu_5->setSizePolicy(sizePolicy6);
+        mid_menu_5->setStyleSheet(QStringLiteral(""));
 
-        gridLayout_3->addWidget(menu_5, 2, 0, 1, 1);
+        gridLayout_3->addWidget(mid_menu_5, 2, 0, 1, 1);
 
-        menu_6 = new MyMenu(middle);
-        menu_6->setObjectName(QStringLiteral("menu_6"));
-        sizePolicy6.setHeightForWidth(menu_6->sizePolicy().hasHeightForWidth());
-        menu_6->setSizePolicy(sizePolicy6);
-        menu_6->setStyleSheet(QStringLiteral(""));
+        mid_menu_6 = new MyMenu(middle);
+        mid_menu_6->setObjectName(QStringLiteral("mid_menu_6"));
+        sizePolicy6.setHeightForWidth(mid_menu_6->sizePolicy().hasHeightForWidth());
+        mid_menu_6->setSizePolicy(sizePolicy6);
+        mid_menu_6->setStyleSheet(QStringLiteral(""));
 
-        gridLayout_3->addWidget(menu_6, 2, 2, 1, 1);
+        gridLayout_3->addWidget(mid_menu_6, 2, 2, 1, 1);
 
 
         horizontalLayout->addLayout(gridLayout_3);
@@ -368,7 +368,14 @@ public:
         sizePolicy9.setVerticalStretch(0);
         sizePolicy9.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
         pushButton->setSizePolicy(sizePolicy9);
-        pushButton->setMinimumSize(QSize(0, 100));
+        pushButton->setMinimumSize(QSize(93, 100));
+        pushButton->setStyleSheet(QLatin1String("background-color: red;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"min-width: 3em;\n"
+"padding: 6px;\n"
+"color:white;"));
 
         horizontalLayout_4->addWidget(pushButton);
 
@@ -487,7 +494,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(5);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

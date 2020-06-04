@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -11,12 +10,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->main_logo->setPixmap(menu.scaled(100,100,Qt::KeepAspectRatio));
 
     ui->label->installEventFilter(this);
-    ui->menu_1->installEventFilter(this);
-    ui->menu_2->installEventFilter(this);
-    ui->menu_3->installEventFilter(this);
-    ui->menu_4->installEventFilter(this);
-    ui->menu_5->installEventFilter(this);
-    ui->menu_6->installEventFilter(this);       // 메뉴에 이벤트 추가
+    ui->mid_menu_1->installEventFilter(this);
+    ui->mid_menu_2->installEventFilter(this);
+    ui->mid_menu_3->installEventFilter(this);
+    ui->mid_menu_4->installEventFilter(this);
+    ui->mid_menu_5->installEventFilter(this);
+    ui->mid_menu_6->installEventFilter(this);       // 메뉴에 이벤트 추가
 
     ordernumber = 1;
     init();     // 화면 초기화
@@ -34,29 +33,29 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
     {
         ui->stackedWidget->setCurrentIndex(age);   // 얼굴인식 나이 결과에 따라 화면 다르게
     }
-    else if(watched == ui->menu_1 && event->type() == QMouseEvent::MouseButtonPress)
+    else if(watched == ui->mid_menu_1 && event->type() == QMouseEvent::MouseButtonPress)
     {
-        showPopup(ui->menu_1);
+        showPopup(ui->mid_menu_1);
     }
-    else if(watched == ui->menu_2 && event->type() == QMouseEvent::MouseButtonPress)
+    else if(watched == ui->mid_menu_2 && event->type() == QMouseEvent::MouseButtonPress)
     {
-        showPopup(ui->menu_2);
+        showPopup(ui->mid_menu_2);
     }
-    else if(watched == ui->menu_3 && event->type() == QMouseEvent::MouseButtonPress)
+    else if(watched == ui->mid_menu_3 && event->type() == QMouseEvent::MouseButtonPress)
     {
-        showPopup(ui->menu_3);
+        showPopup(ui->mid_menu_3);
     }
-    else if(watched == ui->menu_4 && event->type() == QMouseEvent::MouseButtonPress)
+    else if(watched == ui->mid_menu_4 && event->type() == QMouseEvent::MouseButtonPress)
     {
-        showPopup(ui->menu_4);
+        showPopup(ui->mid_menu_4);
     }
-    else if(watched == ui->menu_5 && event->type() == QMouseEvent::MouseButtonPress)
+    else if(watched == ui->mid_menu_5 && event->type() == QMouseEvent::MouseButtonPress)
     {
-        showPopup(ui->menu_5);
+        showPopup(ui->mid_menu_5);
     }
-    else if(watched == ui->menu_6 && event->type() == QMouseEvent::MouseButtonPress)
+    else if(watched == ui->mid_menu_6 && event->type() == QMouseEvent::MouseButtonPress)
     {
-        showPopup(ui->menu_6);
+        showPopup(ui->mid_menu_6);
     }
     return QWidget::eventFilter(watched, event);
 } // 메뉴 이미지 클릭 시 이벤트
@@ -86,7 +85,7 @@ void MainWindow::detectFace()
     case AGE_OLD:
         break;
     }
-}
+} // 얼굴 인식 결과 도출
 
 void MainWindow::showPopup(MyMenu* menu)
 {
@@ -110,66 +109,66 @@ void MainWindow::displayHambugerMenu()
 {
     menutype = HAMBURGER;
     menu.load("/home/pi/kiosk/image/burger/1955.png");
-    ui->menu_1->setInfo(menu,400,"1955","5000");
+    ui->mid_menu_1->setInfo(menu,400,"1955","5000");
 
     menu.load("/home/pi/kiosk/image/burger/더블1955.png");
-    ui->menu_2->setInfo(menu,400,"더블1955","5500");
+    ui->mid_menu_2->setInfo(menu,400,"더블1955","5500");
 
     menu.load("/home/pi/kiosk/image/burger/맥치킨.png");
-    ui->menu_3->setInfo(menu,400,"맥치킨","5500");
+    ui->mid_menu_3->setInfo(menu,400,"맥치킨","5500");
 
     menu.load("/home/pi/kiosk/image/burger/맥치킨모짜렐라.png");
-    ui->menu_4->setInfo(menu,400,"맥치킨모짜렐라","5000");
+    ui->mid_menu_4->setInfo(menu,400,"맥치킨모짜렐라","5000");
 
     menu.load("/home/pi/kiosk/image/burger/빅맥.png");
-    ui->menu_5->setInfo(menu,400,"빅맥","5000");
+    ui->mid_menu_5->setInfo(menu,400,"빅맥","5000");
 
     menu.load("/home/pi/kiosk/image/burger/상하이.png");
-    ui->menu_6->setInfo(menu,400,"상하이","4000");
+    ui->mid_menu_6->setInfo(menu,400,"상하이","4000");
 } // 햄버거 메뉴 출력
 
 void MainWindow::displaySideMenu()
 {
     menutype = SIDE;
     menu.load("/home/pi/kiosk/image/sidemenu/콘파이.png");
-    ui->menu_1->setInfo(menu,400,"콘파이","1500");
+    ui->mid_menu_1->setInfo(menu,400,"콘파이","1500");
 
     menu.load("/home/pi/kiosk/image/sidemenu/맥너겟.png");
-    ui->menu_2->setInfo(menu,400,"맥너겟","1000");
+    ui->mid_menu_2->setInfo(menu,400,"맥너겟","1000");
 
     menu.load("/home/pi/kiosk/image/sidemenu/스낵랩.png");
-    ui->menu_3->setInfo(menu,400,"스낵랩","2500");
+    ui->mid_menu_3->setInfo(menu,400,"스낵랩","2500");
 
     menu.load("/home/pi/kiosk/image/sidemenu/치즈스틱.png");
-    ui->menu_4->setInfo(menu,400,"치즈스틱","1500");
+    ui->mid_menu_4->setInfo(menu,400,"치즈스틱","1500");
 
     menu.load("/home/pi/kiosk/image/sidemenu/애플파이.png");
-    ui->menu_5->setInfo(menu,400,"애플파이","1300");
+    ui->mid_menu_5->setInfo(menu,400,"애플파이","1300");
 
     menu.load("/home/pi/kiosk/image/sidemenu/후렌치후라이.png");
-    ui->menu_6->setInfo(menu,400,"후렌치후라이","1000");
+    ui->mid_menu_6->setInfo(menu,400,"후렌치후라이","1000");
 } // 사이드 메뉴 출력
 
 void MainWindow::displayBeverageMenu()
 {
     menutype = BEVERAGE;
     menu.load("/home/pi/kiosk/image/beverage/콜라.png");
-    ui->menu_1->setInfo(menu,400,"콜라","1000");
+    ui->mid_menu_1->setInfo(menu,400,"콜라","1000");
 
     menu.load("/home/pi/kiosk/image/beverage/스프라이트.png");
-    ui->menu_2->setInfo(menu,400,"스프라이트","1000");
+    ui->mid_menu_2->setInfo(menu,400,"스프라이트","1000");
 	
     menu.load("/home/pi/kiosk/image/beverage/환타.png");
-    ui->menu_3->setInfo(menu,400,"환타","1000");
+    ui->mid_menu_3->setInfo(menu,400,"환타","1000");
 
     menu.load("/home/pi/kiosk/image/beverage/원두커피.png");
-    ui->menu_4->setInfo(menu,400,"원두커피","2000");
+    ui->mid_menu_4->setInfo(menu,400,"원두커피","2000");
 
     menu.load("/home/pi/kiosk/image/beverage/아메리카노.png");
-    ui->menu_5->setInfo(menu,400,"아메리카노","1500");
+    ui->mid_menu_5->setInfo(menu,400,"아메리카노","1500");
 
     menu.load("/home/pi/kiosk/image/beverage/배칠러.png");
-    ui->menu_6->setInfo(menu,400,"배칠러","3000");
+    ui->mid_menu_6->setInfo(menu,400,"배칠러","3000");
 } // 음료 메뉴 출력
 
 void MainWindow::showCheck()
