@@ -15,7 +15,17 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->mid_menu_3->installEventFilter(this);
     ui->mid_menu_4->installEventFilter(this);
     ui->mid_menu_5->installEventFilter(this);
-    ui->mid_menu_6->installEventFilter(this);       // 메뉴에 이벤트 추가
+    ui->mid_menu_6->installEventFilter(this);
+
+    ui->young_menu_1->installEventFilter(this);
+    ui->young_menu_2->installEventFilter(this);
+    ui->young_menu_3->installEventFilter(this);
+    ui->young_menu_4->installEventFilter(this);
+    ui->young_menu_5->installEventFilter(this);
+    ui->young_menu_6->installEventFilter(this);
+    ui->young_menu_7->installEventFilter(this);
+    ui->young_menu_8->installEventFilter(this);
+    ui->young_menu_9->installEventFilter(this);       // 메뉴에 이벤트 추가
 
     ordernumber = 1;
     init();     // 화면 초기화
@@ -62,6 +72,42 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
     else if(watched == ui->mid_menu_6 && event->type() == QMouseEvent::MouseButtonPress)
     {
         showPopup(ui->mid_menu_6);
+    }
+    else if(watched == ui->young_menu_1 && event->type() == QMouseEvent::MouseButtonPress)
+    {
+        showPopup(ui->young_menu_1);
+    }
+    else if(watched == ui->young_menu_2 && event->type() == QMouseEvent::MouseButtonPress)
+    {
+        showPopup(ui->young_menu_2);
+    }
+    else if(watched == ui->young_menu_3 && event->type() == QMouseEvent::MouseButtonPress)
+    {
+        showPopup(ui->young_menu_3);
+    }
+    else if(watched == ui->young_menu_4 && event->type() == QMouseEvent::MouseButtonPress)
+    {
+        showPopup(ui->young_menu_4);
+    }
+    else if(watched == ui->young_menu_5 && event->type() == QMouseEvent::MouseButtonPress)
+    {
+        showPopup(ui->young_menu_5);
+    }
+    else if(watched == ui->young_menu_6 && event->type() == QMouseEvent::MouseButtonPress)
+    {
+        showPopup(ui->young_menu_6);
+    }
+    else if(watched == ui->young_menu_7 && event->type() == QMouseEvent::MouseButtonPress)
+    {
+        showPopup(ui->young_menu_7);
+    }
+    else if(watched == ui->young_menu_8 && event->type() == QMouseEvent::MouseButtonPress)
+    {
+        showPopup(ui->young_menu_8);
+    }
+    else if(watched == ui->young_menu_9 && event->type() == QMouseEvent::MouseButtonPress)
+    {
+        showPopup(ui->young_menu_9);
     }
     return QWidget::eventFilter(watched, event);
 } // 메뉴 이미지 클릭 시 이벤트
