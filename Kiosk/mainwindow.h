@@ -37,11 +37,16 @@ public:
     void showFinish();                  // 마지막 화면(주문 번호 확인)
     void setBasketMargin();             // 주문 내역 리스트를 상단 고정하기 위해 margin 설정
 
+    /****************************** 청년층 키오스크 화면 ******************************/
+    void young_displayHambugerMenu();         // 햄버거 메뉴 출력
+    void young_displaySideMenu();             // 사이드 메뉴 출력
+    void young_displayBeverageMenu();         // 음료 메뉴 출력
+
     /****************************** 중년층 키오스크 화면 ******************************/
-    void displayHambugerMenu();         // 햄버거 메뉴 출력
-    void displaySideMenu();             // 사이드 메뉴 출력
-    void displayBeverageMenu();         // 음료 메뉴 출력
-    /****************************** 중년층 키오스크 화면 ******************************/
+    void mid_displayHambugerMenu();         // 햄버거 메뉴 출력
+    void mid_displaySideMenu();             // 사이드 메뉴 출력
+    void mid_displayBeverageMenu();         // 음료 메뉴 출력
+
 
 private slots:
     void setValue(QMap<QString, QString>);  // popup에서 주문한 내역을 받아옴
@@ -52,12 +57,18 @@ private slots:
     void on_showkakaobutton_clicked();      // 카카오톡 챗봇 이용을 위한 핸드폰 번호 입력 팝업 띄움
     void on_returnbutton_clicked();         // 다시 고를래 버튼 클릭 시
     void deleteBasket(basket* tmp);         // 주문 내역 삭제
+    void on_finishButton_clicked();         // 주문완료 버튼 클릭
+
+    /****************************** 중년층 키오스크 화면 ******************************/
+    void on_young_hambugerpushbutton_clicked();   // 햄버거 메뉴 버튼 클릭 시
+    void on_young_sidepushbutton_clicked();       // 사이드 메뉴 버튼 클릭 시
+    void on_young_beveragepushbutton_clicked();   // 음료 메뉴 버튼 클릭 시
+
     /****************************** 중년층 키오스크 화면 ******************************/
     void on_mid_hambugerpushbutton_clicked();   // 햄버거 메뉴 버튼 클릭 시
     void on_mid_sidepushbutton_clicked();       // 사이드 메뉴 버튼 클릭 시
     void on_mid_beveragepushbutton_clicked();   // 음료 메뉴 버튼 클릭 시
-    void on_finishButton_clicked();         // 주문완료 버튼 클릭
-    /****************************** 중년층 키오스크 화면 ******************************/
+
 
 
 private:

@@ -42,6 +42,19 @@ public:
     QPushButton *finishButton;
     QStackedWidget *menudisplaywidget;
     QWidget *young;
+    QGridLayout *gridLayout_6;
+    MyMenu *young_menu_2;
+    QPushButton *young_beveragepushbutton;
+    QPushButton *young_sidepushbutton;
+    QPushButton *young_hambugerpushbutton;
+    MyMenu *young_menu_6;
+    MyMenu *young_menu_1;
+    MyMenu *young_menu_4;
+    MyMenu *young_menu_5;
+    MyMenu *young_menu_3;
+    MyMenu *young_menu_7;
+    MyMenu *young_menu_8;
+    MyMenu *young_menu_9;
     QWidget *middle;
     QGridLayout *gridLayout_5;
     QHBoxLayout *horizontalLayout;
@@ -93,9 +106,10 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         centralWidget->setStyleSheet(QStringLiteral(""));
         gridLayout = new QGridLayout(centralWidget);
-        gridLayout->setSpacing(6);
+        gridLayout->setSpacing(0);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
         stackedWidget = new QStackedWidget(centralWidget);
         stackedWidget->setObjectName(QStringLiteral("stackedWidget"));
         stackedWidget->setStyleSheet(QStringLiteral(""));
@@ -146,7 +160,7 @@ public:
         gridLayout_2->setContentsMargins(11, 11, 11, 11);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
         verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setSpacing(0);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
@@ -164,11 +178,12 @@ public:
 
         label_5 = new QLabel(display);
         label_5->setObjectName(QStringLiteral("label_5"));
-        QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Fixed);
         sizePolicy4.setHorizontalStretch(0);
         sizePolicy4.setVerticalStretch(0);
         sizePolicy4.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
         label_5->setSizePolicy(sizePolicy4);
+        label_5->setMinimumSize(QSize(0, 100));
         QFont font1;
         font1.setPointSize(20);
         label_5->setFont(font1);
@@ -178,11 +193,12 @@ public:
 
         finishButton = new QPushButton(display);
         finishButton->setObjectName(QStringLiteral("finishButton"));
-        QSizePolicy sizePolicy5(QSizePolicy::Minimum, QSizePolicy::Preferred);
+        QSizePolicy sizePolicy5(QSizePolicy::Minimum, QSizePolicy::Fixed);
         sizePolicy5.setHorizontalStretch(0);
         sizePolicy5.setVerticalStretch(0);
         sizePolicy5.setHeightForWidth(finishButton->sizePolicy().hasHeightForWidth());
         finishButton->setSizePolicy(sizePolicy5);
+        finishButton->setMinimumSize(QSize(93, 100));
         finishButton->setStyleSheet(QLatin1String("background-color: green;\n"
 "border-width: 2px;\n"
 "border-radius: 10px;\n"
@@ -200,6 +216,91 @@ public:
         menudisplaywidget->setObjectName(QStringLiteral("menudisplaywidget"));
         young = new QWidget();
         young->setObjectName(QStringLiteral("young"));
+        gridLayout_6 = new QGridLayout(young);
+        gridLayout_6->setSpacing(6);
+        gridLayout_6->setContentsMargins(11, 11, 11, 11);
+        gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
+        young_menu_2 = new MyMenu(young);
+        young_menu_2->setObjectName(QStringLiteral("young_menu_2"));
+
+        gridLayout_6->addWidget(young_menu_2, 1, 4, 1, 1);
+
+        young_beveragepushbutton = new QPushButton(young);
+        young_beveragepushbutton->setObjectName(QStringLiteral("young_beveragepushbutton"));
+        young_beveragepushbutton->setStyleSheet(QLatin1String("border-style:outset;\n"
+"border-color: black;\n"
+"border-width:2px;\n"
+"border-radius:10px;\n"
+"font: bold 20px;\n"
+"padding:5px;\n"
+""));
+
+        gridLayout_6->addWidget(young_beveragepushbutton, 0, 4, 1, 1);
+
+        young_sidepushbutton = new QPushButton(young);
+        young_sidepushbutton->setObjectName(QStringLiteral("young_sidepushbutton"));
+        young_sidepushbutton->setStyleSheet(QLatin1String("border-style:outset;\n"
+"border-color: black;\n"
+"border-width:2px;\n"
+"border-radius:10px;\n"
+"font: bold 20px;\n"
+"padding:5px;\n"
+""));
+
+        gridLayout_6->addWidget(young_sidepushbutton, 0, 2, 1, 1);
+
+        young_hambugerpushbutton = new QPushButton(young);
+        young_hambugerpushbutton->setObjectName(QStringLiteral("young_hambugerpushbutton"));
+        young_hambugerpushbutton->setStyleSheet(QLatin1String("border-style:outset;\n"
+"border-color: black;\n"
+"border-width:2px;\n"
+"border-radius:10px;\n"
+"font: bold 20px;\n"
+"padding:5px;\n"
+""));
+
+        gridLayout_6->addWidget(young_hambugerpushbutton, 0, 0, 1, 1);
+
+        young_menu_6 = new MyMenu(young);
+        young_menu_6->setObjectName(QStringLiteral("young_menu_6"));
+
+        gridLayout_6->addWidget(young_menu_6, 3, 4, 1, 1);
+
+        young_menu_1 = new MyMenu(young);
+        young_menu_1->setObjectName(QStringLiteral("young_menu_1"));
+
+        gridLayout_6->addWidget(young_menu_1, 1, 0, 1, 1);
+
+        young_menu_4 = new MyMenu(young);
+        young_menu_4->setObjectName(QStringLiteral("young_menu_4"));
+
+        gridLayout_6->addWidget(young_menu_4, 3, 0, 1, 1);
+
+        young_menu_5 = new MyMenu(young);
+        young_menu_5->setObjectName(QStringLiteral("young_menu_5"));
+
+        gridLayout_6->addWidget(young_menu_5, 1, 2, 1, 1);
+
+        young_menu_3 = new MyMenu(young);
+        young_menu_3->setObjectName(QStringLiteral("young_menu_3"));
+
+        gridLayout_6->addWidget(young_menu_3, 3, 2, 1, 1);
+
+        young_menu_7 = new MyMenu(young);
+        young_menu_7->setObjectName(QStringLiteral("young_menu_7"));
+
+        gridLayout_6->addWidget(young_menu_7, 4, 0, 1, 1);
+
+        young_menu_8 = new MyMenu(young);
+        young_menu_8->setObjectName(QStringLiteral("young_menu_8"));
+
+        gridLayout_6->addWidget(young_menu_8, 4, 2, 1, 1);
+
+        young_menu_9 = new MyMenu(young);
+        young_menu_9->setObjectName(QStringLiteral("young_menu_9"));
+
+        gridLayout_6->addWidget(young_menu_9, 4, 4, 1, 1);
+
         menudisplaywidget->addWidget(young);
         middle = new QWidget();
         middle->setObjectName(QStringLiteral("middle"));
@@ -316,11 +417,12 @@ public:
 
         label_4 = new QLabel(display);
         label_4->setObjectName(QStringLiteral("label_4"));
-        QSizePolicy sizePolicy7(QSizePolicy::Preferred, QSizePolicy::Maximum);
+        QSizePolicy sizePolicy7(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy7.setHorizontalStretch(0);
         sizePolicy7.setVerticalStretch(0);
         sizePolicy7.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
         label_4->setSizePolicy(sizePolicy7);
+        label_4->setMinimumSize(QSize(0, 50));
         QFont font2;
         font2.setPointSize(24);
         label_4->setFont(font2);
@@ -360,11 +462,8 @@ public:
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
         label_3 = new QLabel(checkpage);
         label_3->setObjectName(QStringLiteral("label_3"));
-        QSizePolicy sizePolicy8(QSizePolicy::Expanding, QSizePolicy::Fixed);
-        sizePolicy8.setHorizontalStretch(0);
-        sizePolicy8.setVerticalStretch(0);
-        sizePolicy8.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
-        label_3->setSizePolicy(sizePolicy8);
+        sizePolicy4.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
+        label_3->setSizePolicy(sizePolicy4);
         label_3->setMinimumSize(QSize(0, 100));
         label_3->setFont(font1);
         label_3->setAlignment(Qt::AlignCenter);
@@ -373,11 +472,8 @@ public:
 
         pushButton = new QPushButton(checkpage);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        QSizePolicy sizePolicy9(QSizePolicy::Minimum, QSizePolicy::Fixed);
-        sizePolicy9.setHorizontalStretch(0);
-        sizePolicy9.setVerticalStretch(0);
-        sizePolicy9.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy9);
+        sizePolicy5.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
+        pushButton->setSizePolicy(sizePolicy5);
         pushButton->setMinimumSize(QSize(93, 100));
         pushButton->setStyleSheet(QLatin1String("background-color: red;\n"
 "border-width: 2px;\n"
@@ -404,8 +500,8 @@ public:
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
         pricelabel = new QLabel(checkpage);
         pricelabel->setObjectName(QStringLiteral("pricelabel"));
-        sizePolicy8.setHeightForWidth(pricelabel->sizePolicy().hasHeightForWidth());
-        pricelabel->setSizePolicy(sizePolicy8);
+        sizePolicy4.setHeightForWidth(pricelabel->sizePolicy().hasHeightForWidth());
+        pricelabel->setSizePolicy(sizePolicy4);
         pricelabel->setMinimumSize(QSize(0, 100));
         pricelabel->setFont(font1);
 
@@ -468,11 +564,11 @@ public:
 
         ordernumber = new QLabel(finish);
         ordernumber->setObjectName(QStringLiteral("ordernumber"));
-        QSizePolicy sizePolicy10(QSizePolicy::Preferred, QSizePolicy::Minimum);
-        sizePolicy10.setHorizontalStretch(0);
-        sizePolicy10.setVerticalStretch(0);
-        sizePolicy10.setHeightForWidth(ordernumber->sizePolicy().hasHeightForWidth());
-        ordernumber->setSizePolicy(sizePolicy10);
+        QSizePolicy sizePolicy8(QSizePolicy::Preferred, QSizePolicy::Minimum);
+        sizePolicy8.setHorizontalStretch(0);
+        sizePolicy8.setVerticalStretch(0);
+        sizePolicy8.setHeightForWidth(ordernumber->sizePolicy().hasHeightForWidth());
+        ordernumber->setSizePolicy(sizePolicy8);
         QFont font4;
         font4.setPointSize(30);
         ordernumber->setFont(font4);
@@ -482,8 +578,11 @@ public:
 
         callannounce = new QLabel(finish);
         callannounce->setObjectName(QStringLiteral("callannounce"));
-        sizePolicy5.setHeightForWidth(callannounce->sizePolicy().hasHeightForWidth());
-        callannounce->setSizePolicy(sizePolicy5);
+        QSizePolicy sizePolicy9(QSizePolicy::Minimum, QSizePolicy::Preferred);
+        sizePolicy9.setHorizontalStretch(0);
+        sizePolicy9.setVerticalStretch(0);
+        sizePolicy9.setHeightForWidth(callannounce->sizePolicy().hasHeightForWidth());
+        callannounce->setSizePolicy(sizePolicy9);
         callannounce->setFont(font1);
         callannounce->setAlignment(Qt::AlignCenter);
 
@@ -518,6 +617,9 @@ public:
         main_logo->setText(QString());
         label_5->setText(QApplication::translate("MainWindow", "\354\233\220\355\225\230\353\212\224 \354\235\214\354\213\235\354\235\204 \353\210\214\353\237\254\354\243\274\354\204\270\354\232\224", nullptr));
         finishButton->setText(QApplication::translate("MainWindow", "\354\243\274\353\254\270 \354\231\204\353\243\214", nullptr));
+        young_beveragepushbutton->setText(QApplication::translate("MainWindow", "\354\235\214\353\243\214", nullptr));
+        young_sidepushbutton->setText(QApplication::translate("MainWindow", "\354\202\254\354\235\264\353\223\234 \353\251\224\353\211\264", nullptr));
+        young_hambugerpushbutton->setText(QApplication::translate("MainWindow", "\355\226\204\353\262\204\352\261\260", nullptr));
         mid_hambugerpushbutton->setText(QString());
         mid_sidepushbutton->setText(QString());
         mid_beveragepushbutton->setText(QString());

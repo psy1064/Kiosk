@@ -27,6 +27,21 @@
     <string notr="true"/>
    </property>
    <layout class="QGridLayout" name="gridLayout">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <property name="spacing">
+     <number>0</number>
+    </property>
     <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="styleSheet">
@@ -98,6 +113,9 @@
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="1" column="0">
          <layout class="QVBoxLayout" name="verticalLayout_2">
+          <property name="spacing">
+           <number>0</number>
+          </property>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
@@ -119,10 +137,16 @@
             <item>
              <widget class="QLabel" name="label_5">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>100</height>
+               </size>
               </property>
               <property name="font">
                <font>
@@ -140,10 +164,16 @@
             <item>
              <widget class="QPushButton" name="finishButton">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>93</width>
+                <height>100</height>
+               </size>
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: green;
@@ -163,7 +193,85 @@ color:white;</string>
           </item>
           <item>
            <widget class="QStackedWidget" name="menudisplaywidget">
-            <widget class="QWidget" name="young"/>
+            <widget class="QWidget" name="young">
+             <layout class="QGridLayout" name="gridLayout_6">
+              <item row="1" column="4">
+               <widget class="MyMenu" name="young_menu_2" native="true"/>
+              </item>
+              <item row="0" column="4">
+               <widget class="QPushButton" name="young_beveragepushbutton">
+                <property name="styleSheet">
+                 <string notr="true">border-style:outset;
+border-color: black;
+border-width:2px;
+border-radius:10px;
+font: bold 20px;
+padding:5px;
+</string>
+                </property>
+                <property name="text">
+                 <string>음료</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QPushButton" name="young_sidepushbutton">
+                <property name="styleSheet">
+                 <string notr="true">border-style:outset;
+border-color: black;
+border-width:2px;
+border-radius:10px;
+font: bold 20px;
+padding:5px;
+</string>
+                </property>
+                <property name="text">
+                 <string>사이드 메뉴</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QPushButton" name="young_hambugerpushbutton">
+                <property name="styleSheet">
+                 <string notr="true">border-style:outset;
+border-color: black;
+border-width:2px;
+border-radius:10px;
+font: bold 20px;
+padding:5px;
+</string>
+                </property>
+                <property name="text">
+                 <string>햄버거</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="MyMenu" name="young_menu_6" native="true"/>
+              </item>
+              <item row="1" column="0">
+               <widget class="MyMenu" name="young_menu_1" native="true"/>
+              </item>
+              <item row="3" column="0">
+               <widget class="MyMenu" name="young_menu_4" native="true"/>
+              </item>
+              <item row="1" column="2">
+               <widget class="MyMenu" name="young_menu_5" native="true"/>
+              </item>
+              <item row="3" column="2">
+               <widget class="MyMenu" name="young_menu_3" native="true"/>
+              </item>
+              <item row="4" column="0">
+               <widget class="MyMenu" name="young_menu_7" native="true"/>
+              </item>
+              <item row="4" column="2">
+               <widget class="MyMenu" name="young_menu_8" native="true"/>
+              </item>
+              <item row="4" column="4">
+               <widget class="MyMenu" name="young_menu_9" native="true"/>
+              </item>
+             </layout>
+            </widget>
             <widget class="QWidget" name="middle">
              <layout class="QGridLayout" name="gridLayout_5">
               <property name="leftMargin">
@@ -365,10 +473,16 @@ color:white;</string>
           <item>
            <widget class="QLabel" name="label_4">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>50</height>
+             </size>
             </property>
             <property name="font">
              <font>

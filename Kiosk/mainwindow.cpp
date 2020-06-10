@@ -69,10 +69,12 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 void MainWindow::init()
 {
     ui->stackedWidget->setCurrentIndex(0);
+
     baskcount = 0;          // 주문 내역 수 초기화
     finalprice = 0;         // 최종 주문 가격 초기화
     timecount = 3;          // 타이머 초기화
     ui->countlabel->setText(QString::number(timecount) + " 초뒤에 자동으로 종료됩니다!");
+    ui->basketlayout->setContentsMargins(0,0,0,400);
     basketvector.clear();   // 주문 내역 저장 구조체 벡터 초기화
     phonenumber = "";       // 핸드폰 번호 정보 초기화
 } // 초기화
@@ -85,11 +87,12 @@ void MainWindow::detectFace()
     case AGE_YOUNG:
         ui->stackedWidget->setCurrentIndex(1);
         ui->menudisplaywidget->setCurrentIndex(0);
+        young_displayHambugerMenu();
         break;
     case AGE_MIDDLE:
         ui->stackedWidget->setCurrentIndex(1);
         ui->menudisplaywidget->setCurrentIndex(1);
-        displayHambugerMenu();
+        mid_displayHambugerMenu();
         break;
     case AGE_OLD:
         break;
@@ -114,7 +117,100 @@ void MainWindow::showPopup(MyMenu* menu)
     popupwindows->show();
 } // 팝업 윈도우 띄움
 
-void MainWindow::displayHambugerMenu()
+void MainWindow::young_displayHambugerMenu()
+{
+    menutype = HAMBURGER;
+    menu.load("/home/pi/kiosk/image/burger/1955.png");
+    ui->young_menu_1->setInfo(menu,300,"1955","5000");
+
+    menu.load("/home/pi/kiosk/image/burger/더블1955.png");
+    ui->young_menu_2->setInfo(menu,300,"더블1955","5500");
+
+    menu.load("/home/pi/kiosk/image/burger/맥치킨.png");
+    ui->young_menu_3->setInfo(menu,300,"맥치킨","5500");
+
+    menu.load("/home/pi/kiosk/image/burger/맥치킨모짜렐라.png");
+    ui->young_menu_4->setInfo(menu,300,"맥치킨모짜렐라","5000");
+
+    menu.load("/home/pi/kiosk/image/burger/빅맥.png");
+    ui->young_menu_5->setInfo(menu,300,"빅맥","5000");
+
+    menu.load("/home/pi/kiosk/image/burger/상하이.png");
+    ui->young_menu_6->setInfo(menu,300,"상하이","4000");
+
+    menu.load("/home/pi/kiosk/image/burger/상하이.png");
+    ui->young_menu_7->setInfo(menu,300,"상하이","4000");
+
+    menu.load("/home/pi/kiosk/image/burger/상하이.png");
+    ui->young_menu_8->setInfo(menu,300,"상하이","4000");
+
+    menu.load("/home/pi/kiosk/image/burger/상하이.png");
+    ui->young_menu_9->setInfo(menu,300,"상하이","4000");
+} // 햄버거 메뉴 출력
+
+void MainWindow::young_displaySideMenu()
+{
+    menutype = SIDE;
+    menu.load("/home/pi/kiosk/image/sidemenu/콘파이.png");
+    ui->young_menu_1->setInfo(menu,300,"콘파이","1500");
+
+    menu.load("/home/pi/kiosk/image/sidemenu/맥너겟.png");
+    ui->young_menu_2->setInfo(menu,300,"맥너겟","1000");
+
+    menu.load("/home/pi/kiosk/image/sidemenu/스낵랩.png");
+    ui->young_menu_3->setInfo(menu,300,"스낵랩","2500");
+
+    menu.load("/home/pi/kiosk/image/sidemenu/치즈스틱.png");
+    ui->young_menu_4->setInfo(menu,300,"치즈스틱","1500");
+
+    menu.load("/home/pi/kiosk/image/sidemenu/애플파이.png");
+    ui->young_menu_5->setInfo(menu,300,"애플파이","1300");
+
+    menu.load("/home/pi/kiosk/image/sidemenu/후렌치후라이.png");
+    ui->young_menu_6->setInfo(menu,300,"후렌치후라이","1000");
+
+    menu.load("/home/pi/kiosk/image/sidemenu/후렌치후라이.png");
+    ui->young_menu_7->setInfo(menu,300,"후렌치후라이","1000");
+
+    menu.load("/home/pi/kiosk/image/sidemenu/후렌치후라이.png");
+    ui->young_menu_8->setInfo(menu,300,"후렌치후라이","1000");
+
+    menu.load("/home/pi/kiosk/image/sidemenu/후렌치후라이.png");
+    ui->young_menu_9->setInfo(menu,300,"후렌치후라이","1000");
+} // 사이드 메뉴 출력
+
+void MainWindow::young_displayBeverageMenu()
+{
+    menutype = BEVERAGE;
+    menu.load("/home/pi/kiosk/image/beverage/콜라.png");
+    ui->young_menu_1->setInfo(menu,300,"콜라","1000");
+
+    menu.load("/home/pi/kiosk/image/beverage/스프라이트.png");
+    ui->young_menu_2->setInfo(menu,300,"스프라이트","1000");
+
+    menu.load("/home/pi/kiosk/image/beverage/환타.png");
+    ui->young_menu_3->setInfo(menu,300,"환타","1000");
+
+    menu.load("/home/pi/kiosk/image/beverage/원두커피.png");
+    ui->young_menu_4->setInfo(menu,300,"원두커피","2000");
+
+    menu.load("/home/pi/kiosk/image/beverage/아메리카노.png");
+    ui->young_menu_5->setInfo(menu,300,"아메리카노","1500");
+
+    menu.load("/home/pi/kiosk/image/beverage/배칠러.png");
+    ui->young_menu_6->setInfo(menu,300,"배칠러","3000");
+
+    menu.load("/home/pi/kiosk/image/beverage/원두커피.png");
+    ui->young_menu_7->setInfo(menu,300,"원두커피","2000");
+
+    menu.load("/home/pi/kiosk/image/beverage/아메리카노.png");
+    ui->young_menu_8->setInfo(menu,300,"아메리카노","1500");
+
+    menu.load("/home/pi/kiosk/image/beverage/배칠러.png");
+    ui->young_menu_9->setInfo(menu,300,"배칠러","3000");
+} // 음료 메뉴 출력
+
+void MainWindow::mid_displayHambugerMenu()
 {
     menutype = HAMBURGER;
     menu.load("/home/pi/kiosk/image/burger/1955.png");
@@ -136,7 +232,7 @@ void MainWindow::displayHambugerMenu()
     ui->mid_menu_6->setInfo(menu,400,"상하이","4000");
 } // 햄버거 메뉴 출력
 
-void MainWindow::displaySideMenu()
+void MainWindow::mid_displaySideMenu()
 {
     menutype = SIDE;
     menu.load("/home/pi/kiosk/image/sidemenu/콘파이.png");
@@ -158,7 +254,7 @@ void MainWindow::displaySideMenu()
     ui->mid_menu_6->setInfo(menu,400,"후렌치후라이","1000");
 } // 사이드 메뉴 출력
 
-void MainWindow::displayBeverageMenu()
+void MainWindow::mid_displayBeverageMenu()
 {
     menutype = BEVERAGE;
     menu.load("/home/pi/kiosk/image/beverage/콜라.png");
@@ -292,20 +388,35 @@ void MainWindow::deleteBasket(basket* tmp)
     setBasketMargin();
 } // 주문 내역 삭제
 
+void MainWindow::on_young_hambugerpushbutton_clicked()
+{
+    young_displayHambugerMenu();
+} // 청년층 햄버거 메뉴 버튼 클릭 시
+
+void MainWindow::on_young_sidepushbutton_clicked()
+{
+    young_displaySideMenu();
+} // 청년층 사이드 메뉴 버튼 클릭 시
+
+void MainWindow::on_young_beveragepushbutton_clicked()
+{
+    young_displayBeverageMenu();
+} // 청년층 음료 메뉴 버튼 클릭 시
+
 void MainWindow::on_mid_hambugerpushbutton_clicked()
 {
-    displayHambugerMenu();
-} // 햄버거 메뉴 버튼 클릭 시
+    mid_displayHambugerMenu();
+} // 중년층 햄버거 메뉴 버튼 클릭 시
 
 void MainWindow::on_mid_sidepushbutton_clicked()
 {
-    displaySideMenu();
-} // 사이드 메뉴 버튼 클릭 시
+    mid_displaySideMenu();
+} // 중년층 사이드 메뉴 버튼 클릭 시
 
 void MainWindow::on_mid_beveragepushbutton_clicked()
 {
-    displayBeverageMenu();
-} // 음료 메뉴 버튼 클릭 시
+    mid_displayBeverageMenu();
+} // 중년층 음료 메뉴 버튼 클릭 시
 
 void MainWindow::on_pushButton_clicked()
 {
@@ -330,7 +441,7 @@ void MainWindow::on_showkakaobutton_clicked()
 
 void MainWindow::on_returnbutton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(age);
+    ui->stackedWidget->setCurrentIndex(1);
     QLayoutItem* item;
     while((item = ui->checklayout->takeAt(0)))
     {
