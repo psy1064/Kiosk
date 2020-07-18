@@ -231,10 +231,16 @@ void popup::on_minusButton_clicked()
     if(count > 1)
         count --;
     ui->countLabel->setText(QString::number(count));
-}
+} // 수량 선택
 
 void popup::on_plusButton_clicked()
 {
     count++;
     ui->countLabel->setText(QString::number(count));
+} // 수량 선택
+
+void popup::on_ordercancel_clicked()
+{
+    this->close();
+    qDebug() << "h";
 }

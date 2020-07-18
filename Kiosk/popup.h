@@ -36,6 +36,7 @@ private slots:
     void on_okbutton_clicked();         // 주문 내역 5개 넘겼을 때 알겠습니다 클릭 시
     void on_minusButton_clicked();
     void on_plusButton_clicked();
+    void on_ordercancel_clicked();
 
 signals:
     void sendValue(QMap<QString, QString> value);         // mainwindow로 주문 정보 전송

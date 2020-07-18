@@ -127,7 +127,7 @@ void MainWindow::init()
 
 void MainWindow::detectFace()
 {
-    age = AGE_YOUNG;
+    age = AGE_MIDDLE;
     switch(age)
     {
     case AGE_YOUNG:

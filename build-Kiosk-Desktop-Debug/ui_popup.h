@@ -15,6 +15,7 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -26,6 +27,7 @@ class Ui_popup
 {
 public:
     QGridLayout *gridLayout;
+    QLabel *label;
     QStackedWidget *stackedWidget;
     QWidget *page;
     QGridLayout *gridLayout_2;
@@ -59,7 +61,9 @@ public:
     QGridLayout *gridLayout_5;
     QLabel *label_3;
     QPushButton *okbutton;
-    QLabel *label;
+    QHBoxLayout *horizontalLayout_5;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *ordercancel;
 
     void setupUi(QWidget *popup)
     {
@@ -75,6 +79,15 @@ public:
         gridLayout = new QGridLayout(popup);
         gridLayout->setSpacing(0);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        label = new QLabel(popup);
+        label->setObjectName(QStringLiteral("label"));
+        QFont font;
+        font.setPointSize(20);
+        label->setFont(font);
+        label->setAlignment(Qt::AlignCenter);
+
+        gridLayout->addWidget(label, 1, 0, 1, 1);
+
         stackedWidget = new QStackedWidget(popup);
         stackedWidget->setObjectName(QStringLiteral("stackedWidget"));
         page = new QWidget();
@@ -102,8 +115,6 @@ public:
 
         label_4 = new QLabel(page);
         label_4->setObjectName(QStringLiteral("label_4"));
-        QFont font;
-        font.setPointSize(20);
         label_4->setFont(font);
         label_4->setAlignment(Qt::AlignCenter);
 
@@ -300,19 +311,33 @@ public:
 
         stackedWidget->addWidget(page_4);
 
-        gridLayout->addWidget(stackedWidget, 1, 0, 1, 1);
+        gridLayout->addWidget(stackedWidget, 2, 0, 1, 1);
 
-        label = new QLabel(popup);
-        label->setObjectName(QStringLiteral("label"));
-        label->setFont(font);
-        label->setAlignment(Qt::AlignCenter);
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout->addWidget(label, 0, 0, 1, 1);
+        horizontalLayout_5->addItem(horizontalSpacer);
+
+        ordercancel = new QPushButton(popup);
+        ordercancel->setObjectName(QStringLiteral("ordercancel"));
+        ordercancel->setStyleSheet(QLatin1String("background-color: red;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"min-width: 5em;\n"
+"padding: 6px;\n"
+"color:white;"));
+
+        horizontalLayout_5->addWidget(ordercancel);
+
+
+        gridLayout->addLayout(horizontalLayout_5, 0, 0, 1, 1);
 
 
         retranslateUi(popup);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(popup);
@@ -321,6 +346,7 @@ public:
     void retranslateUi(QWidget *popup)
     {
         popup->setWindowTitle(QApplication::translate("popup", "Form", nullptr));
+        label->setText(QApplication::translate("popup", "TextLabel", nullptr));
         setbutton->setText(QString());
         singlebutton->setText(QString());
         label_4->setText(QApplication::translate("popup", "\353\213\250\355\222\210", nullptr));
@@ -333,7 +359,7 @@ public:
         rollbackbutton->setText(QApplication::translate("popup", "\353\213\244\354\213\234 \352\263\240\353\245\274\353\236\230", nullptr));
         label_3->setText(QApplication::translate("popup", "\354\243\274\353\254\270 \353\202\264\354\227\255\354\235\200 5\352\260\234\353\245\274 \353\204\230\352\270\270 \354\210\230 \354\227\206\354\212\265\353\213\210\353\213\244.", nullptr));
         okbutton->setText(QApplication::translate("popup", "\354\225\214\352\262\240\354\212\265\353\213\210\353\213\244", nullptr));
-        label->setText(QApplication::translate("popup", "TextLabel", nullptr));
+        ordercancel->setText(QApplication::translate("popup", "\354\243\274\353\254\270 \354\267\250\354\206\214", nullptr));
     } // retranslateUi
 
 };
