@@ -50,6 +50,8 @@ private:
     int menutype;                   // 메뉴 종류
     int count;                      // 메뉴 갯수
     enum {HAMBURGER=1, SIDE, BEVERAGE};
+
+    menuinfo hamburgerinfo[6], sidemenuinfo[6], beverageinfo[6];
 };
 
 #endif // POPUP_H

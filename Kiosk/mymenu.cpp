@@ -13,10 +13,12 @@ MyMenu::~MyMenu()
     delete ui;
 }
 
-void MyMenu::setInfo(QPixmap pixmap, int pixmapsize, QString name, QString price)
+void MyMenu::setInfo(menuinfo info, int pixmapsize)
 {
-    this->name = name;
-    this->price = price;
+    QPixmap pixmap;
+    pixmap.load(info.image);
+    this->name = info.menuname;
+    this->price = info.price;
     ui->label->setPixmap(pixmap.scaled(pixmapsize,pixmapsize,Qt::KeepAspectRatio));
     ui->label_2->setText(name);
     ui->label_3->setText(price);

@@ -36,6 +36,7 @@ public:
     void showCheck();                   // 주문 확인 화면
     void showFinish();                  // 마지막 화면(주문 번호 확인)
     void setBasketMargin();             // 주문 내역 리스트를 상단 고정하기 위해 margin 설정
+    void registMenuData();              // 메뉴 정보 등록
 
     /****************************** 청년층 키오스크 화면 ******************************/
     void young_displayHambugerMenu();         // 햄버거 메뉴 출력
@@ -47,6 +48,10 @@ public:
     void mid_displaySideMenu();             // 사이드 메뉴 출력
     void mid_displayBeverageMenu();         // 음료 메뉴 출력
 
+    /****************************** 노년층 키오스크 화면 ******************************/
+    void old_displayHambugerMenu();
+    void old_displaySideMenu();
+    void old_displayBeverageMenu();
 
 private slots:
     void setValue(QMap<QString, QString>);  // popup에서 주문한 내역을 받아옴
@@ -69,7 +74,10 @@ private slots:
     void on_mid_sidepushbutton_clicked();       // 사이드 메뉴 버튼 클릭 시
     void on_mid_beveragepushbutton_clicked();   // 음료 메뉴 버튼 클릭 시
 
-
+    /****************************** 노년층 키오스크 화면 ******************************/
+    void on_old_hambugerpushbutton_clicked();
+    void on_old_sidepushbutton_clicked();
+    void on_old_beveragepushbutton_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -97,6 +105,7 @@ private:
     }; // 주문내역 정보 저장용 구조체
 
     QVector<basketlist> basketvector;   // 주문 내역 저장 구조체 벡터
+    menuinfo hamburgerinfo[6], sidemenuinfo[6], beverageinfo[6];
 };
 
 #endif // MAINWINDOW_H

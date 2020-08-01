@@ -9,7 +9,16 @@ MainWindow::MainWindow(QWidget *parent) :
     menu.load("/home/pi/kiosk/image/dju_logo.png");
     ui->main_logo->setPixmap(menu.scaled(100,100,Qt::KeepAspectRatio));
 
+    registMenuData();       // 메뉴 정보 등록
+
     ui->label->installEventFilter(this);
+    ui->old_menu_1->installEventFilter(this);
+    ui->old_menu_2->installEventFilter(this);
+    ui->old_menu_3->installEventFilter(this);
+    ui->old_menu_4->installEventFilter(this);
+    ui->old_menu_5->installEventFilter(this);
+    ui->old_menu_6->installEventFilter(this);
+
     ui->mid_menu_1->installEventFilter(this);
     ui->mid_menu_2->installEventFilter(this);
     ui->mid_menu_3->installEventFilter(this);
@@ -109,6 +118,30 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
     {
         showPopup(ui->young_menu_9);
     }
+    else if(watched == ui->old_menu_1 && event->type() == QMouseEvent::MouseButtonPress)
+    {
+        showPopup(ui->old_menu_1);
+    }
+    else if(watched == ui->old_menu_2 && event->type() == QMouseEvent::MouseButtonPress)
+    {
+        showPopup(ui->old_menu_2);
+    }
+    else if(watched == ui->old_menu_3 && event->type() == QMouseEvent::MouseButtonPress)
+    {
+        showPopup(ui->old_menu_3);
+    }
+    else if(watched == ui->old_menu_4 && event->type() == QMouseEvent::MouseButtonPress)
+    {
+        showPopup(ui->old_menu_4);
+    }
+    else if(watched == ui->old_menu_5 && event->type() == QMouseEvent::MouseButtonPress)
+    {
+        showPopup(ui->old_menu_5);
+    }
+    else if(watched == ui->old_menu_6 && event->type() == QMouseEvent::MouseButtonPress)
+    {
+        showPopup(ui->old_menu_6);
+    }
     return QWidget::eventFilter(watched, event);
 } // 메뉴 이미지 클릭 시 이벤트
 
@@ -127,7 +160,7 @@ void MainWindow::init()
 
 void MainWindow::detectFace()
 {
-    age = AGE_MIDDLE;
+    age = AGE_OLD;
     switch(age)
     {
     case AGE_YOUNG:
@@ -141,6 +174,8 @@ void MainWindow::detectFace()
         mid_displayHambugerMenu();
         break;
     case AGE_OLD:
+        ui->stackedWidget->setCurrentIndex(2);
+        ui->old_select->setCurrentIndex(0);
         break;
     }
 } // 얼굴 인식 결과 도출
@@ -166,160 +201,102 @@ void MainWindow::showPopup(MyMenu* menu)
 void MainWindow::young_displayHambugerMenu()
 {
     menutype = HAMBURGER;
-    menu.load("/home/pi/kiosk/image/burger/1955.png");
-    ui->young_menu_1->setInfo(menu,300,"1955","5000");
-
-    menu.load("/home/pi/kiosk/image/burger/더블1955.png");
-    ui->young_menu_2->setInfo(menu,300,"더블1955","5500");
-
-    menu.load("/home/pi/kiosk/image/burger/맥치킨.png");
-    ui->young_menu_3->setInfo(menu,300,"맥치킨","5500");
-
-    menu.load("/home/pi/kiosk/image/burger/맥치킨모짜렐라.png");
-    ui->young_menu_4->setInfo(menu,300,"맥치킨모짜렐라","5000");
-
-    menu.load("/home/pi/kiosk/image/burger/빅맥.png");
-    ui->young_menu_5->setInfo(menu,300,"빅맥","5000");
-
-    menu.load("/home/pi/kiosk/image/burger/상하이.png");
-    ui->young_menu_6->setInfo(menu,300,"상하이","4000");
-
-    menu.load("/home/pi/kiosk/image/burger/상하이.png");
-    ui->young_menu_7->setInfo(menu,300,"상하이","4000");
-
-    menu.load("/home/pi/kiosk/image/burger/상하이.png");
-    ui->young_menu_8->setInfo(menu,300,"상하이","4000");
-
-    menu.load("/home/pi/kiosk/image/burger/상하이.png");
-    ui->young_menu_9->setInfo(menu,300,"상하이","4000");
+    ui->young_menu_1->setInfo(hamburgerinfo[0],300);
+    ui->young_menu_2->setInfo(hamburgerinfo[1],300);
+    ui->young_menu_3->setInfo(hamburgerinfo[2],300);
+    ui->young_menu_4->setInfo(hamburgerinfo[3],300);
+    ui->young_menu_5->setInfo(hamburgerinfo[4],300);
+    ui->young_menu_6->setInfo(hamburgerinfo[5],300);
 } // 햄버거 메뉴 출력
 
 void MainWindow::young_displaySideMenu()
 {
     menutype = SIDE;
-    menu.load("/home/pi/kiosk/image/sidemenu/콘파이.png");
-    ui->young_menu_1->setInfo(menu,300,"콘파이","1500");
-
-    menu.load("/home/pi/kiosk/image/sidemenu/맥너겟.png");
-    ui->young_menu_2->setInfo(menu,300,"맥너겟","1000");
-
-    menu.load("/home/pi/kiosk/image/sidemenu/스낵랩.png");
-    ui->young_menu_3->setInfo(menu,300,"스낵랩","2500");
-
-    menu.load("/home/pi/kiosk/image/sidemenu/치즈스틱.png");
-    ui->young_menu_4->setInfo(menu,300,"치즈스틱","1500");
-
-    menu.load("/home/pi/kiosk/image/sidemenu/애플파이.png");
-    ui->young_menu_5->setInfo(menu,300,"애플파이","1300");
-
-    menu.load("/home/pi/kiosk/image/sidemenu/후렌치후라이.png");
-    ui->young_menu_6->setInfo(menu,300,"후렌치후라이","1000");
-
-    menu.load("/home/pi/kiosk/image/sidemenu/후렌치후라이.png");
-    ui->young_menu_7->setInfo(menu,300,"후렌치후라이","1000");
-
-    menu.load("/home/pi/kiosk/image/sidemenu/후렌치후라이.png");
-    ui->young_menu_8->setInfo(menu,300,"후렌치후라이","1000");
-
-    menu.load("/home/pi/kiosk/image/sidemenu/후렌치후라이.png");
-    ui->young_menu_9->setInfo(menu,300,"후렌치후라이","1000");
+    ui->young_menu_1->setInfo(sidemenuinfo[0],300);
+    ui->young_menu_2->setInfo(sidemenuinfo[1],300);
+    ui->young_menu_3->setInfo(sidemenuinfo[2],300);
+    ui->young_menu_4->setInfo(sidemenuinfo[3],300);
+    ui->young_menu_5->setInfo(sidemenuinfo[4],300);
+    ui->young_menu_6->setInfo(sidemenuinfo[5],300);
 } // 사이드 메뉴 출력
 
 void MainWindow::young_displayBeverageMenu()
 {
     menutype = BEVERAGE;
-    menu.load("/home/pi/kiosk/image/beverage/콜라.png");
-    ui->young_menu_1->setInfo(menu,300,"콜라","1000");
-
-    menu.load("/home/pi/kiosk/image/beverage/스프라이트.png");
-    ui->young_menu_2->setInfo(menu,300,"스프라이트","1000");
-
-    menu.load("/home/pi/kiosk/image/beverage/환타.png");
-    ui->young_menu_3->setInfo(menu,300,"환타","1000");
-
-    menu.load("/home/pi/kiosk/image/beverage/원두커피.png");
-    ui->young_menu_4->setInfo(menu,300,"원두커피","2000");
-
-    menu.load("/home/pi/kiosk/image/beverage/아메리카노.png");
-    ui->young_menu_5->setInfo(menu,300,"아메리카노","1500");
-
-    menu.load("/home/pi/kiosk/image/beverage/배칠러.png");
-    ui->young_menu_6->setInfo(menu,300,"배칠러","3000");
-
-    menu.load("/home/pi/kiosk/image/beverage/원두커피.png");
-    ui->young_menu_7->setInfo(menu,300,"원두커피","2000");
-
-    menu.load("/home/pi/kiosk/image/beverage/아메리카노.png");
-    ui->young_menu_8->setInfo(menu,300,"아메리카노","1500");
-
-    menu.load("/home/pi/kiosk/image/beverage/배칠러.png");
-    ui->young_menu_9->setInfo(menu,300,"배칠러","3000");
+    ui->young_menu_1->setInfo(beverageinfo[0],300);
+    ui->young_menu_2->setInfo(beverageinfo[1],300);
+    ui->young_menu_3->setInfo(beverageinfo[2],300);
+    ui->young_menu_4->setInfo(beverageinfo[3],300);
+    ui->young_menu_5->setInfo(beverageinfo[4],300);
+    ui->young_menu_6->setInfo(beverageinfo[5],300);
 } // 음료 메뉴 출력
 
 void MainWindow::mid_displayHambugerMenu()
 {
     menutype = HAMBURGER;
-    menu.load("/home/pi/kiosk/image/burger/1955.png");
-    ui->mid_menu_1->setInfo(menu,400,"1955","5000");
+    ui->mid_menu_1->setInfo(hamburgerinfo[0],400);
+    ui->mid_menu_2->setInfo(hamburgerinfo[1],400);
+    ui->mid_menu_3->setInfo(hamburgerinfo[2],400);
+    ui->mid_menu_4->setInfo(hamburgerinfo[3],400);
+    ui->mid_menu_5->setInfo(hamburgerinfo[4],400);
+    ui->mid_menu_6->setInfo(hamburgerinfo[5],400);
 
-    menu.load("/home/pi/kiosk/image/burger/더블1955.png");
-    ui->mid_menu_2->setInfo(menu,400,"더블1955","5500");
-
-    menu.load("/home/pi/kiosk/image/burger/맥치킨.png");
-    ui->mid_menu_3->setInfo(menu,400,"맥치킨","5500");
-
-    menu.load("/home/pi/kiosk/image/burger/맥치킨모짜렐라.png");
-    ui->mid_menu_4->setInfo(menu,400,"맥치킨모짜렐라","5000");
-
-    menu.load("/home/pi/kiosk/image/burger/빅맥.png");
-    ui->mid_menu_5->setInfo(menu,400,"빅맥","5000");
-
-    menu.load("/home/pi/kiosk/image/burger/상하이.png");
-    ui->mid_menu_6->setInfo(menu,400,"상하이","4000");
 } // 햄버거 메뉴 출력
 
 void MainWindow::mid_displaySideMenu()
 {
     menutype = SIDE;
-    menu.load("/home/pi/kiosk/image/sidemenu/콘파이.png");
-    ui->mid_menu_1->setInfo(menu,400,"콘파이","1500");
-
-    menu.load("/home/pi/kiosk/image/sidemenu/맥너겟.png");
-    ui->mid_menu_2->setInfo(menu,400,"맥너겟","1000");
-
-    menu.load("/home/pi/kiosk/image/sidemenu/스낵랩.png");
-    ui->mid_menu_3->setInfo(menu,400,"스낵랩","2500");
-
-    menu.load("/home/pi/kiosk/image/sidemenu/치즈스틱.png");
-    ui->mid_menu_4->setInfo(menu,400,"치즈스틱","1500");
-
-    menu.load("/home/pi/kiosk/image/sidemenu/애플파이.png");
-    ui->mid_menu_5->setInfo(menu,400,"애플파이","1300");
-
-    menu.load("/home/pi/kiosk/image/sidemenu/후렌치후라이.png");
-    ui->mid_menu_6->setInfo(menu,400,"후렌치후라이","1000");
+    ui->mid_menu_1->setInfo(sidemenuinfo[0],400);
+    ui->mid_menu_2->setInfo(sidemenuinfo[1],400);
+    ui->mid_menu_3->setInfo(sidemenuinfo[2],400);
+    ui->mid_menu_4->setInfo(sidemenuinfo[3],400);
+    ui->mid_menu_5->setInfo(sidemenuinfo[4],400);
+    ui->mid_menu_6->setInfo(sidemenuinfo[5],400);
 } // 사이드 메뉴 출력
 
 void MainWindow::mid_displayBeverageMenu()
 {
     menutype = BEVERAGE;
-    menu.load("/home/pi/kiosk/image/beverage/콜라.png");
-    ui->mid_menu_1->setInfo(menu,400,"콜라","1000");
+    ui->mid_menu_1->setInfo(beverageinfo[0],400);
+    ui->mid_menu_2->setInfo(beverageinfo[1],400);
+    ui->mid_menu_3->setInfo(beverageinfo[2],400);
+    ui->mid_menu_4->setInfo(beverageinfo[3],400);
+    ui->mid_menu_5->setInfo(beverageinfo[4],400);
+    ui->mid_menu_6->setInfo(beverageinfo[5],400);
+} // 음료 메뉴 출력
 
-    menu.load("/home/pi/kiosk/image/beverage/스프라이트.png");
-    ui->mid_menu_2->setInfo(menu,400,"스프라이트","1000");
-	
-    menu.load("/home/pi/kiosk/image/beverage/환타.png");
-    ui->mid_menu_3->setInfo(menu,400,"환타","1000");
+void MainWindow::old_displayHambugerMenu()
+{
+    menutype = HAMBURGER;
+    ui->old_menu_1->setInfo(hamburgerinfo[0],500);
+    ui->old_menu_2->setInfo(hamburgerinfo[1],500);
+    ui->old_menu_3->setInfo(hamburgerinfo[2],500);
+    ui->old_menu_4->setInfo(hamburgerinfo[3],500);
+    ui->old_menu_5->setInfo(hamburgerinfo[4],500);
+    ui->old_menu_6->setInfo(hamburgerinfo[5],500);
 
-    menu.load("/home/pi/kiosk/image/beverage/원두커피.png");
-    ui->mid_menu_4->setInfo(menu,400,"원두커피","2000");
+} // 햄버거 메뉴 출력
 
-    menu.load("/home/pi/kiosk/image/beverage/아메리카노.png");
-    ui->mid_menu_5->setInfo(menu,400,"아메리카노","1500");
+void MainWindow::old_displaySideMenu()
+{
+    menutype = SIDE;
+    ui->old_menu_1->setInfo(sidemenuinfo[0],500);
+    ui->old_menu_2->setInfo(sidemenuinfo[1],500);
+    ui->old_menu_3->setInfo(sidemenuinfo[2],500);
+    ui->old_menu_4->setInfo(sidemenuinfo[3],500);
+    ui->old_menu_5->setInfo(sidemenuinfo[4],500);
+    ui->old_menu_6->setInfo(sidemenuinfo[5],500);
+} // 사이드 메뉴 출력
 
-    menu.load("/home/pi/kiosk/image/beverage/배칠러.png");
-    ui->mid_menu_6->setInfo(menu,400,"배칠러","3000");
+void MainWindow::old_displayBeverageMenu()
+{
+    menutype = BEVERAGE;
+    ui->old_menu_1->setInfo(beverageinfo[0],500);
+    ui->old_menu_2->setInfo(beverageinfo[1],500);
+    ui->old_menu_3->setInfo(beverageinfo[2],500);
+    ui->old_menu_4->setInfo(beverageinfo[3],500);
+    ui->old_menu_5->setInfo(beverageinfo[4],500);
+    ui->old_menu_6->setInfo(beverageinfo[5],500);
 } // 음료 메뉴 출력
 
 void MainWindow::showCheck()
@@ -355,7 +332,7 @@ void MainWindow::setBasketMargin()
 
 void MainWindow::setValue(QMap<QString, QString> value)
 {
-    struct basketlist basklist{"","","",0,1,0};      // 주문 내역 저장 구조체
+    basketlist basklist{"","","",0,1,0};      // 주문 내역 저장 구조체
     QMap<QString,QString>::iterator iter;
     iter = value.find("mainmenu");
     basklist.menuname = iter.value();
@@ -434,6 +411,30 @@ void MainWindow::deleteBasket(basket* tmp)
     setBasketMargin();
 } // 주문 내역 삭제
 
+void MainWindow::registMenuData()
+{
+    hamburgerinfo[0] = {"/home/pi/kiosk/image/burger/1955.png","1955","5000"};
+    hamburgerinfo[1] = {"/home/pi/kiosk/image/burger/더블1955.png","더블1955","5500"};
+    hamburgerinfo[2] = {"/home/pi/kiosk/image/burger/맥치킨.png","맥치킨","5500"};
+    hamburgerinfo[3] = {"/home/pi/kiosk/image/burger/맥치킨모짜렐라.png","맥치킨모짜렐라","5000"};
+    hamburgerinfo[4] = {"/home/pi/kiosk/image/burger/빅맥.png","빅맥","5000"};
+    hamburgerinfo[5] = {"/home/pi/kiosk/image/burger/상하이.png","상하이","4000"};
+
+    sidemenuinfo[0] = {"/home/pi/kiosk/image/sidemenu/후렌치후라이.png","후렌치후라이","1500"};
+    sidemenuinfo[1] = {"/home/pi/kiosk/image/sidemenu/맥너겟.png","맥너겟","1000"};
+    sidemenuinfo[2] = {"/home/pi/kiosk/image/sidemenu/스낵랩.png","스낵랩","2500"};
+    sidemenuinfo[3] = {"/home/pi/kiosk/image/sidemenu/치즈스틱.png","치즈스틱","1500"};
+    sidemenuinfo[4] = {"/home/pi/kiosk/image/sidemenu/애플파이.png","애플파이","1300"};
+    sidemenuinfo[5] = {"/home/pi/kiosk/image/sidemenu/콘파이.png","콘파이","1500"};
+
+    beverageinfo[0] = {"/home/pi/kiosk/image/beverage/콜라.png","콜라","1000"};
+    beverageinfo[1] = {"/home/pi/kiosk/image/beverage/스프라이트.png","스프라이트","1000"};
+    beverageinfo[2] = {"/home/pi/kiosk/image/beverage/환타.png","환타","1000"};
+    beverageinfo[3] = {"/home/pi/kiosk/image/beverage/원두커피.png","원두커피","2000"};
+    beverageinfo[4] = {"/home/pi/kiosk/image/beverage/아메리카노.png","아메리카노","1500"};
+    beverageinfo[5] = {"/home/pi/kiosk/image/beverage/배칠러.png","배칠러","3000"};
+} // 메뉴 정보 등록
+
 void MainWindow::on_young_hambugerpushbutton_clicked()
 {
     young_displayHambugerMenu();
@@ -494,3 +495,22 @@ void MainWindow::on_returnbutton_clicked()
         delete item->widget();
     } // layout 안의 위젯 삭제
 } // 주문 화면으로 다시 돌아감
+
+
+void MainWindow::on_old_hambugerpushbutton_clicked()
+{
+    ui->old_select->setCurrentIndex(1);
+    old_displayHambugerMenu();
+}
+
+void MainWindow::on_old_sidepushbutton_clicked()
+{
+    ui->old_select->setCurrentIndex(1);
+    old_displaySideMenu();
+}
+
+void MainWindow::on_old_beveragepushbutton_clicked()
+{
+    ui->old_select->setCurrentIndex(1);
+    old_displayBeverageMenu();
+}

@@ -20,6 +20,29 @@ popup::popup(QWidget *parent, QString mainmenu, QString menuprice, int menutype)
     info.insert("mainmenu",mainmenu);
     this->menuprice = menuprice.toInt();
     this->menutype = menutype;
+
+
+    hamburgerinfo[0] = {"/home/pi/kiosk/image/burger/1955.png","1955","5000"};
+    hamburgerinfo[1] = {"/home/pi/kiosk/image/burger/더블1955.png","더블1955","5500"};
+    hamburgerinfo[2] = {"/home/pi/kiosk/image/burger/맥치킨.png","맥치킨","5500"};
+    hamburgerinfo[3] = {"/home/pi/kiosk/image/burger/맥치킨모짜렐라.png","맥치킨모짜렐라","5000"};
+    hamburgerinfo[4] = {"/home/pi/kiosk/image/burger/빅맥.png","빅맥","5000"};
+    hamburgerinfo[5] = {"/home/pi/kiosk/image/burger/상하이.png","상하이","4000"};
+
+    sidemenuinfo[0] = {"/home/pi/kiosk/image/sidemenu/후렌치후라이.png","후렌치후라이","1500"};
+    sidemenuinfo[1] = {"/home/pi/kiosk/image/sidemenu/맥너겟.png","맥너겟","1000"};
+    sidemenuinfo[2] = {"/home/pi/kiosk/image/sidemenu/스낵랩.png","스낵랩","2500"};
+    sidemenuinfo[3] = {"/home/pi/kiosk/image/sidemenu/치즈스틱.png","치즈스틱","1500"};
+    sidemenuinfo[4] = {"/home/pi/kiosk/image/sidemenu/애플파이.png","애플파이","1300"};
+    sidemenuinfo[5] = {"/home/pi/kiosk/image/sidemenu/콘파이.png","콘파이","1500"};
+
+    beverageinfo[0] = {"/home/pi/kiosk/image/beverage/콜라.png","콜라","1000"};
+    beverageinfo[1] = {"/home/pi/kiosk/image/beverage/스프라이트.png","스프라이트","1000"};
+    beverageinfo[2] = {"/home/pi/kiosk/image/beverage/환타.png","환타","1000"};
+    beverageinfo[3] = {"/home/pi/kiosk/image/beverage/원두커피.png","원두커피","2000"};
+    beverageinfo[4] = {"/home/pi/kiosk/image/beverage/아메리카노.png","아메리카노","1500"};
+    beverageinfo[5] = {"/home/pi/kiosk/image/beverage/배칠러.png","배칠러","3000"};
+
     count = 1;
 }
 
@@ -50,46 +73,24 @@ void popup::displaySideMenu()
 {
     ui->label->setText("사이드메뉴는 어떤 것을 드시겠습니까?");
 
-    menu.load("/home/pi/kiosk/image/sidemenu/콘파이.png");
-    ui->pmenu_1->setInfo(menu,300,"콘파이","1500");
-
-    menu.load("/home/pi/kiosk/image/sidemenu/맥너겟.png");
-    ui->pmenu_2->setInfo(menu,300,"맥너겟","1000");
-
-    menu.load("/home/pi/kiosk/image/sidemenu/스낵랩.png");
-    ui->pmenu_3->setInfo(menu,300,"스낵랩","2500");
-
-    menu.load("/home/pi/kiosk/image/sidemenu/치즈스틱.png");
-    ui->pmenu_4->setInfo(menu,300,"치즈스틱","1500");
-
-    menu.load("/home/pi/kiosk/image/sidemenu/애플파이.png");
-    ui->pmenu_5->setInfo(menu,300,"애플파이","1350");
-
-    menu.load("/home/pi/kiosk/image/sidemenu/후렌치후라이.png");
-    ui->pmenu_6->setInfo(menu,300,"후렌치후라이","1000");
-} // 사이드메뉴 선택 화면 출력
+    ui->pmenu_1->setInfo(sidemenuinfo[0],300);
+    ui->pmenu_2->setInfo(sidemenuinfo[1],300);
+    ui->pmenu_3->setInfo(sidemenuinfo[2],300);
+    ui->pmenu_4->setInfo(sidemenuinfo[3],300);
+    ui->pmenu_5->setInfo(sidemenuinfo[4],300);
+    ui->pmenu_6->setInfo(sidemenuinfo[5],300);
+} // 사이드메뉴 선택 화면 출력qt
 
 void popup::displayBeverageMenu()
 {
     ui->label->setText("음료는 어떤 것을 드시겠습니까?");
 
-    menu.load("/home/pi/kiosk/image/beverage/콜라.png");
-    ui->pmenu_1->setInfo(menu,300,"콜라","1000");
-
-    menu.load("/home/pi/kiosk/image/beverage/스프라이트.png");
-    ui->pmenu_2->setInfo(menu,300,"스프라이트","1000");
-
-    menu.load("/home/pi/kiosk/image/beverage/환타.png");
-    ui->pmenu_3->setInfo(menu,300,"환타","1000");
-
-    menu.load("/home/pi/kiosk/image/beverage/원두커피.png");
-    ui->pmenu_4->setInfo(menu,300,"원두커피","2000");
-
-    menu.load("/home/pi/kiosk/image/beverage/아메리카노.png");
-    ui->pmenu_5->setInfo(menu,300,"아메리카노","1500");
-
-    menu.load("/home/pi/kiosk/image/beverage/배칠러.png");
-    ui->pmenu_6->setInfo(menu,300,"배칠러","3500");
+    ui->pmenu_1->setInfo(beverageinfo[0],300);
+    ui->pmenu_2->setInfo(beverageinfo[1],300);
+    ui->pmenu_3->setInfo(beverageinfo[2],300);
+    ui->pmenu_4->setInfo(beverageinfo[3],300);
+    ui->pmenu_5->setInfo(beverageinfo[4],300);
+    ui->pmenu_6->setInfo(beverageinfo[5],300);
 } // 음료 선택 화면 출력
 
 void popup::checkMenu()
@@ -103,34 +104,43 @@ void popup::checkMenu()
     iter = info.find("beverage");
     QString bev = iter.value();
 
+    menuinfo tmp;
+
     if(menutype == HAMBURGER)
     {
         if(side == "")
         {
-            menu.load("/home/pi/kiosk/image/burger/" + name + ".png");
-            ui->checkmenu_2->setInfo(menu, 300, name, "");
+            tmp.image = "/home/pi/kiosk/image/burger/" + name + ".png";
+            tmp.menuname = name;
+            tmp.price = "";
+            ui->checkmenu_2->setInfo(tmp, 300);
             finalprice = menuprice;
         }
         else
         {
-            menu.load("/home/pi/kiosk/image/burger/" + name + ".png");
-            ui->checkmenu_2->setInfo(menu, 300, name, "");
-            menu.load("/home/pi/kiosk/image/sidemenu/" + side + ".png");
-            ui->checkmenu_1->setInfo(menu, 300, side, "");
-            menu.load("/home/pi/kiosk/image/beverage/" + bev + ".png");
-            ui->checkmenu_3->setInfo(menu, 300, bev, "");
+            tmp.image = "/home/pi/kiosk/image/burger/" + name + ".png";
+            tmp.menuname = name;
+            ui->checkmenu_2->setInfo(tmp, 300);
+            tmp.image = "/home/pi/kiosk/image/sidemenu/" + side + ".png";
+            tmp.menuname = side;
+            ui->checkmenu_1->setInfo(tmp, 300);
+            tmp.image = "/home/pi/kiosk/image/beverage/" + bev + ".png";
+            tmp.menuname = bev;
+            ui->checkmenu_3->setInfo(tmp, 300);
         }
     } // 메뉴 종류가 햄버거인 경우
     else if(menutype == SIDE)
     {
-        menu.load("/home/pi/kiosk/image/sidemenu/" + name + ".png");
-        ui->checkmenu_2->setInfo(menu, 500, name, "");
+        tmp.image = "/home/pi/kiosk/image/sidemenu/" + side + ".png";
+        tmp.menuname = side;
+        ui->checkmenu_2->setInfo(tmp, 300);
         finalprice = menuprice;
     } // 사이드 메뉴인 경우
     else if(menutype == BEVERAGE)
     {
-        menu.load("/home/pi/kiosk/image/beverage/" + name + ".png");
-        ui->checkmenu_2->setInfo(menu, 500, name, "");
+        tmp.image = "/home/pi/kiosk/image/beverage/" + bev + ".png";
+        tmp.menuname = bev;
+        ui->checkmenu_2->setInfo(tmp, 300);
         finalprice = menuprice;
     } // 음료인 경우
 } // 최종 확인 화면 출력
