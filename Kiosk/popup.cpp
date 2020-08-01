@@ -113,9 +113,9 @@ void popup::checkMenu()
             tmp.image = "/home/pi/kiosk/image/burger/" + name + ".png";
             tmp.menuname = name;
             tmp.price = "";
-            ui->checkmenu_2->setInfo(tmp, 300);
+            ui->checkmenu_2->setInfo(tmp, 600);
             finalprice = menuprice;
-        }
+        } // 단품을 선택했을 경우
         else
         {
             tmp.image = "/home/pi/kiosk/image/burger/" + name + ".png";
@@ -127,20 +127,20 @@ void popup::checkMenu()
             tmp.image = "/home/pi/kiosk/image/beverage/" + bev + ".png";
             tmp.menuname = bev;
             ui->checkmenu_3->setInfo(tmp, 300);
-        }
+        } // 세트를 선택했을 경우
     } // 메뉴 종류가 햄버거인 경우
     else if(menutype == SIDE)
     {
-        tmp.image = "/home/pi/kiosk/image/sidemenu/" + side + ".png";
-        tmp.menuname = side;
-        ui->checkmenu_2->setInfo(tmp, 300);
+        tmp.image = "/home/pi/kiosk/image/sidemenu/" + name + ".png";
+        tmp.menuname = name;
+        ui->checkmenu_2->setInfo(tmp, 600);
         finalprice = menuprice;
     } // 사이드 메뉴인 경우
     else if(menutype == BEVERAGE)
     {
-        tmp.image = "/home/pi/kiosk/image/beverage/" + bev + ".png";
-        tmp.menuname = bev;
-        ui->checkmenu_2->setInfo(tmp, 300);
+        tmp.image = "/home/pi/kiosk/image/beverage/" + name + ".png";
+        tmp.menuname = name;
+        ui->checkmenu_2->setInfo(tmp, 600);
         finalprice = menuprice;
     } // 음료인 경우
 } // 최종 확인 화면 출력
@@ -163,7 +163,7 @@ void popup::setpopup(MyMenu *menu)
         checkMenu();
     }
 
-} // 팝업 화면 매커니즘
+} // 세트 선택 시 진행되는 메커니즘
 
 void popup::displayWarning()
 {

@@ -23,9 +23,6 @@ public:
     void setInfo(menuinfo info, int pixmapsize);  // 메뉴 사진, 이름, 가격 등록
     QString getName();      // 메뉴 이름 반환
     QString getPrice();     // 메뉴 가격 반환
-
-
-
 private:
     Ui::MyMenu *ui;
     QString name;           // 메뉴 이름

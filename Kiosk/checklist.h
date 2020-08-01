@@ -15,7 +15,14 @@ public:
     explicit checklist(QWidget *parent = nullptr, QString ="",
                        QString = "", QString = "", int = 0, int = 0, int = 0);
     ~checklist();
-
+    QString getName();
+    QString getSide();
+    QString getBeverage();
+    int getCount();
+private slots:
+    void on_cancelbutton_clicked();
+signals:
+    void deletelist(checklist* tmp);                // 주문 내역 삭제
 private:
     Ui::checklist *ui;
     QString mainmenu, side, beverage;

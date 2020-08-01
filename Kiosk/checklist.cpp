@@ -48,6 +48,27 @@ checklist::~checklist()
     delete ui;
 }
 
+QString checklist::getName()
+{
+    return mainmenu;
+}
 
+QString checklist::getSide()
+{
+    return side;
+}
 
+QString checklist::getBeverage()
+{
+    return beverage;
+}
 
+int checklist::getCount()
+{
+    return count;
+}
+void checklist::on_cancelbutton_clicked()
+{
+    this->close();
+    emit deletelist(this);        // 주문 삭제 시그널 전송
+}

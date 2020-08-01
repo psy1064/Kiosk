@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -21,9 +22,10 @@ class Ui_checklist
 {
 public:
     QGridLayout *gridLayout;
-    QLabel *mainmenu;
     QLabel *price;
     QLabel *image;
+    QLabel *mainmenu;
+    QPushButton *cancelbutton;
 
     void setupUi(QWidget *checklist)
     {
@@ -32,23 +34,15 @@ public:
         checklist->resize(468, 300);
         gridLayout = new QGridLayout(checklist);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        mainmenu = new QLabel(checklist);
-        mainmenu->setObjectName(QStringLiteral("mainmenu"));
+        price = new QLabel(checklist);
+        price->setObjectName(QStringLiteral("price"));
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(mainmenu->sizePolicy().hasHeightForWidth());
-        mainmenu->setSizePolicy(sizePolicy);
-        QFont font;
-        font.setPointSize(20);
-        mainmenu->setFont(font);
-
-        gridLayout->addWidget(mainmenu, 0, 0, 1, 1);
-
-        price = new QLabel(checklist);
-        price->setObjectName(QStringLiteral("price"));
         sizePolicy.setHeightForWidth(price->sizePolicy().hasHeightForWidth());
         price->setSizePolicy(sizePolicy);
+        QFont font;
+        font.setPointSize(20);
         price->setFont(font);
 
         gridLayout->addWidget(price, 1, 0, 1, 1);
@@ -59,6 +53,19 @@ public:
 
         gridLayout->addWidget(image, 0, 1, 2, 1);
 
+        mainmenu = new QLabel(checklist);
+        mainmenu->setObjectName(QStringLiteral("mainmenu"));
+        sizePolicy.setHeightForWidth(mainmenu->sizePolicy().hasHeightForWidth());
+        mainmenu->setSizePolicy(sizePolicy);
+        mainmenu->setFont(font);
+
+        gridLayout->addWidget(mainmenu, 0, 0, 1, 1);
+
+        cancelbutton = new QPushButton(checklist);
+        cancelbutton->setObjectName(QStringLiteral("cancelbutton"));
+
+        gridLayout->addWidget(cancelbutton, 0, 2, 2, 1);
+
 
         retranslateUi(checklist);
 
@@ -68,9 +75,10 @@ public:
     void retranslateUi(QWidget *checklist)
     {
         checklist->setWindowTitle(QApplication::translate("checklist", "Form", nullptr));
-        mainmenu->setText(QApplication::translate("checklist", "\353\262\204\352\261\260\354\235\264\353\246\204 x \352\260\257\354\210\230", nullptr));
         price->setText(QApplication::translate("checklist", "\352\260\200\352\262\251", nullptr));
         image->setText(QApplication::translate("checklist", "\353\262\204\352\261\260\354\202\254\354\247\204", nullptr));
+        mainmenu->setText(QApplication::translate("checklist", "\353\262\204\352\261\260\354\235\264\353\246\204 x \352\260\257\354\210\230", nullptr));
+        cancelbutton->setText(QApplication::translate("checklist", "\354\267\250\354\206\214", nullptr));
     } // retranslateUi
 
 };

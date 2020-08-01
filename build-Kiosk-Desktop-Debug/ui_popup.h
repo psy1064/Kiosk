@@ -69,7 +69,7 @@ public:
     {
         if (popup->objectName().isEmpty())
             popup->setObjectName(QStringLiteral("popup"));
-        popup->resize(800, 751);
+        popup->resize(800, 750);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);

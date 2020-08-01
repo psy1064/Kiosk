@@ -52,6 +52,7 @@ public:
     void old_displayHambugerMenu();
     void old_displaySideMenu();
     void old_displayBeverageMenu();
+    void old_menu_detail(MyMenu* menu);
 
 private slots:
     void setValue(QMap<QString, QString>);  // popup에서 주문한 내역을 받아옴
@@ -62,6 +63,7 @@ private slots:
     void on_showkakaobutton_clicked();      // 카카오톡 챗봇 이용을 위한 핸드폰 번호 입력 팝업 띄움
     void on_returnbutton_clicked();         // 다시 고를래 버튼 클릭 시
     void deleteBasket(basket* tmp);         // 주문 내역 삭제
+    void deletelist(checklist* tmp);         // 주문 내역 삭제
     void on_finishButton_clicked();         // 주문완료 버튼 클릭
 
     /****************************** 중년층 키오스크 화면 ******************************/
@@ -78,6 +80,8 @@ private slots:
     void on_old_hambugerpushbutton_clicked();
     void on_old_sidepushbutton_clicked();
     void on_old_beveragepushbutton_clicked();
+    void on_prepushbutton_clicked();
+    void on_old_finishpushbutton_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -85,7 +89,7 @@ private:
     kakaopopup* kakaopopupwindows;  // 카톡 번호 입력 용 팝업 창
     QTimer* timer;
     QTimer* detecthumantimer;              // 타이머
-    int timecount, humancount;              // 타이머 시간 초용
+    int timecount, humancount;             // 타이머 시간 초용
     QPixmap menu;               // 메뉴 사진 설정 용
     basket* bask;               // 주문 내역
     checklist* check;           // 주문 확인 용 체크 리스트

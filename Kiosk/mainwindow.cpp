@@ -306,6 +306,7 @@ void MainWindow::showCheck()
     {
         check = new checklist(this,basketvector[i].menuname,basketvector[i].sidemenu,basketvector[i].beverage,
                               basketvector[i].count, basketvector[i].price, basketvector[i].menutype);
+        connect(check, SIGNAL(deletelist(checklist*)), this, SLOT(deletelist(checklist*)));
         check->setMinimumSize(QApplication::desktop()->width()-80,size);
         ui->checklayout->addWidget(check,0,Qt::AlignTop|Qt::AlignLeft);
     }
@@ -411,6 +412,28 @@ void MainWindow::deleteBasket(basket* tmp)
     setBasketMargin();
 } // 주문 내역 삭제
 
+void MainWindow::deletelist(checklist* tmp)
+{
+    QString menuname = tmp->getName();
+    QString side = tmp->getSide();
+    QString beverage = tmp->getBeverage();
+    int count = tmp->getCount();
+    for(int i = 0;i < baskcount ;i++)
+    {
+        if(menuname == basketvector[i].menuname &&
+                side == basketvector[i].sidemenu &&
+                beverage == basketvector[i].beverage &&
+                count == basketvector[i].count)
+        {
+            finalprice -= basketvector[i].price;
+            basketvector.remove(i);
+            break;
+        }
+    } // 메뉴 이름을 가진 정보 제거
+    baskcount --;
+    ui->pricelabel->setText("총 가격 : " + QString::number(finalprice));
+    ui->basketlayout->setContentsMargins(0,0,0,check->height()*(5-baskcount));
+} // 주문 내역 삭제
 void MainWindow::registMenuData()
 {
     hamburgerinfo[0] = {"/home/pi/kiosk/image/burger/1955.png","1955","5000"};
@@ -484,33 +507,56 @@ void MainWindow::on_showkakaobutton_clicked()
     // 팝업 윈도우를 화면의 가운데로 위치시킴
     kakaopopupwindows->show();
     connect(kakaopopupwindows, SIGNAL(kakaoNumber(QString)), this, SLOT(setPhoneNumber(QString)));
-} // 카카오톡 챗봇 이용을 위한 핸드폰 번호 입력 팝업 추가
+} // 카카오톡 알림톡 이용을 위한 핸드폰 번호 입력 팝업 추가
 
 void MainWindow::on_returnbutton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(1);
-    QLayoutItem* item;
-    while((item = ui->checklayout->takeAt(0)))
+    if(age!=AGE_OLD)
     {
-        delete item->widget();
-    } // layout 안의 위젯 삭제
+        ui->stackedWidget->setCurrentIndex(1);
+        QLayoutItem* item;
+        while((item = ui->checklayout->takeAt(0)))
+        {
+            delete item->widget();
+        } // layout 안의 위젯 삭제
+    }
+    else
+    {
+        ui->stackedWidget->setCurrentIndex(2);
+
+    }
+
 } // 주문 화면으로 다시 돌아감
 
 
 void MainWindow::on_old_hambugerpushbutton_clicked()
 {
+    ui->old_title->setText("원하는 햄버거를 선택해주세요");
     ui->old_select->setCurrentIndex(1);
     old_displayHambugerMenu();
 }
 
 void MainWindow::on_old_sidepushbutton_clicked()
 {
+    ui->old_title->setText("원하는 곁들이 음식을 선택해주세요");
     ui->old_select->setCurrentIndex(1);
     old_displaySideMenu();
 }
 
 void MainWindow::on_old_beveragepushbutton_clicked()
 {
+    ui->old_title->setText("원하는 음료를 선택해주세요");
     ui->old_select->setCurrentIndex(1);
     old_displayBeverageMenu();
+}
+
+void MainWindow::on_prepushbutton_clicked()
+{
+    ui->old_select->setCurrentIndex(0);
+}
+
+void MainWindow::on_old_finishpushbutton_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(CHECK);
+    showCheck();
 }
