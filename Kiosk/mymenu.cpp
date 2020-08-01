@@ -22,7 +22,7 @@ void MyMenu::setInfo(menuinfo info, int pixmapsize)
     this->price = info.price;
     ui->label->setPixmap(pixmap.scaled(pixmapsize,pixmapsize,Qt::KeepAspectRatio));
     ui->label_2->setText(name);
-    ui->label_3->setText(price + "원");
+    ui->label_3->setText(price);
     ui->label_2->setFont(font);
     ui->label_3->setFont(font);
 } // 메뉴 사진, 이름, 가격 설정

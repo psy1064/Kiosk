@@ -414,6 +414,7 @@ void MainWindow::deleteBasket(basket* tmp)
 
 void MainWindow::deletelist(checklist* tmp)
 {
+    int size = (QApplication::desktop()->height()-300) / 5;
     QString menuname = tmp->getName();
     QString side = tmp->getSide();
     QString beverage = tmp->getBeverage();
@@ -432,7 +433,13 @@ void MainWindow::deletelist(checklist* tmp)
     } // 메뉴 이름을 가진 정보 제거
     baskcount --;
     ui->pricelabel->setText("총 가격 : " + QString::number(finalprice));
-    ui->basketlayout->setContentsMargins(0,0,0,check->height()*(5-baskcount));
+    if(baskcount == 0)
+    {
+        setBasketMargin();
+        on_returnbutton_clicked();
+    }
+    ui->checklayout->setContentsMargins(0,0,0,size*(5-baskcount));
+
 } // 주문 내역 삭제
 void MainWindow::registMenuData()
 {
@@ -511,21 +518,27 @@ void MainWindow::on_showkakaobutton_clicked()
 
 void MainWindow::on_returnbutton_clicked()
 {
-    if(age!=AGE_OLD)
+    QLayoutItem* item;
+    while((item = ui->checklayout->takeAt(0)))
     {
+        delete item->widget();
+    } // layout 안의 위젯 삭제
+    while((item = ui->basketlayout->takeAt(0)))
+    {
+        delete item->widget();
+    } // layout 안의 위젯 삭제
+    if(age!=AGE_OLD) {
         ui->stackedWidget->setCurrentIndex(1);
-        QLayoutItem* item;
-        while((item = ui->checklayout->takeAt(0)))
+        for(int i = 0 ; i < basketvector.size() ; i++)
         {
-            delete item->widget();
-        } // layout 안의 위젯 삭제
+            bask = new basket(this, basketvector[i].menuname,basketvector[i].sidemenu,basketvector[i].beverage,QString::number(basketvector[i].count));      // 주문내역 위젯 생성
+            connect(bask, SIGNAL(deleteBasket(basket*)), this, SLOT(deleteBasket(basket*)));  // 주문내역에서 삭제버튼이나 갯수가 0이 됐을때 deleteBasket실행
+            bask->setMinimumSize(QApplication::desktop()->width()-80,80);       // 위젯 크기 설정
+            ui->basketlayout->addWidget(bask,0,Qt::AlignTop|Qt::AlignLeft);     // 주문내역 위젯 추가
+            setBasketMargin();
+        }
     }
-    else
-    {
-        ui->stackedWidget->setCurrentIndex(2);
-
-    }
-
+    else                ui->stackedWidget->setCurrentIndex(2);
 } // 주문 화면으로 다시 돌아감
 
 

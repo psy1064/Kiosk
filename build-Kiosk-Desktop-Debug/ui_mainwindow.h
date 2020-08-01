@@ -97,7 +97,6 @@ public:
     QLabel *label_3;
     QPushButton *pushButton;
     QVBoxLayout *checklayout;
-    QHBoxLayout *horizontalLayout_5;
     QLabel *pricelabel;
     QHBoxLayout *horizontalLayout_6;
     QPushButton *showkakaobutton;
@@ -113,7 +112,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(734, 923);
+        MainWindow->resize(734, 964);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -632,9 +631,6 @@ public:
 
         verticalLayout_4->addLayout(checklayout);
 
-        horizontalLayout_5 = new QHBoxLayout();
-        horizontalLayout_5->setSpacing(0);
-        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
         pricelabel = new QLabel(checkpage);
         pricelabel->setObjectName(QStringLiteral("pricelabel"));
         sizePolicy4.setHeightForWidth(pricelabel->sizePolicy().hasHeightForWidth());
@@ -642,10 +638,7 @@ public:
         pricelabel->setMinimumSize(QSize(0, 100));
         pricelabel->setFont(font1);
 
-        horizontalLayout_5->addWidget(pricelabel);
-
-
-        verticalLayout_4->addLayout(horizontalLayout_5);
+        verticalLayout_4->addWidget(pricelabel);
 
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setSpacing(6);
@@ -740,7 +733,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(3);
         menudisplaywidget->setCurrentIndex(1);
 
 

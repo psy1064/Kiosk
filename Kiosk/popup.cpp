@@ -113,7 +113,7 @@ void popup::checkMenu()
             tmp.image = "/home/pi/kiosk/image/burger/" + name + ".png";
             tmp.menuname = name;
             tmp.price = "";
-            ui->checkmenu_2->setInfo(tmp, 600);
+            ui->checkmenu_2->setInfo(tmp, 550);
             finalprice = menuprice;
         } // 단품을 선택했을 경우
         else
@@ -133,14 +133,14 @@ void popup::checkMenu()
     {
         tmp.image = "/home/pi/kiosk/image/sidemenu/" + name + ".png";
         tmp.menuname = name;
-        ui->checkmenu_2->setInfo(tmp, 600);
+        ui->checkmenu_2->setInfo(tmp, 550);
         finalprice = menuprice;
     } // 사이드 메뉴인 경우
     else if(menutype == BEVERAGE)
     {
         tmp.image = "/home/pi/kiosk/image/beverage/" + name + ".png";
         tmp.menuname = name;
-        ui->checkmenu_2->setInfo(tmp, 600);
+        ui->checkmenu_2->setInfo(tmp, 550);
         finalprice = menuprice;
     } // 음료인 경우
 } // 최종 확인 화면 출력
