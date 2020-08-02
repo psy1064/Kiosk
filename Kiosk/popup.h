@@ -18,7 +18,8 @@ public:
     explicit popup(QWidget *parent = nullptr,
                    QString mainmenu = "",
                    QString menuprice = "",
-                   int menutype = 1);
+                   int menutype = 1,
+                   int age = 0);
     ~popup();
     void initstackwideget();        // 첫 화면으로 설정
     void displaySideMenu();         // 사이드메뉴 보여줌
@@ -38,19 +39,30 @@ private slots:
     void on_plusButton_clicked();
     void on_ordercancel_clicked();
 
+    void on_count1button_clicked();
+
+    void on_count2button_clicked();
+
+    void on_count3button_clicked();
+
+    void on_count4button_clicked();
+
+    void on_count5button_clicked();
+
 signals:
     void sendValue(QMap<QString, QString> value);         // mainwindow로 주문 정보 전송
 private:
     Ui::popup *ui;
     QPixmap menu;
     int state;  // 현재 팝업 윈도우의 위치
+    int age;
     int menuprice, finalprice;  // 세트 가격 저장용
     QMap<QString, QString> info;  // 주문 정보
     QMap<QString, QString>::iterator iter;
     int menutype;                   // 메뉴 종류
     int count;                      // 메뉴 갯수
     enum {HAMBURGER=1, SIDE, BEVERAGE};
-
+    enum {AGE_YOUNG=1, AGE_MIDDLE, AGE_OLD};     // 나이
     menuinfo hamburgerinfo[6], sidemenuinfo[6], beverageinfo[6];
 };
 

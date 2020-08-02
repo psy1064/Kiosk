@@ -49,11 +49,21 @@ public:
     MyMenu *checkmenu_1;
     MyMenu *checkmenu_2;
     MyMenu *checkmenu_3;
-    QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
+    QStackedWidget *selectCount;
+    QWidget *page_7;
+    QGridLayout *gridLayout_4;
+    QHBoxLayout *horizontalLayout_2;
     QPushButton *minusButton;
     QLabel *countLabel;
     QPushButton *plusButton;
+    QWidget *page_8;
+    QHBoxLayout *horizontalLayout_4;
+    QPushButton *count1button;
+    QPushButton *count2button;
+    QPushButton *count3button;
+    QPushButton *count4button;
+    QPushButton *count5button;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *rightbutton;
     QPushButton *rollbackbutton;
@@ -69,7 +79,7 @@ public:
     {
         if (popup->objectName().isEmpty())
             popup->setObjectName(QStringLiteral("popup"));
-        popup->resize(800, 750);
+        popup->resize(800, 800);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -188,8 +198,6 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout);
 
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         label_2 = new QLabel(page_3);
         label_2->setObjectName(QStringLiteral("label_2"));
         QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Minimum);
@@ -200,9 +208,17 @@ public:
         label_2->setFont(font);
         label_2->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout_2->addWidget(label_2);
+        verticalLayout_2->addWidget(label_2);
 
-        minusButton = new QPushButton(page_3);
+        selectCount = new QStackedWidget(page_3);
+        selectCount->setObjectName(QStringLiteral("selectCount"));
+        page_7 = new QWidget();
+        page_7->setObjectName(QStringLiteral("page_7"));
+        gridLayout_4 = new QGridLayout(page_7);
+        gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        minusButton = new QPushButton(page_7);
         minusButton->setObjectName(QStringLiteral("minusButton"));
         QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy3.setHorizontalStretch(0);
@@ -215,7 +231,7 @@ public:
 
         horizontalLayout_2->addWidget(minusButton);
 
-        countLabel = new QLabel(page_3);
+        countLabel = new QLabel(page_7);
         countLabel->setObjectName(QStringLiteral("countLabel"));
         QSizePolicy sizePolicy4(QSizePolicy::Minimum, QSizePolicy::Minimum);
         sizePolicy4.setHorizontalStretch(0);
@@ -228,7 +244,7 @@ public:
 
         horizontalLayout_2->addWidget(countLabel);
 
-        plusButton = new QPushButton(page_3);
+        plusButton = new QPushButton(page_7);
         plusButton->setObjectName(QStringLiteral("plusButton"));
         sizePolicy3.setHeightForWidth(plusButton->sizePolicy().hasHeightForWidth());
         plusButton->setSizePolicy(sizePolicy3);
@@ -239,7 +255,81 @@ public:
         horizontalLayout_2->addWidget(plusButton);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_2);
+        gridLayout_4->addLayout(horizontalLayout_2, 0, 0, 1, 1);
+
+        selectCount->addWidget(page_7);
+        page_8 = new QWidget();
+        page_8->setObjectName(QStringLiteral("page_8"));
+        horizontalLayout_4 = new QHBoxLayout(page_8);
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        count1button = new QPushButton(page_8);
+        count1button->setObjectName(QStringLiteral("count1button"));
+        count1button->setStyleSheet(QLatin1String("background-color: white;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"padding: 6px;\n"
+"color:black;\n"
+"border: 2px solid black;\n"
+"font: 75 28pt \"PibotoLt\";"));
+
+        horizontalLayout_4->addWidget(count1button);
+
+        count2button = new QPushButton(page_8);
+        count2button->setObjectName(QStringLiteral("count2button"));
+        count2button->setStyleSheet(QLatin1String("background-color: white;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"padding: 6px;\n"
+"color:black;\n"
+"border: 2px solid black;\n"
+"font: 75 28pt \"PibotoLt\";"));
+
+        horizontalLayout_4->addWidget(count2button);
+
+        count3button = new QPushButton(page_8);
+        count3button->setObjectName(QStringLiteral("count3button"));
+        count3button->setStyleSheet(QLatin1String("background-color: white;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"padding: 6px;\n"
+"color:black;\n"
+"border: 2px solid black;\n"
+"font: 75 28pt \"PibotoLt\";"));
+
+        horizontalLayout_4->addWidget(count3button);
+
+        count4button = new QPushButton(page_8);
+        count4button->setObjectName(QStringLiteral("count4button"));
+        count4button->setStyleSheet(QLatin1String("background-color: white;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"padding: 6px;\n"
+"color:black;\n"
+"border: 2px solid black;\n"
+"font: 75 28pt \"PibotoLt\";"));
+
+        horizontalLayout_4->addWidget(count4button);
+
+        count5button = new QPushButton(page_8);
+        count5button->setObjectName(QStringLiteral("count5button"));
+        count5button->setStyleSheet(QLatin1String("background-color: white;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"padding: 6px;\n"
+"color:black;\n"
+"border: 2px solid black;\n"
+"font: 75 28pt \"PibotoLt\";"));
+
+        horizontalLayout_4->addWidget(count5button);
+
+        selectCount->addWidget(page_8);
+
+        verticalLayout_2->addWidget(selectCount);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
@@ -355,8 +445,13 @@ public:
         minusButton->setText(QString());
         countLabel->setText(QApplication::translate("popup", "1", nullptr));
         plusButton->setText(QString());
+        count1button->setText(QApplication::translate("popup", "1\352\260\234", nullptr));
+        count2button->setText(QApplication::translate("popup", "2\352\260\234", nullptr));
+        count3button->setText(QApplication::translate("popup", "3\352\260\234", nullptr));
+        count4button->setText(QApplication::translate("popup", "4\352\260\234", nullptr));
+        count5button->setText(QApplication::translate("popup", "5\352\260\234", nullptr));
         rightbutton->setText(QApplication::translate("popup", "\353\247\236\354\225\204\354\232\224", nullptr));
-        rollbackbutton->setText(QApplication::translate("popup", "\353\213\244\354\213\234 \352\263\240\353\245\274\353\236\230", nullptr));
+        rollbackbutton->setText(QApplication::translate("popup", "\353\213\244\354\213\234 \354\204\240\355\203\235", nullptr));
         label_3->setText(QApplication::translate("popup", "\354\243\274\353\254\270 \353\202\264\354\227\255\354\235\200 5\352\260\234\353\245\274 \353\204\230\352\270\270 \354\210\230 \354\227\206\354\212\265\353\213\210\353\213\244.", nullptr));
         okbutton->setText(QApplication::translate("popup", "\354\225\214\352\262\240\354\212\265\353\213\210\353\213\244", nullptr));
         ordercancel->setText(QApplication::translate("popup", "\354\243\274\353\254\270 \354\267\250\354\206\214", nullptr));

@@ -1,7 +1,7 @@
 #include "popup.h"
 #include "ui_popup.h"
 #include <QDebug>
-popup::popup(QWidget *parent, QString mainmenu, QString menuprice, int menutype) :
+popup::popup(QWidget *parent, QString mainmenu, QString menuprice, int menutype, int age) :
     QWidget(parent),
     ui(new Ui::popup)
 {
@@ -20,7 +20,7 @@ popup::popup(QWidget *parent, QString mainmenu, QString menuprice, int menutype)
     info.insert("mainmenu",mainmenu);
     this->menuprice = menuprice.toInt();
     this->menutype = menutype;
-
+    this->age = age;
 
     hamburgerinfo[0] = {"/home/pi/kiosk/image/burger/1955.png","1955","5000"};
     hamburgerinfo[1] = {"/home/pi/kiosk/image/burger/더블1955.png","더블1955","5500"};
@@ -44,6 +44,9 @@ popup::popup(QWidget *parent, QString mainmenu, QString menuprice, int menutype)
     beverageinfo[5] = {"/home/pi/kiosk/image/beverage/배칠러.png","배칠러","3000"};
 
     count = 1;
+    ui->checkmenu_1->hidePrice();
+    ui->checkmenu_2->hidePrice();
+    ui->checkmenu_3->hidePrice();
 }
 
 popup::~popup()
@@ -143,6 +146,13 @@ void popup::checkMenu()
         ui->checkmenu_2->setInfo(tmp, 550);
         finalprice = menuprice;
     } // 음료인 경우
+    if(age != AGE_OLD)
+    {
+        ui->selectCount->setCurrentIndex(0);
+    }
+    else {
+        ui->selectCount->setCurrentIndex(1);
+    }
 } // 최종 확인 화면 출력
 
 void popup::setpopup(MyMenu *menu)
@@ -253,4 +263,38 @@ void popup::on_ordercancel_clicked()
 {
     this->close();
     qDebug() << "h";
+}
+
+void popup::on_count1button_clicked()
+{
+    count = 1;
+    QPalette pal = ui->count1button->palette();
+    pal.setColor(QPalette::Button, QColor(Qt::blue));
+    ui->count1button->setAutoFillBackground(true);
+    ui->count1button->setPalette(pal);
+    ui->count1button->update();
+}
+
+void popup::on_count2button_clicked()
+{
+    count = 2;
+    ui->count2button->setCheckable(true);
+}
+
+void popup::on_count3button_clicked()
+{
+    count = 3;
+    ui->count3button->setCheckable(true);
+}
+
+void popup::on_count4button_clicked()
+{
+    count = 4;
+    ui->count4button->setCheckable(true);
+}
+
+void popup::on_count5button_clicked()
+{
+    count = 5;
+    ui->count5button->setCheckable(true);
 }

@@ -35,4 +35,9 @@ QString MyMenu::getName()
 QString MyMenu::getPrice()
 {
     return price;
+}
+
+void MyMenu::hidePrice()
+{
+    ui->label_3->hide();
 } // 메뉴 가격 반환

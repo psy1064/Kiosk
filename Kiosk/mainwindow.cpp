@@ -37,14 +37,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->young_menu_9->installEventFilter(this);       // 메뉴에 이벤트 추가
 
     ordernumber = 1;
-    init();     // 화면 초기화
 
-    /*
-    detecthumantimer = new QTimer(this);
-    connect(detecthumantimer,SIGNAL(timeout()),this,SLOT(detecthuman()));
-    timer->start(1000);
-    키오스크에 사람이 왔는지 확인하는 타이머
-    */
+    init();     // 화면 초기화
+    process_tcpInit();      // 프로세스 소켓 통신
 }
 
 MainWindow::~MainWindow()
@@ -148,7 +143,7 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 void MainWindow::init()
 {
     ui->stackedWidget->setCurrentIndex(0);
-
+    ui->loadingText->setText("매장에 오신것을 환영합니다.");
     baskcount = 0;          // 주문 내역 수 초기화
     finalprice = 0;         // 최종 주문 가격 초기화
     timecount = 3;          // 타이머 초기화
@@ -156,33 +151,19 @@ void MainWindow::init()
     ui->basketlayout->setContentsMargins(0,0,0,400);
     basketvector.clear();   // 주문 내역 저장 구조체 벡터 초기화
     phonenumber = "";       // 핸드폰 번호 정보 초기화
+    // 키오스크에 사람이 왔는지 확인하는 타이머
 } // 초기화
 
 void MainWindow::detectFace()
 {
-    age = AGE_OLD;
-    switch(age)
-    {
-    case AGE_YOUNG:
-        ui->stackedWidget->setCurrentIndex(1);
-        ui->menudisplaywidget->setCurrentIndex(0);
-        young_displayHambugerMenu();
-        break;
-    case AGE_MIDDLE:
-        ui->stackedWidget->setCurrentIndex(1);
-        ui->menudisplaywidget->setCurrentIndex(1);
-        mid_displayHambugerMenu();
-        break;
-    case AGE_OLD:
-        ui->stackedWidget->setCurrentIndex(2);
-        ui->old_select->setCurrentIndex(0);
-        break;
-    }
+    qDebug() << "touch";
+    ui->loadingText->setText("나이를 측정하는 중입니다.");
+    system("python3 ~/py.py");
 } // 얼굴 인식 결과 도출
 
 void MainWindow::showPopup(MyMenu* menu)
 {
-    popupwindows = new popup(this, menu->getName(), menu->getPrice(), menutype);
+    popupwindows = new popup(this, menu->getName(), menu->getPrice(), menutype, age);
     connect(popupwindows, SIGNAL(sendValue(QMap<QString, QString>)), this, SLOT(setValue(QMap<QString, QString>)));
     // popup에서 보내주는 sendValue signal을 받아 setValue로 연결
     if (baskcount < 5)
@@ -385,11 +366,6 @@ void MainWindow::countupdate()
     }
 } // 마지막 화면 자동 종료용
 
-void MainWindow::detecthuman()
-{
-
-} // 키오스크 앞에 사람이 있는지 확인
-
 void MainWindow::deleteBasket(basket* tmp)
 {
     QString menuname = tmp->getName();
@@ -572,4 +548,73 @@ void MainWindow::on_old_finishpushbutton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(CHECK);
     showCheck();
+}
+
+void MainWindow::process_tcpInit()
+{
+    QHostAddress hostAddress;
+    QList<QHostAddress> ipAddress = QNetworkInterface::allAddresses();
+    for(int i = 0;ipAddress.size();i++)
+    {
+        if(ipAddress.at(i) != QHostAddress::LocalHost && ipAddress.at(i).toIPv4Address())
+        {
+            hostAddress = ipAddress.at(i);
+            break;
+        }
+    }
+    if(hostAddress.toString().isEmpty())    hostAddress = QHostAddress(QHostAddress::LocalHost);
+    process_tcpserver = new QTcpServer(this);
+    qDebug() << hostAddress;
+    if(!process_tcpserver->listen(hostAddress, 9999))
+    {
+        qDebug()<< "fail";
+        close();
+    }
+    qDebug()<< "process_tcpserver open";
+    connect(process_tcpserver, SIGNAL(newConnection()),this,SLOT(process_connect()));
+}
+
+void MainWindow::process_connect()
+{
+    process_socket = process_tcpserver->nextPendingConnection();
+    connect(process_socket,SIGNAL(readyRead()),this,SLOT(process_readData()));
+    connect(process_socket, SIGNAL(disconnected()),this,SLOT(process_disconnect()));
+}
+
+void MainWindow::process_readData()
+{
+    QByteArray data;
+    if(process_socket->bytesAvailable()>=0)
+    {
+        data = process_socket->readAll();
+    }
+    int recvage = data.toInt();
+
+    if(recvage >= 0 && recvage < 30)        age = AGE_YOUNG;
+    else if(recvage >= 30 && recvage < 60)  age = AGE_MIDDLE;
+    else                                    age = AGE_OLD;
+
+    qDebug() << age;
+    switch(age)
+    {
+    case AGE_YOUNG:
+        ui->stackedWidget->setCurrentIndex(1);
+        ui->menudisplaywidget->setCurrentIndex(0);
+        young_displayHambugerMenu();
+        break;
+    case AGE_MIDDLE:
+        ui->stackedWidget->setCurrentIndex(1);
+        ui->menudisplaywidget->setCurrentIndex(1);
+        mid_displayHambugerMenu();
+        break;
+    case AGE_OLD:
+        ui->stackedWidget->setCurrentIndex(2);
+        ui->old_select->setCurrentIndex(0);
+        break;
+    }
+}
+void MainWindow::process_disconnect()
+{
+    qDebug() << "disconnect";
+    process_socket->close();
 }

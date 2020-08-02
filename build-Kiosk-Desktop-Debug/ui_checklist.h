@@ -63,6 +63,13 @@ public:
 
         cancelbutton = new QPushButton(checklist);
         cancelbutton->setObjectName(QStringLiteral("cancelbutton"));
+        cancelbutton->setMinimumSize(QSize(100, 100));
+        cancelbutton->setStyleSheet(QLatin1String("background-color: red;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+"font: bold 20px;\n"
+"padding: 6px;\n"
+"color:white;"));
 
         gridLayout->addWidget(cancelbutton, 0, 2, 2, 1);
 

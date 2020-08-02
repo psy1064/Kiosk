@@ -62,6 +62,20 @@
    </item>
    <item row="0" column="2" rowspan="2">
     <widget class="QPushButton" name="cancelbutton">
+     <property name="minimumSize">
+      <size>
+       <width>100</width>
+       <height>100</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: red;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+padding: 6px;
+color:white;</string>
+     </property>
      <property name="text">
       <string>취소</string>
      </property>

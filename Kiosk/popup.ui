@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>750</height>
+    <height>800</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -159,102 +159,199 @@
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <widget class="QLabel" name="label_2">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>20</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>수량 선택</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="minusButton">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>50</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">border-image:url(&quot;/home/pi/kiosk/image/minusicon.png&quot;)
+        <widget class="QLabel" name="label_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>20</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>수량 선택</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QStackedWidget" name="selectCount">
+         <widget class="QWidget" name="page_7">
+          <layout class="QGridLayout" name="gridLayout_4">
+           <item row="0" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QPushButton" name="minusButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>50</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border-image:url(&quot;/home/pi/kiosk/image/minusicon.png&quot;)
 </string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="countLabel">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>30</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>20</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>1</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="plusButton">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>50</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">border-image:url(&quot;/home/pi/kiosk/image/plusicon.png&quot;)
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="countLabel">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>30</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>20</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>1</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="plusButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>50</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border-image:url(&quot;/home/pi/kiosk/image/plusicon.png&quot;)
 </string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-        </layout>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="page_8">
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QPushButton" name="count1button">
+             <property name="styleSheet">
+              <string notr="true">background-color: white;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+padding: 6px;
+color:black;
+border: 2px solid black;
+font: 75 28pt &quot;PibotoLt&quot;;</string>
+             </property>
+             <property name="text">
+              <string>1개</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="count2button">
+             <property name="styleSheet">
+              <string notr="true">background-color: white;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+padding: 6px;
+color:black;
+border: 2px solid black;
+font: 75 28pt &quot;PibotoLt&quot;;</string>
+             </property>
+             <property name="text">
+              <string>2개</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="count3button">
+             <property name="styleSheet">
+              <string notr="true">background-color: white;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+padding: 6px;
+color:black;
+border: 2px solid black;
+font: 75 28pt &quot;PibotoLt&quot;;</string>
+             </property>
+             <property name="text">
+              <string>3개</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="count4button">
+             <property name="styleSheet">
+              <string notr="true">background-color: white;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+padding: 6px;
+color:black;
+border: 2px solid black;
+font: 75 28pt &quot;PibotoLt&quot;;</string>
+             </property>
+             <property name="text">
+              <string>4개</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="count5button">
+             <property name="styleSheet">
+              <string notr="true">background-color: white;
+border-width: 2px;
+border-radius: 10px;
+font: bold 20px;
+padding: 6px;
+color:black;
+border: 2px solid black;
+font: 75 28pt &quot;PibotoLt&quot;;</string>
+             </property>
+             <property name="text">
+              <string>5개</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -310,7 +407,7 @@ padding: 6px;
 color:white;</string>
            </property>
            <property name="text">
-            <string>다시 고를래</string>
+            <string>다시 선택</string>
            </property>
           </widget>
          </item>

@@ -32,7 +32,7 @@ public:
     QWidget *loading;
     QVBoxLayout *verticalLayout;
     QLabel *label;
-    QLabel *label_2;
+    QLabel *loadingText;
     QWidget *display;
     QGridLayout *gridLayout_2;
     QVBoxLayout *verticalLayout_2;
@@ -149,25 +149,25 @@ public:
 
         verticalLayout->addWidget(label);
 
-        label_2 = new QLabel(loading);
-        label_2->setObjectName(QStringLiteral("label_2"));
+        loadingText = new QLabel(loading);
+        loadingText->setObjectName(QStringLiteral("loadingText"));
         QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Maximum);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
-        label_2->setSizePolicy(sizePolicy2);
+        sizePolicy2.setHeightForWidth(loadingText->sizePolicy().hasHeightForWidth());
+        loadingText->setSizePolicy(sizePolicy2);
         QFont font;
         font.setPointSize(29);
         font.setBold(true);
         font.setItalic(false);
         font.setWeight(75);
-        label_2->setFont(font);
-        label_2->setStyleSheet(QStringLiteral(""));
-        label_2->setFrameShape(QFrame::NoFrame);
-        label_2->setAlignment(Qt::AlignCenter);
-        label_2->setMargin(48);
+        loadingText->setFont(font);
+        loadingText->setStyleSheet(QStringLiteral(""));
+        loadingText->setFrameShape(QFrame::NoFrame);
+        loadingText->setAlignment(Qt::AlignCenter);
+        loadingText->setMargin(48);
 
-        verticalLayout->addWidget(label_2);
+        verticalLayout->addWidget(loadingText);
 
         stackedWidget->addWidget(loading);
         display = new QWidget();
@@ -733,7 +733,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(3);
+        stackedWidget->setCurrentIndex(0);
         menudisplaywidget->setCurrentIndex(1);
 
 
@@ -744,7 +744,7 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         label->setText(QString());
-        label_2->setText(QApplication::translate("MainWindow", "\353\247\244\354\236\245\354\227\220 \354\230\244\354\213\240\352\262\203\354\235\204 \355\231\230\354\230\201\355\225\251\353\213\210\353\213\244.", nullptr));
+        loadingText->setText(QApplication::translate("MainWindow", "\353\247\244\354\236\245\354\227\220 \354\230\244\354\213\240\352\262\203\354\235\204 \355\231\230\354\230\201\355\225\251\353\213\210\353\213\244.", nullptr));
         main_logo->setText(QString());
         label_5->setText(QApplication::translate("MainWindow", "\354\233\220\355\225\230\353\212\224 \354\235\214\354\213\235\354\235\204 \353\210\214\353\237\254\354\243\274\354\204\270\354\232\224", nullptr));
         finishButton->setText(QApplication::translate("MainWindow", "\354\243\274\353\254\270 \354\231\204\353\243\214", nullptr));
